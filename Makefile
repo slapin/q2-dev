@@ -65,7 +65,9 @@ ifneq ($(ARCH),i386)
 ifneq ($(ARCH),axp)
 ifneq ($(ARCH),ppc)
 ifneq ($(ARCH),sparc)
+ifneq ($(ARCH),arm)
 $(error arch $(ARCH) is currently not supported)
+endif
 endif
 endif
 endif
@@ -403,6 +405,36 @@ ifeq ($(ARCH),i386)
   TARGETS += $(BUILDDIR)/ref_sdlgl.$(SHLIBEXT)
  endif
 endif # ARCH i386
+
+ifeq ($(ARCH),arm)
+ ifeq ($(strip $(BUILD_SDLQUAKE2)),YES)
+  TARGETS += $(BUILDDIR)/sdlquake2
+ endif
+
+ ifeq ($(strip $(BUILD_SVGA)),YES)
+  TARGETS += $(BUILDDIR)/ref_soft.$(SHLIBEXT)
+ endif
+
+ ifeq ($(strip $(BUILD_X11)),YES)
+  TARGETS += $(BUILDDIR)/ref_softx.$(SHLIBEXT)
+ endif
+
+ ifeq ($(strip $(BUILD_GLX)),YES)
+  TARGETS += $(BUILDDIR)/ref_glx.$(SHLIBEXT)
+ endif
+
+ ifeq ($(strip $(BUILD_FXGL)),YES)
+  TARGETS += $(BUILDDIR)/ref_gl.$(SHLIBEXT)
+ endif
+
+ ifeq ($(strip $(BUILD_SDL)),YES)
+  TARGETS += $(BUILDDIR)/ref_softsdl.$(SHLIBEXT)
+ endif
+
+ ifeq ($(strip $(BUILD_SDLGL)),YES)
+  TARGETS += $(BUILDDIR)/ref_sdlgl.$(SHLIBEXT)
+ endif
+endif # ARCH arm
 
 ifeq ($(strip $(BUILD_AA)),YES)
 	TARGETS += $(BUILDDIR)/ref_softaa.$(SHLIBEXT)
