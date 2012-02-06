@@ -360,7 +360,7 @@ ifeq ($(ARCH),x86_64)
  endif
 
  ifeq ($(strip $(BUILD_SDL)),YES)
-  $(warning Warning: Software SDL Renderer not supported for $(ARCH))
+  TARGETS += $(BUILDDIR)/ref_softsdl.$(SHLIBEXT)
  endif
 
  ifeq ($(strip $(BUILD_GLX)),YES)

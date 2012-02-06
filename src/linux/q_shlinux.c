@@ -35,6 +35,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <machine/param.h>
 #endif
 
+/* Damn feature test macros, why doesn't mremap declaration works? */
+void *mremap(void *old_address, size_t old_size,
+	size_t new_size, int flags, ... );
+
 //===============================================================================
 
 byte *membase;

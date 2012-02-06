@@ -19,6 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 // r_main.c
 
+#include <stdlib.h>
 #include "r_local.h"
 
 viddef_t	vid;
@@ -1029,7 +1030,9 @@ void R_RenderFrame (refdef_t *fd)
 	if (r_dspeeds->value)
 		dp_time2 = Sys_Milliseconds ();
 
+#if 0
 	R_DrawAlphaSurfaces();
+#endif
 
 	R_SetLightLevel ();
 
