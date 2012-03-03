@@ -4,7 +4,7 @@ MAKEFILE_CONF      ?= Makefile.conf
 ## CONFIGURATION SETTINGS
 # user customizable stuf
 # you may override this in Makefile.conf or the environment
-BUILD              ?= debug
+BUILD              ?= release
 # or: release, or: extradebug, or: profile
 OS                 ?= $(shell uname)
 # or: Linux, Win32, Darwin
@@ -292,7 +292,6 @@ dependencies-check:
 	checkbinary pkg-config "$(PKGCONFIG)"; \
 	checkbinary unzip "$(UNZIPPER)"; \
 	checkbinary git-core "$(GIT)"; \
-	checkbinary subversion "$(SVN)"; \
 	checkbinary wget "$(WGET)"; \
 	[ "$(OS)" = "Win32" ] && checkbinary mingw32 "$(WINDRES)"; \
 	[ -n "$(LDD)" ] && checkbinary libc6 "$(LDD)"; \
