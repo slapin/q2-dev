@@ -154,6 +154,8 @@ finds a matching metatriangle in the global list,
 otherwise adds it and returns the index to the metatriangle
 */
 
+#define MIN_VERT_DIST 0.01f
+
 int FindMetaTriangle( metaTriangle_t *src, bspDrawVert_t *a, bspDrawVert_t *b, bspDrawVert_t *c, int planeNum )
 {
 	int				triIndex;
@@ -163,13 +165,13 @@ int FindMetaTriangle( metaTriangle_t *src, bspDrawVert_t *a, bspDrawVert_t *b, b
 	
 	/* detect degenerate triangles fixme: do something proper here */
 	VectorSubtract( a->xyz, b->xyz, dir );
-	if( VectorLength( dir ) < 0.125f )
+	if( VectorLength( dir ) < MIN_VERT_DIST )
 		return -1;
 	VectorSubtract( b->xyz, c->xyz, dir );
-	if( VectorLength( dir ) < 0.125f )
+	if( VectorLength( dir ) < MIN_VERT_DIST )
 		return -1;
 	VectorSubtract( c->xyz, a->xyz, dir );
-	if( VectorLength( dir ) < 0.125f )
+	if( VectorLength( dir ) < MIN_VERT_DIST )
 		return -1;
 	
 	/* find plane */
