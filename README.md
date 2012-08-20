@@ -2,6 +2,7 @@ README
 ======
 
 1) What's this and why?
+-----------------------
 
 The original netradiant (from icculus.org) is good, but recently undeveloped.
 
@@ -13,6 +14,7 @@ worse codebase.
 
 
 2) Future plans?
+----------------
 
 Don't expect any new development here, unless I hit any new bugs myself ;)
 
@@ -23,6 +25,7 @@ now, it has re-introduced far too many bugs. So I'll be using this branch here.
 
 
 3) Contributing
+---------------
 
 Please work on top of the unified radiant and send your patches there.
 
