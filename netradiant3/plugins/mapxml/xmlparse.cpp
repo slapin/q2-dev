@@ -33,6 +33,7 @@
 #include "ieclass.h"
 #include "eclasslib.h"
 
+#include <glib.h>
 #include "xml/xmlparser.h"
 #include "scenelib.h"
 #include "generic/reference.h"

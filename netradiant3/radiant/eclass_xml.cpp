@@ -112,6 +112,7 @@
 #include "ifilesystem.h"
 #include "iarchive.h"
 
+#include <glib.h>
 #include "xml/xmlparser.h"
 #include "generic/object.h"
 #include "generic/reference.h"

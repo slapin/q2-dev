@@ -25,6 +25,7 @@
 
 #include "xmlwrite.h"
 
+#include <glib.h>
 #include "xml/xmlwriter.h"
 #include "scenelib.h"
 #include "entityxml.h"
