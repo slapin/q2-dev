@@ -1,0 +1,6 @@
+game/debug*
+game/release*
+gtkradiant/install/*
+quake2/debug*
+quake2/release*
+
