@@ -1,0 +1,660 @@
+MOVEDIR_DOWN     variable    312 g_utils.c        vec3_t MOVEDIR_DOWN = {0, 0, -1};
+MOVEDIR_UP       variable    310 g_utils.c        vec3_t MOVEDIR_UP = {0, 0, 1};
+VEC_DOWN         variable    311 g_utils.c        vec3_t VEC_DOWN = {0, -2, 0};
+VEC_UP           variable    309 g_utils.c        vec3_t VEC_UP = {0, -1, 0};
+_BigFloat        variable    938 q_shared.c       float (*_BigFloat) (float l);
+_BigLong         variable    936 q_shared.c       int (*_BigLong) (int l);
+_BigShort        variable    934 q_shared.c       short (*_BigShort) (short l);
+_LittleFloat     variable    939 q_shared.c       float (*_LittleFloat) (float l);
+_LittleLong      variable    937 q_shared.c       int (*_LittleLong) (int l);
+_LittleShort     variable    935 q_shared.c       short (*_LittleShort) (short l);
+actor_frames_attack variable    382 m_actor.c        mframe_t actor_frames_attack [] =
+actor_frames_death1 variable    309 m_actor.c        mframe_t actor_frames_death1 [] =
+actor_frames_death2 variable    321 m_actor.c        mframe_t actor_frames_death2 [] =
+actor_frames_flipoff variable    181 m_actor.c        mframe_t actor_frames_flipoff [] =
+actor_frames_pain1 variable    157 m_actor.c        mframe_t actor_frames_pain1 [] =
+actor_frames_pain2 variable    165 m_actor.c        mframe_t actor_frames_pain2 [] =
+actor_frames_pain3 variable    173 m_actor.c        mframe_t actor_frames_pain3 [] =
+actor_frames_run variable    119 m_actor.c        mframe_t actor_frames_run [] =
+actor_frames_stand variable     39 m_actor.c        mframe_t actor_frames_stand [] =
+actor_frames_taunt variable    200 m_actor.c        mframe_t actor_frames_taunt [] =
+actor_frames_walk variable     97 m_actor.c        mframe_t actor_frames_walk [] =
+actor_move_attack variable    389 m_actor.c        mmove_t actor_move_attack = {FRAME_attak01, FRAME_attak04, actor_frames_attack, actor_run};
+actor_move_death1 variable    319 m_actor.c        mmove_t actor_move_death1 = {FRAME_death101, FRAME_death107, actor_frames_death1, actor_dead};
+actor_move_death2 variable    337 m_actor.c        mmove_t actor_move_death2 = {FRAME_death201, FRAME_death213, actor_frames_death2, actor_dead};
+actor_move_flipoff variable    198 m_actor.c        mmove_t actor_move_flipoff = {FRAME_flip01, FRAME_flip14, actor_frames_flipoff, actor_run};
+actor_move_pain1 variable    163 m_actor.c        mmove_t actor_move_pain1 = {FRAME_pain101, FRAME_pain103, actor_frames_pain1, actor_run};
+actor_move_pain2 variable    171 m_actor.c        mmove_t actor_move_pain2 = {FRAME_pain201, FRAME_pain203, actor_frames_pain2, actor_run};
+actor_move_pain3 variable    179 m_actor.c        mmove_t actor_move_pain3 = {FRAME_pain301, FRAME_pain303, actor_frames_pain3, actor_run};
+actor_move_run   variable    134 m_actor.c        mmove_t actor_move_run = {FRAME_run02, FRAME_run07, actor_frames_run, NULL};
+actor_move_stand variable     85 m_actor.c        mmove_t actor_move_stand = {FRAME_stand101, FRAME_stand140, actor_frames_stand, NULL};
+actor_move_taunt variable    220 m_actor.c        mmove_t actor_move_taunt = {FRAME_taunt01, FRAME_taunt17, actor_frames_taunt, actor_run};
+actor_move_walk  variable    111 m_actor.c        mmove_t actor_move_walk = {FRAME_walk01, FRAME_walk08, actor_frames_walk, NULL};
+actor_names      variable     26 m_actor.c        char *actor_names[MAX_ACTOR_NAMES] =
+aimangles        variable    244 m_infantry.c     vec3_t aimangles[] =
+berserk_frames_attack_club variable    204 m_berserk.c      mframe_t berserk_frames_attack_club [] =
+berserk_frames_attack_spike variable    182 m_berserk.c      mframe_t berserk_frames_attack_spike [] =
+berserk_frames_attack_strike variable    228 m_berserk.c      mframe_t berserk_frames_attack_strike [] =
+berserk_frames_death1 variable    347 m_berserk.c      mframe_t berserk_frames_death1 [] =
+berserk_frames_death2 variable    367 m_berserk.c      mframe_t berserk_frames_death2 [] =
+berserk_frames_pain1 variable    280 m_berserk.c      mframe_t berserk_frames_pain1 [] =
+berserk_frames_pain2 variable    290 m_berserk.c      mframe_t berserk_frames_pain2 [] =
+berserk_frames_run1 variable    150 m_berserk.c      mframe_t berserk_frames_run1 [] =
+berserk_frames_stand variable     51 m_berserk.c      mframe_t berserk_frames_stand [] =
+berserk_frames_stand_fidget variable     66 m_berserk.c      mframe_t berserk_frames_stand_fidget [] =
+berserk_frames_walk variable    103 m_berserk.c      mframe_t berserk_frames_walk [] =
+berserk_move_attack_club variable    219 m_berserk.c      mmove_t berserk_move_attack_club = {FRAME_att_c9, FRAME_att_c20, berserk_frames_attack_club, berserk_run};
+berserk_move_attack_spike variable    193 m_berserk.c      mmove_t berserk_move_attack_spike = {FRAME_att_c1, FRAME_att_c8, berserk_frames_attack_spike, berserk_run};
+berserk_move_attack_strike variable    246 m_berserk.c      mmove_t berserk_move_attack_strike = {FRAME_att_c21, FRAME_att_c34, berserk_frames_attack_strike, berserk_run};
+berserk_move_death1 variable    364 m_berserk.c      mmove_t berserk_move_death1 = {FRAME_death1, FRAME_death13, berserk_frames_death1, berserk_dead};
+berserk_move_death2 variable    378 m_berserk.c      mmove_t berserk_move_death2 = {FRAME_deathc1, FRAME_deathc8, berserk_frames_death2, berserk_dead};
+berserk_move_pain1 variable    287 m_berserk.c      mmove_t berserk_move_pain1 = {FRAME_painc1, FRAME_painc4, berserk_frames_pain1, berserk_run};
+berserk_move_pain2 variable    313 m_berserk.c      mmove_t berserk_move_pain2 = {FRAME_painb1, FRAME_painb20, berserk_frames_pain2, berserk_run};
+berserk_move_run1 variable    159 m_berserk.c      mmove_t berserk_move_run1 = {FRAME_run1, FRAME_run6, berserk_frames_run1, NULL};
+berserk_move_stand variable     59 m_berserk.c      mmove_t berserk_move_stand = {FRAME_stand1, FRAME_stand5, berserk_frames_stand, NULL};
+berserk_move_stand_fidget variable     89 m_berserk.c      mmove_t berserk_move_stand_fidget = {FRAME_standb1, FRAME_standb20, berserk_frames_stand_fidget, berserk_stand};
+berserk_move_walk variable    118 m_berserk.c      mmove_t berserk_move_walk = {FRAME_walkc1, FRAME_walkc11, berserk_frames_walk, NULL};
+bigendien        variable    930 q_shared.c       qboolean bigendien;
+bob_pitch        variable     65 g_main.c         cvar_t *bob_pitch;
+bob_roll         variable     66 g_main.c         cvar_t *bob_roll;
+bob_up           variable     64 g_main.c         cvar_t *bob_up;
+bobcycle         variable     33 p_view.c         int bobcycle; // odd cycles are right foot going forward
+bobfracsin       variable     34 p_view.c         float bobfracsin; // sin(bobfrac*M_PI)
+bobmove          variable     32 p_view.c         float bobmove;
+bodyarmor_info   variable     41 g_items.c        gitem_armor_t bodyarmor_info = {100, 200, .80, .60, ARMOR_BODY};
+boss2_frames_attack_mg variable    282 m_boss2.c        mframe_t boss2_frames_attack_mg [] =
+boss2_frames_attack_post_mg variable    293 m_boss2.c        mframe_t boss2_frames_attack_post_mg [] =
+boss2_frames_attack_pre_mg variable    266 m_boss2.c        mframe_t boss2_frames_attack_pre_mg [] =
+boss2_frames_attack_rocket variable    302 m_boss2.c        mframe_t boss2_frames_attack_rocket [] =
+boss2_frames_death variable    360 m_boss2.c        mframe_t boss2_frames_death [] =
+boss2_frames_fidget variable    180 m_boss2.c        mframe_t boss2_frames_fidget [] =
+boss2_frames_pain_heavy variable    328 m_boss2.c        mframe_t boss2_frames_pain_heavy [] =
+boss2_frames_pain_light variable    351 m_boss2.c        mframe_t boss2_frames_pain_light [] =
+boss2_frames_run variable    241 m_boss2.c        mframe_t boss2_frames_run [] =
+boss2_frames_stand variable    154 m_boss2.c        mframe_t boss2_frames_stand [] =
+boss2_frames_walk variable    215 m_boss2.c        mframe_t boss2_frames_walk [] =
+boss2_move_attack_mg variable    291 m_boss2.c        mmove_t boss2_move_attack_mg = {FRAME_attack10, FRAME_attack15, boss2_frames_attack_mg, NULL};
+boss2_move_attack_post_mg variable    300 m_boss2.c        mmove_t boss2_move_attack_post_mg = {FRAME_attack16, FRAME_attack19, boss2_frames_attack_post_mg, boss2_run};
+boss2_move_attack_pre_mg variable    278 m_boss2.c        mmove_t boss2_move_attack_pre_mg = {FRAME_attack1, FRAME_attack9, boss2_frames_attack_pre_mg, NULL};
+boss2_move_attack_rocket variable    326 m_boss2.c        mmove_t boss2_move_attack_rocket = {FRAME_attack20, FRAME_attack40, boss2_frames_attack_rocket, boss2_run};
+boss2_move_death variable    412 m_boss2.c        mmove_t boss2_move_death = {FRAME_death2, FRAME_death50, boss2_frames_death, boss2_dead};
+boss2_move_fidget variable    213 m_boss2.c        mmove_t boss2_move_fidget = {FRAME_stand1, FRAME_stand30, boss2_frames_fidget, NULL};
+boss2_move_pain_heavy variable    349 m_boss2.c        mmove_t boss2_move_pain_heavy = {FRAME_pain2, FRAME_pain19, boss2_frames_pain_heavy, boss2_run};
+boss2_move_pain_light variable    358 m_boss2.c        mmove_t boss2_move_pain_light = {FRAME_pain20, FRAME_pain23, boss2_frames_pain_light, boss2_run};
+boss2_move_run   variable    264 m_boss2.c        mmove_t boss2_move_run = {FRAME_walk1, FRAME_walk20, boss2_frames_run, NULL};
+boss2_move_stand variable    178 m_boss2.c        mmove_t boss2_move_stand = {FRAME_stand30, FRAME_stand50, boss2_frames_stand, NULL};
+boss2_move_walk  variable    238 m_boss2.c        mmove_t boss2_move_walk = {FRAME_walk1, FRAME_walk20, boss2_frames_walk, NULL};
+brain_frames_attack1 variable    431 m_brain.c        mframe_t brain_frames_attack1 [] =
+brain_frames_attack2 variable    481 m_brain.c        mframe_t brain_frames_attack2 [] =
+brain_frames_death1 variable    375 m_brain.c        mframe_t brain_frames_death1 [] =
+brain_frames_death2 variable    365 m_brain.c        mframe_t brain_frames_death2 [] =
+brain_frames_defense variable    244 m_brain.c        mframe_t brain_frames_defense [] =
+brain_frames_duck variable    339 m_brain.c        mframe_t brain_frames_duck [] =
+brain_frames_idle variable    114 m_brain.c        mframe_t brain_frames_idle [] =
+brain_frames_pain1 variable    282 m_brain.c        mframe_t brain_frames_pain1 [] =
+brain_frames_pain2 variable    269 m_brain.c        mframe_t brain_frames_pain2 [] =
+brain_frames_pain3 variable    258 m_brain.c        mframe_t brain_frames_pain3 [] =
+brain_frames_run variable    516 m_brain.c        mframe_t brain_frames_run [] =
+brain_frames_stand variable     67 m_brain.c        mframe_t brain_frames_stand [] =
+brain_frames_walk1 variable    161 m_brain.c        mframe_t brain_frames_walk1 [] =
+brain_move_attack1 variable    452 m_brain.c        mmove_t brain_move_attack1 = {FRAME_attak101, FRAME_attak118, brain_frames_attack1, brain_run};
+brain_move_attack2 variable    501 m_brain.c        mmove_t brain_move_attack2 = {FRAME_attak201, FRAME_attak217, brain_frames_attack2, brain_run};
+brain_move_death1 variable    396 m_brain.c        mmove_t brain_move_death1 = {FRAME_death101, FRAME_death118, brain_frames_death1, brain_dead};
+brain_move_death2 variable    373 m_brain.c        mmove_t brain_move_death2 = {FRAME_death201, FRAME_death205, brain_frames_death2, brain_dead};
+brain_move_defense variable    256 m_brain.c        mmove_t brain_move_defense = {FRAME_defens01, FRAME_defens08, brain_frames_defense, NULL};
+brain_move_duck  variable    350 m_brain.c        mmove_t brain_move_duck = {FRAME_duck01, FRAME_duck08, brain_frames_duck, brain_run};
+brain_move_idle  variable    149 m_brain.c        mmove_t brain_move_idle = {FRAME_stand31, FRAME_stand60, brain_frames_idle, brain_stand};
+brain_move_pain1 variable    306 m_brain.c        mmove_t brain_move_pain1 = {FRAME_pain101, FRAME_pain121, brain_frames_pain1, brain_run};
+brain_move_pain2 variable    280 m_brain.c        mmove_t brain_move_pain2 = {FRAME_pain201, FRAME_pain208, brain_frames_pain2, brain_run};
+brain_move_pain3 variable    267 m_brain.c        mmove_t brain_move_pain3 = {FRAME_pain301, FRAME_pain306, brain_frames_pain3, brain_run};
+brain_move_run   variable    530 m_brain.c        mmove_t brain_move_run = {FRAME_walk101, FRAME_walk111, brain_frames_run, NULL};
+brain_move_stand variable    102 m_brain.c        mmove_t brain_move_stand = {FRAME_stand01, FRAME_stand30, brain_frames_stand, NULL};
+brain_move_walk1 variable    175 m_brain.c        mmove_t brain_move_walk1 = {FRAME_walk101, FRAME_walk111, brain_frames_walk1, NULL};
+c_no             variable     35 m_move.c         int c_yes, c_no;
+c_yes            variable     35 m_move.c         int c_yes, c_no;
+chick_frames_attack1 variable    499 m_chick.c        mframe_t chick_frames_attack1 [] =
+chick_frames_death1 variable    335 m_chick.c        mframe_t chick_frames_death1 [] =
+chick_frames_death2 variable    307 m_chick.c        mframe_t chick_frames_death2 [] =
+chick_frames_duck variable    418 m_chick.c        mframe_t chick_frames_duck [] =
+chick_frames_end_attack1 variable    519 m_chick.c        mframe_t chick_frames_end_attack1 [] =
+chick_frames_end_slash variable    563 m_chick.c        mframe_t chick_frames_end_slash [] =
+chick_frames_fidget variable     64 m_chick.c        mframe_t chick_frames_fidget [] =
+chick_frames_pain1 variable    220 m_chick.c        mframe_t chick_frames_pain1 [] =
+chick_frames_pain2 variable    230 m_chick.c        mframe_t chick_frames_pain2 [] =
+chick_frames_pain3 variable    240 m_chick.c        mframe_t chick_frames_pain3 [] =
+chick_frames_run variable    163 m_chick.c        mframe_t chick_frames_run [] =
+chick_frames_slash variable    549 m_chick.c        mframe_t chick_frames_slash [] =
+chick_frames_stand variable    107 m_chick.c        mframe_t chick_frames_stand [] =
+chick_frames_start_attack1 variable    480 m_chick.c        mframe_t chick_frames_start_attack1 [] =
+chick_frames_start_run variable    148 m_chick.c        mframe_t chick_frames_start_run [] =
+chick_frames_start_slash variable    600 m_chick.c        mframe_t chick_frames_start_slash [] =
+chick_frames_walk variable    180 m_chick.c        mframe_t chick_frames_walk [] =
+chick_move_attack1 variable    517 m_chick.c        mmove_t chick_move_attack1 = {FRAME_attak114, FRAME_attak127, chick_frames_attack1, NULL};
+chick_move_death1 variable    351 m_chick.c        mmove_t chick_move_death1 = {FRAME_death101, FRAME_death112, chick_frames_death1, chick_dead};
+chick_move_death2 variable    333 m_chick.c        mmove_t chick_move_death2 = {FRAME_death201, FRAME_death223, chick_frames_death2, chick_dead};
+chick_move_duck  variable    428 m_chick.c        mmove_t chick_move_duck = {FRAME_duck01, FRAME_duck07, chick_frames_duck, chick_run};
+chick_move_end_attack1 variable    527 m_chick.c        mmove_t chick_move_end_attack1 = {FRAME_attak128, FRAME_attak132, chick_frames_end_attack1, chick_run};
+chick_move_end_slash variable    570 m_chick.c        mmove_t chick_move_end_slash = {FRAME_attak213, FRAME_attak216, chick_frames_end_slash, chick_run};
+chick_move_fidget variable     97 m_chick.c        mmove_t chick_move_fidget = {FRAME_stand201, FRAME_stand230, chick_frames_fidget, chick_stand};
+chick_move_pain1 variable    228 m_chick.c        mmove_t chick_move_pain1 = {FRAME_pain101, FRAME_pain105, chick_frames_pain1, chick_run};
+chick_move_pain2 variable    238 m_chick.c        mmove_t chick_move_pain2 = {FRAME_pain201, FRAME_pain205, chick_frames_pain2, chick_run};
+chick_move_pain3 variable    264 m_chick.c        mmove_t chick_move_pain3 = {FRAME_pain301, FRAME_pain321, chick_frames_pain3, chick_run};
+chick_move_run   variable    178 m_chick.c        mmove_t chick_move_run = {FRAME_walk11, FRAME_walk20, chick_frames_run, NULL};
+chick_move_slash variable    561 m_chick.c        mmove_t chick_move_slash = {FRAME_attak204, FRAME_attak212, chick_frames_slash, NULL};
+chick_move_stand variable    141 m_chick.c        mmove_t chick_move_stand = {FRAME_stand101, FRAME_stand130, chick_frames_stand, NULL};
+chick_move_start_attack1 variable    496 m_chick.c        mmove_t chick_move_start_attack1 = {FRAME_attak101, FRAME_attak113, chick_frames_start_attack1, NULL};
+chick_move_start_run variable    161 m_chick.c        mmove_t chick_move_start_run = {FRAME_walk01, FRAME_walk10, chick_frames_start_run, chick_run};
+chick_move_start_slash variable    606 m_chick.c        mmove_t chick_move_start_slash = {FRAME_attak201, FRAME_attak203, chick_frames_start_slash, chick_slash};
+chick_move_walk  variable    194 m_chick.c        mmove_t chick_move_walk = {FRAME_walk11, FRAME_walk20, chick_frames_walk, NULL};
+clientfields     variable    134 g_save.c         field_t clientfields[] =
+com_token        variable   1059 q_shared.c       char com_token[MAX_TOKEN_CHARS];
+combatarmor_info variable     40 g_items.c        gitem_armor_t combatarmor_info = { 50, 100, .60, .30, ARMOR_COMBAT};
+coop             variable     36 g_main.c         cvar_t *coop;
+deathmatch       variable     35 g_main.c         cvar_t *deathmatch;
+dedicated        variable     48 g_main.c         cvar_t *dedicated;
+dm_statusbar     variable    708 g_spawn.c        char *dm_statusbar =
+dmflags          variable     37 g_main.c         cvar_t *dmflags;
+enemy_infront    variable     30 g_ai.c           qboolean enemy_infront;
+enemy_range      variable     31 g_ai.c           int enemy_range;
+enemy_vis        variable     29 g_ai.c           qboolean enemy_vis;
+enemy_yaw        variable     32 g_ai.c           float enemy_yaw;
+fields           variable     27 g_save.c         field_t fields[] = {
+filterban        variable     50 g_main.c         cvar_t *filterban;
+flipper_frames_attack variable    193 m_flipper.c      mframe_t flipper_frames_attack [] =
+flipper_frames_death variable    261 m_flipper.c      mframe_t flipper_frames_death [] =
+flipper_frames_pain1 variable    170 m_flipper.c      mframe_t flipper_frames_pain1 [] =
+flipper_frames_pain2 variable    160 m_flipper.c      mframe_t flipper_frames_pain2 [] =
+flipper_frames_run variable     58 m_flipper.c      mframe_t flipper_frames_run [] =
+flipper_frames_run_start variable     94 m_flipper.c      mframe_t flipper_frames_run_start [] =
+flipper_frames_stand variable     44 m_flipper.c      mframe_t flipper_frames_stand [] =
+flipper_frames_start_run variable    145 m_flipper.c      mframe_t flipper_frames_start_run [] =
+flipper_frames_walk variable    111 m_flipper.c      mframe_t flipper_frames_walk [] =
+flipper_move_attack variable    216 m_flipper.c      mmove_t flipper_move_attack = {FRAME_flpbit01, FRAME_flpbit20, flipper_frames_attack, flipper_run};
+flipper_move_death variable    325 m_flipper.c      mmove_t flipper_move_death = {FRAME_flpdth01, FRAME_flpdth56, flipper_frames_death, flipper_dead};
+flipper_move_pain1 variable    178 m_flipper.c      mmove_t flipper_move_pain1 = {FRAME_flppn201, FRAME_flppn205, flipper_frames_pain1, flipper_run};
+flipper_move_pain2 variable    168 m_flipper.c      mmove_t flipper_move_pain2 = {FRAME_flppn101, FRAME_flppn105, flipper_frames_pain2, flipper_run};
+flipper_move_run_loop variable     87 m_flipper.c      mmove_t flipper_move_run_loop = {FRAME_flpver06, FRAME_flpver29, flipper_frames_run, NULL};
+flipper_move_run_start variable    103 m_flipper.c      mmove_t flipper_move_run_start = {FRAME_flpver01, FRAME_flpver06, flipper_frames_run_start, flipper_run_loop};
+flipper_move_stand variable     49 m_flipper.c      mmove_t flipper_move_stand = {FRAME_flphor01, FRAME_flphor01, flipper_frames_stand, NULL};
+flipper_move_start_run variable    153 m_flipper.c      mmove_t flipper_move_start_run = {FRAME_flphor01, FRAME_flphor05, flipper_frames_start_run, NULL};
+flipper_move_walk variable    138 m_flipper.c      mmove_t flipper_move_walk = {FRAME_flphor01, FRAME_flphor24, flipper_frames_walk, NULL};
+floater_frames_activate variable    205 m_float.c        mframe_t floater_frames_activate [] =
+floater_frames_attack1 variable    240 m_float.c        mframe_t floater_frames_attack1 [] =
+floater_frames_attack2 variable    259 m_float.c        mframe_t floater_frames_attack2 [] =
+floater_frames_attack3 variable    289 m_float.c        mframe_t floater_frames_attack3 [] =
+floater_frames_death variable    328 m_float.c        mframe_t floater_frames_death [] =
+floater_frames_pain1 variable    346 m_float.c        mframe_t floater_frames_pain1 [] =
+floater_frames_pain2 variable    358 m_float.c        mframe_t floater_frames_pain2 [] =
+floater_frames_pain3 variable    371 m_float.c        mframe_t floater_frames_pain3 [] =
+floater_frames_run variable    445 m_float.c        mframe_t floater_frames_run [] =
+floater_frames_stand1 variable     83 m_float.c        mframe_t floater_frames_stand1 [] =
+floater_frames_stand2 variable    140 m_float.c        mframe_t floater_frames_stand2 [] =
+floater_frames_walk variable    388 m_float.c        mframe_t floater_frames_walk [] =
+floater_move_activate variable    238 m_float.c        mmove_t floater_move_activate = {FRAME_actvat01, FRAME_actvat31, floater_frames_activate, NULL};
+floater_move_attack1 variable    257 m_float.c        mmove_t floater_move_attack1 = {FRAME_attak101, FRAME_attak114, floater_frames_attack1, floater_run};
+floater_move_attack2 variable    287 m_float.c        mmove_t floater_move_attack2 = {FRAME_attak201, FRAME_attak225, floater_frames_attack2, floater_run};
+floater_move_attack3 variable    326 m_float.c        mmove_t floater_move_attack3 = {FRAME_attak301, FRAME_attak334, floater_frames_attack3, floater_run};
+floater_move_death variable    344 m_float.c        mmove_t floater_move_death = {FRAME_death01, FRAME_death13, floater_frames_death, floater_dead};
+floater_move_pain1 variable    356 m_float.c        mmove_t floater_move_pain1 = {FRAME_pain101, FRAME_pain107, floater_frames_pain1, floater_run};
+floater_move_pain2 variable    369 m_float.c        mmove_t floater_move_pain2 = {FRAME_pain201, FRAME_pain208, floater_frames_pain2, floater_run};
+floater_move_pain3 variable    386 m_float.c        mmove_t floater_move_pain3 = {FRAME_pain301, FRAME_pain312, floater_frames_pain3, floater_run};
+floater_move_run variable    500 m_float.c        mmove_t floater_move_run = {FRAME_stand101, FRAME_stand152, floater_frames_run, NULL};
+floater_move_stand1 variable    138 m_float.c        mmove_t floater_move_stand1 = {FRAME_stand101, FRAME_stand152, floater_frames_stand1, NULL};
+floater_move_stand2 variable    195 m_float.c        mmove_t floater_move_stand2 = {FRAME_stand201, FRAME_stand252, floater_frames_stand2, NULL};
+floater_move_walk variable    443 m_float.c        mmove_t floater_move_walk = {FRAME_stand101, FRAME_stand152, floater_frames_walk, NULL};
+flood_msgs       variable     70 g_main.c         cvar_t *flood_msgs;
+flood_persecond  variable     71 g_main.c         cvar_t *flood_persecond;
+flood_waitdelay  variable     72 g_main.c         cvar_t *flood_waitdelay;
+flyer_frames_attack2 variable    400 m_flyer.c        mframe_t flyer_frames_attack2 [] =
+flyer_frames_bankleft variable    354 m_flyer.c        mframe_t flyer_frames_bankleft [] =
+flyer_frames_bankright variable    342 m_flyer.c        mframe_t flyer_frames_bankright [] =
+flyer_frames_defense variable    331 m_flyer.c        mframe_t flyer_frames_defense [] = 
+flyer_frames_end_melee variable    452 m_flyer.c        mframe_t flyer_frames_end_melee [] =
+flyer_frames_loop_melee variable    461 m_flyer.c        mframe_t flyer_frames_loop_melee [] =
+flyer_frames_pain1 variable    317 m_flyer.c        mframe_t flyer_frames_pain1 [] =
+flyer_frames_pain2 variable    308 m_flyer.c        mframe_t flyer_frames_pain2 [] =
+flyer_frames_pain3 variable    299 m_flyer.c        mframe_t flyer_frames_pain3 [] =
+flyer_frames_rollleft variable    285 m_flyer.c        mframe_t flyer_frames_rollleft [] =
+flyer_frames_rollright variable    271 m_flyer.c        mframe_t flyer_frames_rollright [] =
+flyer_frames_run variable    169 m_flyer.c        mframe_t flyer_frames_run [] =
+flyer_frames_stand variable     68 m_flyer.c        mframe_t flyer_frames_stand [] =
+flyer_frames_start variable    237 m_flyer.c        mframe_t flyer_frames_start [] =
+flyer_frames_start_melee variable    441 m_flyer.c        mframe_t flyer_frames_start_melee [] =
+flyer_frames_stop variable    248 m_flyer.c        mframe_t flyer_frames_stop [] =
+flyer_frames_walk variable    119 m_flyer.c        mframe_t flyer_frames_walk [] =
+flyer_move_attack2 variable    420 m_flyer.c        mmove_t flyer_move_attack2 = {FRAME_attak201, FRAME_attak217, flyer_frames_attack2, flyer_run};
+flyer_move_bankleft variable    364 m_flyer.c        mmove_t flyer_move_bankleft = {FRAME_bankl01, FRAME_bankl07, flyer_frames_bankleft, NULL}; 
+flyer_move_bankright variable    352 m_flyer.c        mmove_t flyer_move_bankright = {FRAME_bankr01, FRAME_bankr07, flyer_frames_bankright, NULL};
+flyer_move_defense variable    340 m_flyer.c        mmove_t flyer_move_defense = {FRAME_defens01, FRAME_defens06, flyer_frames_defense, NULL};
+flyer_move_end_melee variable    458 m_flyer.c        mmove_t flyer_move_end_melee = {FRAME_attak119, FRAME_attak121, flyer_frames_end_melee, flyer_run};
+flyer_move_loop_melee variable    477 m_flyer.c        mmove_t flyer_move_loop_melee = {FRAME_attak107, FRAME_attak118, flyer_frames_loop_melee, flyer_check_melee};
+flyer_move_pain1 variable    329 m_flyer.c        mmove_t flyer_move_pain1 = {FRAME_pain101, FRAME_pain109, flyer_frames_pain1, flyer_run};
+flyer_move_pain2 variable    315 m_flyer.c        mmove_t flyer_move_pain2 = {FRAME_pain201, FRAME_pain204, flyer_frames_pain2, flyer_run};
+flyer_move_pain3 variable    306 m_flyer.c        mmove_t flyer_move_pain3 = {FRAME_pain301, FRAME_pain304, flyer_frames_pain3, flyer_run};
+flyer_move_rollleft variable    297 m_flyer.c        mmove_t flyer_move_rollleft = {FRAME_rollf01, FRAME_rollf09, flyer_frames_rollleft, NULL};
+flyer_move_rollright variable    283 m_flyer.c        mmove_t flyer_move_rollright = {FRAME_rollr01, FRAME_rollr09, flyer_frames_rollright, NULL};
+flyer_move_run   variable    217 m_flyer.c        mmove_t flyer_move_run = {FRAME_stand01, FRAME_stand45, flyer_frames_run, NULL};
+flyer_move_stand variable    116 m_flyer.c        mmove_t flyer_move_stand = {FRAME_stand01, FRAME_stand45, flyer_frames_stand, NULL};
+flyer_move_start variable    246 m_flyer.c        mmove_t flyer_move_start = {FRAME_start01, FRAME_start06, flyer_frames_start, NULL};
+flyer_move_start_melee variable    450 m_flyer.c        mmove_t flyer_move_start_melee = {FRAME_attak101, FRAME_attak106, flyer_frames_start_melee, flyer_loop_melee};
+flyer_move_stop  variable    258 m_flyer.c        mmove_t flyer_move_stop = {FRAME_stop01, FRAME_stop07, flyer_frames_stop, NULL};
+flyer_move_walk  variable    167 m_flyer.c        mmove_t flyer_move_walk = {FRAME_stand01, FRAME_stand45, flyer_frames_walk, NULL};
+fraglimit        variable     39 g_main.c         cvar_t *fraglimit;
+g_edicts         variable     33 g_main.c         edict_t *g_edicts;
+g_select_empty   variable     47 g_main.c         cvar_t *g_select_empty;
+game             variable     23 g_main.c         game_locals_t game;
+gi               variable     25 g_main.c         game_import_t gi;
+gib_on           variable     76 g_main.c         cvar_t *gib_on;
+gladiator_frames_attack_gun variable    184 m_gladiator.c    mframe_t gladiator_frames_attack_gun [] =
+gladiator_frames_attack_melee variable    140 m_gladiator.c    mframe_t gladiator_frames_attack_melee [] =
+gladiator_frames_death variable    281 m_gladiator.c    mframe_t gladiator_frames_death [] =
+gladiator_frames_pain variable    217 m_gladiator.c    mframe_t gladiator_frames_pain [] =
+gladiator_frames_pain_air variable    228 m_gladiator.c    mframe_t gladiator_frames_pain_air [] =
+gladiator_frames_run variable    109 m_gladiator.c    mframe_t gladiator_frames_run [] =
+gladiator_frames_stand variable     64 m_gladiator.c    mframe_t gladiator_frames_stand [] =
+gladiator_frames_walk variable     82 m_gladiator.c    mframe_t gladiator_frames_walk [] =
+gladiator_move_attack_gun variable    196 m_gladiator.c    mmove_t gladiator_move_attack_gun = {FRAME_attack1, FRAME_attack9, gladiator_frames_attack_gun, gladiator_run};
+gladiator_move_attack_melee variable    160 m_gladiator.c    mmove_t gladiator_move_attack_melee = {FRAME_melee1, FRAME_melee17, gladiator_frames_attack_melee, gladiator_run};
+gladiator_move_death variable    306 m_gladiator.c    mmove_t gladiator_move_death = {FRAME_death1, FRAME_death22, gladiator_frames_death, gladiator_dead};
+gladiator_move_pain variable    226 m_gladiator.c    mmove_t gladiator_move_pain = {FRAME_pain1, FRAME_pain6, gladiator_frames_pain, gladiator_run};
+gladiator_move_pain_air variable    238 m_gladiator.c    mmove_t gladiator_move_pain_air = {FRAME_painup1, FRAME_painup7, gladiator_frames_pain_air, gladiator_run};
+gladiator_move_run variable    118 m_gladiator.c    mmove_t gladiator_move_run = {FRAME_run1, FRAME_run6, gladiator_frames_run, NULL};
+gladiator_move_stand variable     74 m_gladiator.c    mmove_t gladiator_move_stand = {FRAME_stand1, FRAME_stand7, gladiator_frames_stand, NULL};
+gladiator_move_walk variable    101 m_gladiator.c    mmove_t gladiator_move_walk = {FRAME_walk1, FRAME_walk16, gladiator_frames_walk, NULL};
+globals          variable     26 g_main.c         game_export_t globals;
+gun_x            variable     57 g_main.c         cvar_t *gun_x;
+gun_y            variable     58 g_main.c         cvar_t *gun_y;
+gun_z            variable     59 g_main.c         cvar_t *gun_z;
+gunner_frames_attack_chain variable    474 m_gunner.c       mframe_t gunner_frames_attack_chain [] =
+gunner_frames_attack_grenade variable    521 m_gunner.c       mframe_t gunner_frames_attack_grenade [] =
+gunner_frames_death variable    319 m_gunner.c       mframe_t gunner_frames_death [] =
+gunner_frames_duck variable    396 m_gunner.c       mframe_t gunner_frames_duck [] =
+gunner_frames_endfire_chain variable    509 m_gunner.c       mframe_t gunner_frames_endfire_chain [] =
+gunner_frames_fidget variable     66 m_gunner.c       mframe_t gunner_frames_fidget [] =
+gunner_frames_fire_chain variable    496 m_gunner.c       mframe_t gunner_frames_fire_chain [] =
+gunner_frames_pain1 variable    260 m_gunner.c       mframe_t gunner_frames_pain1 [] =
+gunner_frames_pain2 variable    247 m_gunner.c       mframe_t gunner_frames_pain2 [] =
+gunner_frames_pain3 variable    237 m_gunner.c       mframe_t gunner_frames_pain3 [] =
+gunner_frames_run variable    198 m_gunner.c       mframe_t gunner_frames_run [] =
+gunner_frames_runandshoot variable    220 m_gunner.c       mframe_t gunner_frames_runandshoot [] =
+gunner_frames_stand variable    132 m_gunner.c       mframe_t gunner_frames_stand [] =
+gunner_frames_walk variable    175 m_gunner.c       mframe_t gunner_frames_walk [] =
+gunner_move_attack_chain variable    494 m_gunner.c       mmove_t gunner_move_attack_chain = {FRAME_attak209, FRAME_attak215, gunner_frames_attack_chain, gunner_fire_chain};
+gunner_move_attack_grenade variable    545 m_gunner.c       mmove_t gunner_move_attack_grenade = {FRAME_attak101, FRAME_attak121, gunner_frames_attack_grenade, gunner_run};
+gunner_move_death variable    333 m_gunner.c       mmove_t gunner_move_death = {FRAME_death01, FRAME_death11, gunner_frames_death, gunner_dead};
+gunner_move_duck variable    407 m_gunner.c       mmove_t gunner_move_duck = {FRAME_duck01, FRAME_duck08, gunner_frames_duck, gunner_run};
+gunner_move_endfire_chain variable    519 m_gunner.c       mmove_t gunner_move_endfire_chain = {FRAME_attak224, FRAME_attak230, gunner_frames_endfire_chain, gunner_run};
+gunner_move_fidget variable    122 m_gunner.c       mmove_t gunner_move_fidget = {FRAME_stand31, FRAME_stand70, gunner_frames_fidget, gunner_stand};
+gunner_move_fire_chain variable    507 m_gunner.c       mmove_t gunner_move_fire_chain = {FRAME_attak216, FRAME_attak223, gunner_frames_fire_chain, gunner_refire_chain};
+gunner_move_pain1 variable    281 m_gunner.c       mmove_t gunner_move_pain1 = {FRAME_pain101, FRAME_pain118, gunner_frames_pain1, gunner_run};
+gunner_move_pain2 variable    258 m_gunner.c       mmove_t gunner_move_pain2 = {FRAME_pain201, FRAME_pain208, gunner_frames_pain2, gunner_run};
+gunner_move_pain3 variable    245 m_gunner.c       mmove_t gunner_move_pain3 = {FRAME_pain301, FRAME_pain305, gunner_frames_pain3, gunner_run};
+gunner_move_run  variable    210 m_gunner.c       mmove_t gunner_move_run = {FRAME_run01, FRAME_run08, gunner_frames_run, NULL};
+gunner_move_runandshoot variable    230 m_gunner.c       mmove_t gunner_move_runandshoot = {FRAME_runs01, FRAME_runs06, gunner_frames_runandshoot, NULL};
+gunner_move_stand variable    167 m_gunner.c       mmove_t gunner_move_stand = {FRAME_stand01, FRAME_stand30, gunner_frames_stand, NULL};
+gunner_move_walk variable    191 m_gunner.c       mmove_t gunner_move_walk = {FRAME_walk07, FRAME_walk19, gunner_frames_walk, NULL};
+hover_frames_attack1 variable    405 m_hover.c        mframe_t hover_frames_attack1 [] =
+hover_frames_backward variable    368 m_hover.c        mframe_t hover_frames_backward [] =
+hover_frames_death1 variable    352 m_hover.c        mframe_t hover_frames_death1 [] =
+hover_frames_end_attack variable    414 m_hover.c        mframe_t hover_frames_end_attack [] =
+hover_frames_forward variable    232 m_hover.c        mframe_t hover_frames_forward [] =
+hover_frames_land variable    226 m_hover.c        mframe_t hover_frames_land [] =
+hover_frames_pain1 variable    193 m_hover.c        mframe_t hover_frames_pain1 [] =
+hover_frames_pain2 variable    176 m_hover.c        mframe_t hover_frames_pain2 [] =
+hover_frames_pain3 variable    162 m_hover.c        mframe_t hover_frames_pain3 [] =
+hover_frames_run variable    312 m_hover.c        mframe_t hover_frames_run [] =
+hover_frames_stand variable     65 m_hover.c        mframe_t hover_frames_stand [] =
+hover_frames_start_attack variable    397 m_hover.c        mframe_t hover_frames_start_attack [] =
+hover_frames_stop1 variable    100 m_hover.c        mframe_t hover_frames_stop1 [] =
+hover_frames_stop2 variable    114 m_hover.c        mframe_t hover_frames_stop2 [] =
+hover_frames_takeoff variable    127 m_hover.c        mframe_t hover_frames_takeoff [] =
+hover_frames_walk variable    272 m_hover.c        mframe_t hover_frames_walk [] =
+hover_move_attack1 variable    411 m_hover.c        mmove_t hover_move_attack1 = {FRAME_attak104, FRAME_attak106, hover_frames_attack1, NULL};
+hover_move_backward variable    395 m_hover.c        mmove_t hover_move_backward = {FRAME_backwd01, FRAME_backwd24, hover_frames_backward, NULL};
+hover_move_death1 variable    366 m_hover.c        mmove_t hover_move_death1 = {FRAME_death101, FRAME_death111, hover_frames_death1, hover_dead};
+hover_move_end_attack variable    419 m_hover.c        mmove_t hover_move_end_attack = {FRAME_attak107, FRAME_attak108, hover_frames_end_attack, hover_run};
+hover_move_forward variable    270 m_hover.c        mmove_t hover_move_forward = {FRAME_forwrd01, FRAME_forwrd35, hover_frames_forward, NULL};
+hover_move_land  variable    230 m_hover.c        mmove_t hover_move_land = {FRAME_land01, FRAME_land01, hover_frames_land, NULL};
+hover_move_pain1 variable    224 m_hover.c        mmove_t hover_move_pain1 = {FRAME_pain101, FRAME_pain128, hover_frames_pain1, hover_run};
+hover_move_pain2 variable    191 m_hover.c        mmove_t hover_move_pain2 = {FRAME_pain201, FRAME_pain212, hover_frames_pain2, hover_run};
+hover_move_pain3 variable    174 m_hover.c        mmove_t hover_move_pain3 = {FRAME_pain301, FRAME_pain309, hover_frames_pain3, hover_run};
+hover_move_run   variable    350 m_hover.c        mmove_t hover_move_run = {FRAME_forwrd01, FRAME_forwrd35, hover_frames_run, NULL};
+hover_move_stand variable     98 m_hover.c        mmove_t hover_move_stand = {FRAME_stand01, FRAME_stand30, hover_frames_stand, NULL};
+hover_move_start_attack variable    403 m_hover.c        mmove_t hover_move_start_attack = {FRAME_attak101, FRAME_attak103, hover_frames_start_attack, hover_attack};
+hover_move_stop1 variable    112 m_hover.c        mmove_t hover_move_stop1 = {FRAME_stop101, FRAME_stop109, hover_frames_stop1, NULL};
+hover_move_stop2 variable    125 m_hover.c        mmove_t hover_move_stop2 = {FRAME_stop201, FRAME_stop208, hover_frames_stop2, NULL};
+hover_move_takeoff variable    160 m_hover.c        mmove_t hover_move_takeoff = {FRAME_takeof01, FRAME_takeof30, hover_frames_takeoff, NULL};
+hover_move_walk  variable    310 m_hover.c        mmove_t hover_move_walk = {FRAME_forwrd01, FRAME_forwrd35, hover_frames_walk, NULL};
+infantry_frames_attack1 variable    497 m_infantry.c     mframe_t infantry_frames_attack1 [] =
+infantry_frames_attack2 variable    532 m_infantry.c     mframe_t infantry_frames_attack2 [] =
+infantry_frames_death1 variable    315 m_infantry.c     mframe_t infantry_frames_death1 [] =
+infantry_frames_death2 variable    341 m_infantry.c     mframe_t infantry_frames_death2 [] =
+infantry_frames_death3 variable    371 m_infantry.c     mframe_t infantry_frames_death3 [] =
+infantry_frames_duck variable    456 m_infantry.c     mframe_t infantry_frames_duck [] =
+infantry_frames_fidget variable     81 m_infantry.c     mframe_t infantry_frames_fidget [] =
+infantry_frames_pain1 variable    185 m_infantry.c     mframe_t infantry_frames_pain1 [] =
+infantry_frames_pain2 variable    200 m_infantry.c     mframe_t infantry_frames_pain2 [] =
+infantry_frames_run variable    163 m_infantry.c     mframe_t infantry_frames_run [] =
+infantry_frames_stand variable     48 m_infantry.c     mframe_t infantry_frames_stand [] =
+infantry_frames_walk variable    141 m_infantry.c     mframe_t infantry_frames_walk [] =
+infantry_move_attack1 variable    515 m_infantry.c     mmove_t infantry_move_attack1 = {FRAME_attak101, FRAME_attak115, infantry_frames_attack1, infantry_run};
+infantry_move_attack2 variable    543 m_infantry.c     mmove_t infantry_move_attack2 = {FRAME_attak201, FRAME_attak208, infantry_frames_attack2, infantry_run};
+infantry_move_death1 variable    338 m_infantry.c     mmove_t infantry_move_death1 = {FRAME_death101, FRAME_death120, infantry_frames_death1, infantry_dead};
+infantry_move_death2 variable    369 m_infantry.c     mmove_t infantry_move_death2 = {FRAME_death201, FRAME_death225, infantry_frames_death2, infantry_dead};
+infantry_move_death3 variable    383 m_infantry.c     mmove_t infantry_move_death3 = {FRAME_death301, FRAME_death309, infantry_frames_death3, infantry_dead};
+infantry_move_duck variable    464 m_infantry.c     mmove_t infantry_move_duck = {FRAME_duck01, FRAME_duck05, infantry_frames_duck, infantry_run};
+infantry_move_fidget variable    133 m_infantry.c     mmove_t infantry_move_fidget = {FRAME_stand01, FRAME_stand49, infantry_frames_fidget, infantry_stand};
+infantry_move_pain1 variable    198 m_infantry.c     mmove_t infantry_move_pain1 = {FRAME_pain101, FRAME_pain110, infantry_frames_pain1, infantry_run};
+infantry_move_pain2 variable    213 m_infantry.c     mmove_t infantry_move_pain2 = {FRAME_pain201, FRAME_pain210, infantry_frames_pain2, infantry_run};
+infantry_move_run variable    174 m_infantry.c     mmove_t infantry_move_run = {FRAME_run01, FRAME_run08, infantry_frames_run, NULL};
+infantry_move_stand variable     73 m_infantry.c     mmove_t infantry_move_stand = {FRAME_stand50, FRAME_stand71, infantry_frames_stand, NULL};
+infantry_move_walk variable    156 m_infantry.c     mmove_t infantry_move_walk = {FRAME_walk03, FRAME_walk14, infantry_frames_walk, NULL};
+insane_frames_crawl variable    353 m_insane.c       mframe_t insane_frames_crawl [] =
+insane_frames_crawl_death variable    382 m_insane.c       mframe_t insane_frames_crawl_death [] =
+insane_frames_crawl_pain variable    368 m_insane.c       mframe_t insane_frames_crawl_pain [] =
+insane_frames_cross variable    394 m_insane.c       mframe_t insane_frames_cross [] =
+insane_frames_down variable    198 m_insane.c       mframe_t insane_frames_down [] =
+insane_frames_downtoup variable    163 m_insane.c       mframe_t insane_frames_downtoup [] =
+insane_frames_jumpdown variable    187 m_insane.c       mframe_t insane_frames_jumpdown [] =
+insane_frames_stand_death variable    331 m_insane.c       mframe_t insane_frames_stand_death [] =
+insane_frames_stand_insane variable     79 m_insane.c       mframe_t insane_frames_stand_insane [] =
+insane_frames_stand_normal variable     68 m_insane.c       mframe_t insane_frames_stand_normal [] =
+insane_frames_stand_pain variable    315 m_insane.c       mframe_t insane_frames_stand_pain [] =
+insane_frames_struggle_cross variable    414 m_insane.c       mframe_t insane_frames_struggle_cross [] =
+insane_frames_uptodown variable    114 m_insane.c       mframe_t insane_frames_uptodown [] =
+insane_frames_walk_insane variable    283 m_insane.c       mframe_t insane_frames_walk_insane [] =
+insane_frames_walk_normal variable    264 m_insane.c       mframe_t insane_frames_walk_normal [] =
+insane_move_crawl variable    365 m_insane.c       mmove_t insane_move_crawl = {FRAME_crawl1, FRAME_crawl9, insane_frames_crawl, NULL};
+insane_move_crawl_death variable    392 m_insane.c       mmove_t insane_move_crawl_death = {FRAME_cr_death10, FRAME_cr_death16, insane_frames_crawl_death, insane_dead};
+insane_move_crawl_pain variable    380 m_insane.c       mmove_t insane_move_crawl_pain = {FRAME_cr_pain2, FRAME_cr_pain10, insane_frames_crawl_pain, insane_run};
+insane_move_cross variable    412 m_insane.c       mmove_t insane_move_cross = {FRAME_cross1, FRAME_cross15, insane_frames_cross, insane_cross};
+insane_move_down variable    262 m_insane.c       mmove_t insane_move_down = {FRAME_stand100, FRAME_stand160, insane_frames_down, insane_onground};
+insane_move_downtoup variable    185 m_insane.c       mmove_t insane_move_downtoup = {FRAME_stand41, FRAME_stand59, insane_frames_downtoup, insane_stand};
+insane_move_jumpdown variable    195 m_insane.c       mmove_t insane_move_jumpdown = {FRAME_stand96, FRAME_stand100, insane_frames_jumpdown, insane_onground};
+insane_move_run_insane variable    313 m_insane.c       mmove_t insane_move_run_insane = {FRAME_walk1, FRAME_walk26, insane_frames_walk_insane, insane_run};
+insane_move_run_normal variable    281 m_insane.c       mmove_t insane_move_run_normal = {FRAME_walk27, FRAME_walk39, insane_frames_walk_normal, insane_run};
+insane_move_runcrawl variable    366 m_insane.c       mmove_t insane_move_runcrawl = {FRAME_crawl1, FRAME_crawl9, insane_frames_crawl, NULL};
+insane_move_stand_death variable    351 m_insane.c       mmove_t insane_move_stand_death = {FRAME_st_death2, FRAME_st_death18, insane_frames_stand_death, insane_dead};
+insane_move_stand_insane variable    112 m_insane.c       mmove_t insane_move_stand_insane = {FRAME_stand65, FRAME_stand94, insane_frames_stand_insane, insane_stand};
+insane_move_stand_normal variable     77 m_insane.c       mmove_t insane_move_stand_normal = {FRAME_stand60, FRAME_stand65, insane_frames_stand_normal, insane_stand};
+insane_move_stand_pain variable    329 m_insane.c       mmove_t insane_move_stand_pain = {FRAME_st_pain2, FRAME_st_pain12, insane_frames_stand_pain, insane_run};
+insane_move_struggle_cross variable    432 m_insane.c       mmove_t insane_move_struggle_cross = {FRAME_cross16, FRAME_cross30, insane_frames_struggle_cross, insane_cross};
+insane_move_uptodown variable    160 m_insane.c       mmove_t insane_move_uptodown = {FRAME_stand1, FRAME_stand40, insane_frames_uptodown, insane_onground};
+insane_move_walk_insane variable    312 m_insane.c       mmove_t insane_move_walk_insane = {FRAME_walk1, FRAME_walk26, insane_frames_walk_insane, insane_walk};
+insane_move_walk_normal variable    280 m_insane.c       mmove_t insane_move_walk_normal = {FRAME_walk27, FRAME_walk39, insane_frames_walk_normal, insane_walk};
+ipfilters        variable     68 g_svcmds.c       ipfilter_t ipfilters[MAX_IPFILTERS];
+itemlist         variable   1134 g_items.c        gitem_t itemlist[] = 
+jacketarmor_info variable     39 g_items.c        gitem_armor_t jacketarmor_info = { 25, 50, .30, .00, ARMOR_JACKET};
+jorg_frames_attack1 variable    374 m_boss31.c       mframe_t jorg_frames_attack1[]=
+jorg_frames_attack2 variable    343 m_boss31.c       mframe_t jorg_frames_attack2 []=
+jorg_frames_death1 variable    288 m_boss31.c       mframe_t jorg_frames_death1 [] =
+jorg_frames_end_attack1 variable    385 m_boss31.c       mframe_t jorg_frames_end_attack1[]=
+jorg_frames_end_walk variable    218 m_boss31.c       mframe_t jorg_frames_end_walk [] =
+jorg_frames_pain1 variable    280 m_boss31.c       mframe_t jorg_frames_pain1 [] =
+jorg_frames_pain2 variable    272 m_boss31.c       mframe_t jorg_frames_pain2 [] =
+jorg_frames_pain3 variable    242 m_boss31.c       mframe_t jorg_frames_pain3 [] =
+jorg_frames_run  variable    166 m_boss31.c       mframe_t jorg_frames_run [] =
+jorg_frames_stand variable     83 m_boss31.c       mframe_t jorg_frames_stand []=
+jorg_frames_start_attack1 variable    361 m_boss31.c       mframe_t jorg_frames_start_attack1 [] =
+jorg_frames_start_walk variable    189 m_boss31.c       mframe_t jorg_frames_start_walk [] =
+jorg_frames_walk variable    199 m_boss31.c       mframe_t jorg_frames_walk [] =
+jorg_move_attack1 variable    383 m_boss31.c       mmove_t jorg_move_attack1 = {FRAME_attak109, FRAME_attak114, jorg_frames_attack1, jorg_reattack1};
+jorg_move_attack2 variable    359 m_boss31.c       mmove_t jorg_move_attack2 = {FRAME_attak201, FRAME_attak213, jorg_frames_attack2, jorg_run};
+jorg_move_death  variable    341 m_boss31.c       mmove_t jorg_move_death = {FRAME_death01, FRAME_death50, jorg_frames_death1, jorg_dead};
+jorg_move_end_attack1 variable    392 m_boss31.c       mmove_t jorg_move_end_attack1 = {FRAME_attak115, FRAME_attak118, jorg_frames_end_attack1, jorg_run};
+jorg_move_end_walk variable    227 m_boss31.c       mmove_t jorg_move_end_walk = {FRAME_walk20, FRAME_walk25, jorg_frames_end_walk, NULL};
+jorg_move_pain1  variable    286 m_boss31.c       mmove_t jorg_move_pain1 = {FRAME_pain101, FRAME_pain103, jorg_frames_pain1, jorg_run};
+jorg_move_pain2  variable    278 m_boss31.c       mmove_t jorg_move_pain2 = {FRAME_pain201, FRAME_pain203, jorg_frames_pain2, jorg_run};
+jorg_move_pain3  variable    270 m_boss31.c       mmove_t jorg_move_pain3 = {FRAME_pain301, FRAME_pain325, jorg_frames_pain3, jorg_run};
+jorg_move_run    variable    183 m_boss31.c       mmove_t jorg_move_run = {FRAME_walk06, FRAME_walk19, jorg_frames_run, NULL};
+jorg_move_stand  variable    137 m_boss31.c       mmove_t jorg_move_stand = {FRAME_stand01, FRAME_stand51, jorg_frames_stand, NULL};
+jorg_move_start_attack1 variable    372 m_boss31.c       mmove_t jorg_move_start_attack1 = {FRAME_attak101, FRAME_attak108, jorg_frames_start_attack1, jorg_attack1};
+jorg_move_start_walk variable    197 m_boss31.c       mmove_t jorg_move_start_walk = {FRAME_walk01, FRAME_walk05, jorg_frames_start_walk, NULL};
+jorg_move_walk   variable    216 m_boss31.c       mmove_t jorg_move_walk = {FRAME_walk06, FRAME_walk19, jorg_frames_walk, NULL};
+level            variable     24 g_main.c         level_locals_t level;
+levelfields      variable    122 g_save.c         field_t levelfields[] =
+makron_frames_attack3 variable    429 m_boss32.c       mframe_t makron_frames_attack3 []=
+makron_frames_attack4 variable    442 m_boss32.c       mframe_t makron_frames_attack4[]=
+makron_frames_attack5 variable    473 m_boss32.c       mframe_t makron_frames_attack5[]=
+makron_frames_death2 variable    267 m_boss32.c       mframe_t makron_frames_death2 [] =
+makron_frames_death3 variable    367 m_boss32.c       mframe_t makron_frames_death3 [] =
+makron_frames_pain4 variable    258 m_boss32.c       mframe_t makron_frames_pain4 [] =
+makron_frames_pain5 variable    249 m_boss32.c       mframe_t makron_frames_pain5 [] =
+makron_frames_pain6 variable    217 m_boss32.c       mframe_t makron_frames_pain6 [] =
+makron_frames_run variable    143 m_boss32.c       mframe_t makron_frames_run [] =
+makron_frames_sight variable    392 m_boss32.c       mframe_t makron_frames_sight [] =
+makron_frames_stand variable     73 m_boss32.c       mframe_t makron_frames_stand []=
+makron_frames_walk variable    189 m_boss32.c       mframe_t makron_frames_walk [] =
+makron_move_attack3 variable    440 m_boss32.c       mmove_t makron_move_attack3 = {FRAME_attak301, FRAME_attak308, makron_frames_attack3, makron_run};
+makron_move_attack4 variable    471 m_boss32.c       mmove_t makron_move_attack4 = {FRAME_attak401, FRAME_attak426, makron_frames_attack4, makron_run};
+makron_move_attack5 variable    492 m_boss32.c       mmove_t makron_move_attack5 = {FRAME_attak501, FRAME_attak516, makron_frames_attack5, makron_run};
+makron_move_death2 variable    365 m_boss32.c       mmove_t makron_move_death2 = {FRAME_death201, FRAME_death295, makron_frames_death2, makron_dead};
+makron_move_death3 variable    390 m_boss32.c       mmove_t makron_move_death3 = {FRAME_death301, FRAME_death320, makron_frames_death3, NULL};
+makron_move_pain4 variable    265 m_boss32.c       mmove_t makron_move_pain4 = {FRAME_pain401, FRAME_pain404, makron_frames_pain4, makron_run};
+makron_move_pain5 variable    256 m_boss32.c       mmove_t makron_move_pain5 = {FRAME_pain501, FRAME_pain504, makron_frames_pain5, makron_run};
+makron_move_pain6 variable    247 m_boss32.c       mmove_t makron_move_pain6 = {FRAME_pain601, FRAME_pain627, makron_frames_pain6, makron_run};
+makron_move_run  variable    156 m_boss32.c       mmove_t makron_move_run = {FRAME_walk204, FRAME_walk213, makron_frames_run, NULL};
+makron_move_sight variable    408 m_boss32.c       mmove_t makron_move_sight= {FRAME_active01, FRAME_active13, makron_frames_sight, makron_run};
+makron_move_stand variable    136 m_boss32.c       mmove_t makron_move_stand = {FRAME_stand201, FRAME_stand260, makron_frames_stand, NULL};
+makron_move_walk variable    202 m_boss32.c       mmove_t makron_move_walk = {FRAME_walk204, FRAME_walk213, makron_frames_run, NULL};
+maxclients       variable     44 g_main.c         cvar_t *maxclients;
+maxentities      variable     46 g_main.c         cvar_t *maxentities;
+maxspectators    variable     45 g_main.c         cvar_t *maxspectators;
+meansOfDeath     variable     31 g_main.c         int meansOfDeath;
+medic_frames_attackBlaster variable    535 m_medic.c        mframe_t medic_frames_attackBlaster [] =
+medic_frames_attackCable variable    662 m_medic.c        mframe_t medic_frames_attackCable [] =
+medic_frames_attackHyperBlaster variable    505 m_medic.c        mframe_t medic_frames_attackHyperBlaster [] =
+medic_frames_death variable    378 m_medic.c        mframe_t medic_frames_death [] =
+medic_frames_duck variable    473 m_medic.c        mframe_t medic_frames_duck [] =
+medic_frames_pain1 variable    284 m_medic.c        mframe_t medic_frames_pain1 [] =
+medic_frames_pain2 variable    297 m_medic.c        mframe_t medic_frames_pain2 [] =
+medic_frames_run variable    247 m_medic.c        mframe_t medic_frames_run [] =
+medic_frames_stand variable    122 m_medic.c        mframe_t medic_frames_stand [] =
+medic_frames_walk variable    224 m_medic.c        mframe_t medic_frames_walk [] =
+medic_move_attackBlaster variable    552 m_medic.c        mmove_t medic_move_attackBlaster = {FRAME_attack1, FRAME_attack14, medic_frames_attackBlaster, medic_run};
+medic_move_attackCable variable    693 m_medic.c        mmove_t medic_move_attackCable = {FRAME_attack33, FRAME_attack60, medic_frames_attackCable, medic_run};
+medic_move_attackHyperBlaster variable    524 m_medic.c        mmove_t medic_move_attackHyperBlaster = {FRAME_attack15, FRAME_attack30, medic_frames_attackHyperBlaster, medic_run};
+medic_move_death variable    411 m_medic.c        mmove_t medic_move_death = {FRAME_death1, FRAME_death30, medic_frames_death, medic_dead};
+medic_move_duck  variable    492 m_medic.c        mmove_t medic_move_duck = {FRAME_duck1, FRAME_duck16, medic_frames_duck, medic_run};
+medic_move_pain1 variable    295 m_medic.c        mmove_t medic_move_pain1 = {FRAME_paina1, FRAME_paina8, medic_frames_pain1, medic_run};
+medic_move_pain2 variable    315 m_medic.c        mmove_t medic_move_pain2 = {FRAME_painb1, FRAME_painb15, medic_frames_pain2, medic_run};
+medic_move_run   variable    257 m_medic.c        mmove_t medic_move_run = {FRAME_run1, FRAME_run6, medic_frames_run, NULL};
+medic_move_stand variable    216 m_medic.c        mmove_t medic_move_stand = {FRAME_wait1, FRAME_wait90, medic_frames_stand, NULL};
+medic_move_walk  variable    239 m_medic.c        mmove_t medic_move_walk = {FRAME_walk1, FRAME_walk12, medic_frames_walk, NULL};
+messages         variable    222 m_actor.c        char *messages[] =
+mmove_reloc      variable     25 g_save.c         mmove_t mmove_reloc;
+monster_flash_offset variable     27 m_flash.c        vec3_t monster_flash_offset [] =
+mutant_frames_attack variable    286 m_mutant.c       mframe_t mutant_frames_attack [] =
+mutant_frames_death1 variable    545 m_mutant.c       mframe_t mutant_frames_death1 [] =
+mutant_frames_death2 variable    559 m_mutant.c       mframe_t mutant_frames_death2 [] =
+mutant_frames_idle variable    159 m_mutant.c       mframe_t mutant_frames_idle [] =
+mutant_frames_jump variable    376 m_mutant.c       mframe_t mutant_frames_jump [] =
+mutant_frames_pain1 variable    459 m_mutant.c       mframe_t mutant_frames_pain1 [] =
+mutant_frames_pain2 variable    469 m_mutant.c       mframe_t mutant_frames_pain2 [] =
+mutant_frames_pain3 variable    480 m_mutant.c       mframe_t mutant_frames_pain3 [] =
+mutant_frames_run variable    231 m_mutant.c       mframe_t mutant_frames_run [] =
+mutant_frames_stand variable     82 m_mutant.c       mframe_t mutant_frames_stand [] =
+mutant_frames_start_walk variable    212 m_mutant.c       mframe_t mutant_frames_start_walk [] =
+mutant_frames_walk variable    190 m_mutant.c       mframe_t mutant_frames_walk [] =
+mutant_move_attack variable    296 m_mutant.c       mmove_t mutant_move_attack = {FRAME_attack09, FRAME_attack15, mutant_frames_attack, mutant_run};
+mutant_move_death1 variable    557 m_mutant.c       mmove_t mutant_move_death1 = {FRAME_death101, FRAME_death109, mutant_frames_death1, mutant_dead};
+mutant_move_death2 variable    572 m_mutant.c       mmove_t mutant_move_death2 = {FRAME_death201, FRAME_death210, mutant_frames_death2, mutant_dead};
+mutant_move_idle variable    175 m_mutant.c       mmove_t mutant_move_idle = {FRAME_stand152, FRAME_stand164, mutant_frames_idle, mutant_stand};
+mutant_move_jump variable    387 m_mutant.c       mmove_t mutant_move_jump = {FRAME_attack01, FRAME_attack08, mutant_frames_jump, mutant_run};
+mutant_move_pain1 variable    467 m_mutant.c       mmove_t mutant_move_pain1 = {FRAME_pain101, FRAME_pain105, mutant_frames_pain1, mutant_run};
+mutant_move_pain2 variable    478 m_mutant.c       mmove_t mutant_move_pain2 = {FRAME_pain201, FRAME_pain206, mutant_frames_pain2, mutant_run};
+mutant_move_pain3 variable    494 m_mutant.c       mmove_t mutant_move_pain3 = {FRAME_pain301, FRAME_pain311, mutant_frames_pain3, mutant_run};
+mutant_move_run  variable    240 m_mutant.c       mmove_t mutant_move_run = {FRAME_run03, FRAME_run08, mutant_frames_run, NULL};
+mutant_move_stand variable    141 m_mutant.c       mmove_t mutant_move_stand = {FRAME_stand101, FRAME_stand151, mutant_frames_stand, NULL};
+mutant_move_start_walk variable    219 m_mutant.c       mmove_t mutant_move_start_walk = {FRAME_walk01, FRAME_walk04, mutant_frames_start_walk, mutant_walk_loop};
+mutant_move_walk variable    205 m_mutant.c       mmove_t mutant_move_walk = {FRAME_walk05, FRAME_walk16, mutant_frames_walk, NULL};
+needpass         variable     43 g_main.c         cvar_t *needpass;
+numipfilters     variable     69 g_svcmds.c       int numipfilters;
+obstacle         variable    393 g_phys.c         edict_t *obstacle;
+oldsave          variable     60 g_main.c         cvar_t *oldsave;
+paged_total      variable   1155 q_shared.c       int paged_total;
+parasite_frames_break variable    390 m_parasite.c     mframe_t parasite_frames_break [] =
+parasite_frames_death variable    459 m_parasite.c     mframe_t parasite_frames_death [] =
+parasite_frames_drain variable    366 m_parasite.c     mframe_t parasite_frames_drain [] =
+parasite_frames_end_fidget variable    106 m_parasite.c     mframe_t parasite_frames_end_fidget [] =
+parasite_frames_fidget variable     95 m_parasite.c     mframe_t parasite_frames_fidget [] =
+parasite_frames_pain1 variable    259 m_parasite.c     mframe_t parasite_frames_pain1 [] =
+parasite_frames_run variable    171 m_parasite.c     mframe_t parasite_frames_run [] =
+parasite_frames_stand variable    143 m_parasite.c     mframe_t parasite_frames_stand [] =
+parasite_frames_start_fidget variable     86 m_parasite.c     mframe_t parasite_frames_start_fidget [] =
+parasite_frames_start_run variable    183 m_parasite.c     mframe_t parasite_frames_start_run [] =
+parasite_frames_start_walk variable    230 m_parasite.c     mframe_t parasite_frames_start_walk [] =
+parasite_frames_stop_run variable    190 m_parasite.c     mframe_t parasite_frames_stop_run [] =
+parasite_frames_stop_walk variable    237 m_parasite.c     mframe_t parasite_frames_stop_walk [] =
+parasite_frames_walk variable    218 m_parasite.c     mframe_t parasite_frames_walk [] =
+parasite_move_break variable    425 m_parasite.c     mmove_t parasite_move_break = {FRAME_break01, FRAME_break32, parasite_frames_break, parasite_start_run};
+parasite_move_death variable    469 m_parasite.c     mmove_t parasite_move_death = {FRAME_death101, FRAME_death107, parasite_frames_death, parasite_dead};
+parasite_move_drain variable    387 m_parasite.c     mmove_t parasite_move_drain = {FRAME_drain01, FRAME_drain18, parasite_frames_drain, parasite_start_run};
+parasite_move_end_fidget variable    117 m_parasite.c     mmove_t parasite_move_end_fidget = {FRAME_stand28, FRAME_stand35, parasite_frames_end_fidget, parasite_stand};
+parasite_move_fidget variable    104 m_parasite.c     mmove_t parasite_move_fidget = {FRAME_stand22, FRAME_stand27, parasite_frames_fidget, parasite_refidget};
+parasite_move_pain1 variable    273 m_parasite.c     mmove_t parasite_move_pain1 = {FRAME_pain101, FRAME_pain111, parasite_frames_pain1, parasite_start_run};
+parasite_move_run variable    181 m_parasite.c     mmove_t parasite_move_run = {FRAME_run03, FRAME_run09, parasite_frames_run, NULL};
+parasite_move_stand variable    163 m_parasite.c     mmove_t parasite_move_stand = {FRAME_stand01, FRAME_stand17, parasite_frames_stand, parasite_stand};
+parasite_move_start_fidget variable     93 m_parasite.c     mmove_t parasite_move_start_fidget = {FRAME_stand18, FRAME_stand21, parasite_frames_start_fidget, parasite_do_fidget};
+parasite_move_start_run variable    188 m_parasite.c     mmove_t parasite_move_start_run = {FRAME_run01, FRAME_run02, parasite_frames_start_run, parasite_run};
+parasite_move_start_walk variable    235 m_parasite.c     mmove_t parasite_move_start_walk = {FRAME_run01, FRAME_run02, parasite_frames_start_walk, NULL};
+parasite_move_stop_run variable    199 m_parasite.c     mmove_t parasite_move_stop_run = {FRAME_run10, FRAME_run15, parasite_frames_stop_run, NULL};
+parasite_move_stop_walk variable    246 m_parasite.c     mmove_t parasite_move_stop_walk = {FRAME_run10, FRAME_run15, parasite_frames_stop_walk, NULL};
+parasite_move_walk variable    228 m_parasite.c     mmove_t parasite_move_walk = {FRAME_run03, FRAME_run09, parasite_frames_walk, parasite_walk};
+password         variable     41 g_main.c         cvar_t *password;
+pm_passent       variable   1544 p_client.c       edict_t *pm_passent;
+pushed           variable    391 g_phys.c         pushed_t pushed[MAX_EDICTS], *pushed_p;
+pushed_p         variable    391 g_phys.c         pushed_t pushed[MAX_EDICTS], *pushed_p;
+run_pitch        variable     62 g_main.c         cvar_t *run_pitch;
+run_roll         variable     63 g_main.c         cvar_t *run_roll;
+single_statusbar variable    650 g_spawn.c        char *single_statusbar = 
+skill            variable     38 g_main.c         cvar_t *skill;
+sm_meat_index    variable     29 g_main.c         int sm_meat_index;
+snd_fry          variable     30 g_main.c         int snd_fry;
+soldier_frames_attack1 variable    559 m_soldier.c      mframe_t soldier_frames_attack1 [] =
+soldier_frames_attack2 variable    609 m_soldier.c      mframe_t soldier_frames_attack2 [] =
+soldier_frames_attack3 variable    665 m_soldier.c      mframe_t soldier_frames_attack3 [] =
+soldier_frames_attack4 variable    692 m_soldier.c      mframe_t soldier_frames_attack4 [] =
+soldier_frames_attack6 variable    753 m_soldier.c      mframe_t soldier_frames_attack6 [] =
+soldier_frames_death1 variable    894 m_soldier.c      mframe_t soldier_frames_death1 [] =
+soldier_frames_death2 variable    938 m_soldier.c      mframe_t soldier_frames_death2 [] =
+soldier_frames_death3 variable    981 m_soldier.c      mframe_t soldier_frames_death3 [] =
+soldier_frames_death4 variable   1035 m_soldier.c      mframe_t soldier_frames_death4 [] =
+soldier_frames_death5 variable   1098 m_soldier.c      mframe_t soldier_frames_death5 [] =
+soldier_frames_death6 variable   1129 m_soldier.c      mframe_t soldier_frames_death6 [] =
+soldier_frames_duck variable    818 m_soldier.c      mframe_t soldier_frames_duck [] =
+soldier_frames_pain1 variable    341 m_soldier.c      mframe_t soldier_frames_pain1 [] =
+soldier_frames_pain2 variable    351 m_soldier.c      mframe_t soldier_frames_pain2 [] =
+soldier_frames_pain3 variable    363 m_soldier.c      mframe_t soldier_frames_pain3 [] =
+soldier_frames_pain4 variable    386 m_soldier.c      mframe_t soldier_frames_pain4 [] =
+soldier_frames_run variable    305 m_soldier.c      mframe_t soldier_frames_run [] =
+soldier_frames_stand1 variable     63 m_soldier.c      mframe_t soldier_frames_stand1 [] =
+soldier_frames_stand3 variable    100 m_soldier.c      mframe_t soldier_frames_stand3 [] =
+soldier_frames_start_run variable    298 m_soldier.c      mframe_t soldier_frames_start_run [] =
+soldier_frames_walk1 variable    230 m_soldier.c      mframe_t soldier_frames_walk1 [] =
+soldier_frames_walk2 variable    268 m_soldier.c      mframe_t soldier_frames_walk2 [] =
+soldier_move_attack1 variable    574 m_soldier.c      mmove_t soldier_move_attack1 = {FRAME_attak101, FRAME_attak112, soldier_frames_attack1, soldier_run};
+soldier_move_attack2 variable    630 m_soldier.c      mmove_t soldier_move_attack2 = {FRAME_attak201, FRAME_attak218, soldier_frames_attack2, soldier_run};
+soldier_move_attack3 variable    677 m_soldier.c      mmove_t soldier_move_attack3 = {FRAME_attak301, FRAME_attak309, soldier_frames_attack3, soldier_run};
+soldier_move_attack4 variable    701 m_soldier.c      mmove_t soldier_move_attack4 = {FRAME_attak401, FRAME_attak406, soldier_frames_attack4, soldier_run};
+soldier_move_attack6 variable    770 m_soldier.c      mmove_t soldier_move_attack6 = {FRAME_runs01, FRAME_runs14, soldier_frames_attack6, soldier_run};
+soldier_move_death1 variable    936 m_soldier.c      mmove_t soldier_move_death1 = {FRAME_death101, FRAME_death136, soldier_frames_death1, soldier_dead};
+soldier_move_death2 variable    979 m_soldier.c      mmove_t soldier_move_death2 = {FRAME_death201, FRAME_death235, soldier_frames_death2, soldier_dead};
+soldier_move_death3 variable   1033 m_soldier.c      mmove_t soldier_move_death3 = {FRAME_death301, FRAME_death345, soldier_frames_death3, soldier_dead};
+soldier_move_death4 variable   1096 m_soldier.c      mmove_t soldier_move_death4 = {FRAME_death401, FRAME_death453, soldier_frames_death4, soldier_dead};
+soldier_move_death5 variable   1127 m_soldier.c      mmove_t soldier_move_death5 = {FRAME_death501, FRAME_death524, soldier_frames_death5, soldier_dead};
+soldier_move_death6 variable   1142 m_soldier.c      mmove_t soldier_move_death6 = {FRAME_death601, FRAME_death610, soldier_frames_death6, soldier_dead};
+soldier_move_duck variable    826 m_soldier.c      mmove_t soldier_move_duck = {FRAME_duck01, FRAME_duck05, soldier_frames_duck, soldier_run};
+soldier_move_pain1 variable    349 m_soldier.c      mmove_t soldier_move_pain1 = {FRAME_pain101, FRAME_pain105, soldier_frames_pain1, soldier_run};
+soldier_move_pain2 variable    361 m_soldier.c      mmove_t soldier_move_pain2 = {FRAME_pain201, FRAME_pain207, soldier_frames_pain2, soldier_run};
+soldier_move_pain3 variable    384 m_soldier.c      mmove_t soldier_move_pain3 = {FRAME_pain301, FRAME_pain318, soldier_frames_pain3, soldier_run};
+soldier_move_pain4 variable    406 m_soldier.c      mmove_t soldier_move_pain4 = {FRAME_pain401, FRAME_pain417, soldier_frames_pain4, soldier_run};
+soldier_move_run variable    314 m_soldier.c      mmove_t soldier_move_run = {FRAME_run03, FRAME_run08, soldier_frames_run, NULL};
+soldier_move_stand1 variable     98 m_soldier.c      mmove_t soldier_move_stand1 = {FRAME_stand101, FRAME_stand130, soldier_frames_stand1, soldier_stand};
+soldier_move_stand3 variable    145 m_soldier.c      mmove_t soldier_move_stand3 = {FRAME_stand301, FRAME_stand339, soldier_frames_stand3, soldier_stand};
+soldier_move_start_run variable    303 m_soldier.c      mmove_t soldier_move_start_run = {FRAME_run01, FRAME_run02, soldier_frames_start_run, soldier_run};
+soldier_move_walk1 variable    266 m_soldier.c      mmove_t soldier_move_walk1 = {FRAME_walk101, FRAME_walk133, soldier_frames_walk1, NULL};
+soldier_move_walk2 variable    281 m_soldier.c      mmove_t soldier_move_walk2 = {FRAME_walk209, FRAME_walk218, soldier_frames_walk2, NULL};
+spawns           variable    148 g_spawn.c        spawn_t spawns[] = {
+spectator_password variable     42 g_main.c         cvar_t *spectator_password;
+st               variable     27 g_main.c         spawn_temp_t st;
+supertank_frames_attack1 variable    409 m_supertank.c    mframe_t supertank_frames_attack1[]=
+supertank_frames_attack2 variable    377 m_supertank.c    mframe_t supertank_frames_attack2[]=
+supertank_frames_attack3 variable    345 m_supertank.c    mframe_t supertank_frames_attack3[]=
+supertank_frames_attack4 variable    334 m_supertank.c    mframe_t supertank_frames_attack4[]=
+supertank_frames_backward variable    311 m_supertank.c    mframe_t supertank_frames_backward[] =
+supertank_frames_death1 variable    282 m_supertank.c    mframe_t supertank_frames_death1 [] =
+supertank_frames_end_attack1 variable    421 m_supertank.c    mframe_t supertank_frames_end_attack1[]=
+supertank_frames_forward variable    167 m_supertank.c    mframe_t supertank_frames_forward [] =
+supertank_frames_pain1 variable    273 m_supertank.c    mframe_t supertank_frames_pain1 [] =
+supertank_frames_pain2 variable    264 m_supertank.c    mframe_t supertank_frames_pain2 [] =
+supertank_frames_pain3 variable    255 m_supertank.c    mframe_t supertank_frames_pain3 [] =
+supertank_frames_run variable    139 m_supertank.c    mframe_t supertank_frames_run [] =
+supertank_frames_stand variable     68 m_supertank.c    mframe_t supertank_frames_stand []=
+supertank_frames_turn_left variable    231 m_supertank.c    mframe_t supertank_frames_turn_left [] =
+supertank_frames_turn_right variable    208 m_supertank.c    mframe_t supertank_frames_turn_right [] =
+supertank_move_attack1 variable    419 m_supertank.c    mmove_t supertank_move_attack1 = {FRAME_attak1_1, FRAME_attak1_6, supertank_frames_attack1, supertank_reattack1};
+supertank_move_attack2 variable    407 m_supertank.c    mmove_t supertank_move_attack2 = {FRAME_attak2_1, FRAME_attak2_27, supertank_frames_attack2, supertank_run};
+supertank_move_attack3 variable    375 m_supertank.c    mmove_t supertank_move_attack3 = {FRAME_attak3_1, FRAME_attak3_27, supertank_frames_attack3, supertank_run};
+supertank_move_attack4 variable    343 m_supertank.c    mmove_t supertank_move_attack4 = {FRAME_attak4_1, FRAME_attak4_6, supertank_frames_attack4, supertank_run};
+supertank_move_backward variable    332 m_supertank.c    mmove_t supertank_move_backward = {FRAME_backwd_1, FRAME_backwd_18, supertank_frames_backward, NULL};
+supertank_move_death variable    309 m_supertank.c    mmove_t supertank_move_death = {FRAME_death_1, FRAME_death_24, supertank_frames_death1, supertank_dead};
+supertank_move_end_attack1 variable    438 m_supertank.c    mmove_t supertank_move_end_attack1 = {FRAME_attak1_7, FRAME_attak1_20, supertank_frames_end_attack1, supertank_run};
+supertank_move_forward variable    188 m_supertank.c    mmove_t supertank_move_forward = {FRAME_forwrd_1, FRAME_forwrd_18, supertank_frames_forward, NULL};
+supertank_move_pain1 variable    280 m_supertank.c    mmove_t supertank_move_pain1 = {FRAME_pain1_1, FRAME_pain1_4, supertank_frames_pain1, supertank_run};
+supertank_move_pain2 variable    271 m_supertank.c    mmove_t supertank_move_pain2 = {FRAME_pain2_5, FRAME_pain2_8, supertank_frames_pain2, supertank_run};
+supertank_move_pain3 variable    262 m_supertank.c    mmove_t supertank_move_pain3 = {FRAME_pain3_9, FRAME_pain3_12, supertank_frames_pain3, supertank_run};
+supertank_move_run variable    160 m_supertank.c    mmove_t supertank_move_run = {FRAME_forwrd_1, FRAME_forwrd_18, supertank_frames_run, NULL};
+supertank_move_stand variable    131 m_supertank.c    mmove_t supertank_move_stand = {FRAME_stand_1, FRAME_stand_60, supertank_frames_stand, NULL};
+supertank_move_turn_left variable    252 m_supertank.c    mmove_t supertank_move_turn_left = {FRAME_left_1, FRAME_left_18, supertank_frames_turn_left, supertank_run};
+supertank_move_turn_right variable    229 m_supertank.c    mmove_t supertank_move_turn_right = {FRAME_right_1, FRAME_right_18, supertank_frames_turn_right, supertank_run};
+sv_cheats        variable     68 g_main.c         cvar_t *sv_cheats;
+sv_gravity       variable     53 g_main.c         cvar_t *sv_gravity;
+sv_maplist       variable     74 g_main.c         cvar_t *sv_maplist;
+sv_maxvelocity   variable     52 g_main.c         cvar_t *sv_maxvelocity;
+sv_rollangle     variable     56 g_main.c         cvar_t *sv_rollangle;
+sv_rollspeed     variable     55 g_main.c         cvar_t *sv_rollspeed;
+tank_frames_attack_blast variable    424 m_tank.c         mframe_t tank_frames_attack_blast [] =
+tank_frames_attack_chain variable    602 m_tank.c         mframe_t tank_frames_attack_chain [] =
+tank_frames_attack_fire_rocket variable    558 m_tank.c         mframe_t tank_frames_attack_fire_rocket [] =
+tank_frames_attack_post_blast variable    456 m_tank.c         mframe_t tank_frames_attack_post_blast [] = 
+tank_frames_attack_post_rocket variable    572 m_tank.c         mframe_t tank_frames_attack_post_rocket [] =
+tank_frames_attack_pre_rocket variable    530 m_tank.c         mframe_t tank_frames_attack_pre_rocket [] =
+tank_frames_attack_strike variable    487 m_tank.c         mframe_t tank_frames_attack_strike [] =
+tank_frames_death1 variable    716 m_tank.c         mframe_t tank_frames_death1 [] =
+tank_frames_pain1 variable    247 m_tank.c         mframe_t tank_frames_pain1 [] =
+tank_frames_pain2 variable    256 m_tank.c         mframe_t tank_frames_pain2 [] =
+tank_frames_pain3 variable    266 m_tank.c         mframe_t tank_frames_pain3 [] =
+tank_frames_reattack_blast variable    445 m_tank.c         mframe_t tank_frames_reattack_blast [] =
+tank_frames_run  variable    188 m_tank.c         mframe_t tank_frames_run [] =
+tank_frames_stand variable     80 m_tank.c         mframe_t tank_frames_stand []=
+tank_frames_start_run variable    179 m_tank.c         mframe_t tank_frames_start_run [] =
+tank_frames_start_walk variable    127 m_tank.c         mframe_t tank_frames_start_walk [] =
+tank_frames_stop_run variable    209 m_tank.c         mframe_t tank_frames_stop_run [] =
+tank_frames_stop_walk variable    157 m_tank.c         mframe_t tank_frames_stop_walk [] =
+tank_frames_walk variable    136 m_tank.c         mframe_t tank_frames_walk [] =
+tank_move_attack_blast variable    443 m_tank.c         mmove_t tank_move_attack_blast = {FRAME_attak101, FRAME_attak116, tank_frames_attack_blast, tank_reattack_blaster};
+tank_move_attack_chain variable    634 m_tank.c         mmove_t tank_move_attack_chain = {FRAME_attak401, FRAME_attak429, tank_frames_attack_chain, tank_run};
+tank_move_attack_fire_rocket variable    570 m_tank.c         mmove_t tank_move_attack_fire_rocket = {FRAME_attak322, FRAME_attak330, tank_frames_attack_fire_rocket, tank_refire_rocket};
+tank_move_attack_post_blast variable    465 m_tank.c         mmove_t tank_move_attack_post_blast = {FRAME_attak117, FRAME_attak122, tank_frames_attack_post_blast, tank_run};
+tank_move_attack_post_rocket variable    600 m_tank.c         mmove_t tank_move_attack_post_rocket = {FRAME_attak331, FRAME_attak353, tank_frames_attack_post_rocket, tank_run};
+tank_move_attack_pre_rocket variable    556 m_tank.c         mmove_t tank_move_attack_pre_rocket = {FRAME_attak301, FRAME_attak321, tank_frames_attack_pre_rocket, tank_doattack_rocket};
+tank_move_attack_strike variable    528 m_tank.c         mmove_t tank_move_attack_strike = {FRAME_attak201, FRAME_attak238, tank_frames_attack_strike, tank_poststrike};
+tank_move_death  variable    751 m_tank.c         mmove_t tank_move_death = {FRAME_death101, FRAME_death132, tank_frames_death1, tank_dead};
+tank_move_pain1  variable    254 m_tank.c         mmove_t tank_move_pain1 = {FRAME_pain101, FRAME_pain104, tank_frames_pain1, tank_run};
+tank_move_pain2  variable    264 m_tank.c         mmove_t tank_move_pain2 = {FRAME_pain201, FRAME_pain205, tank_frames_pain2, tank_run};
+tank_move_pain3  variable    285 m_tank.c         mmove_t tank_move_pain3 = {FRAME_pain301, FRAME_pain316, tank_frames_pain3, tank_run};
+tank_move_reattack_blast variable    454 m_tank.c         mmove_t tank_move_reattack_blast = {FRAME_attak111, FRAME_attak116, tank_frames_reattack_blast, tank_reattack_blaster};
+tank_move_run    variable    207 m_tank.c         mmove_t tank_move_run = {FRAME_walk05, FRAME_walk20, tank_frames_run, NULL};
+tank_move_stand  variable    113 m_tank.c         mmove_t tank_move_stand = {FRAME_stand01, FRAME_stand30, tank_frames_stand, NULL};
+tank_move_start_run variable    186 m_tank.c         mmove_t tank_move_start_run = {FRAME_walk01, FRAME_walk04, tank_frames_start_run, tank_run};
+tank_move_start_walk variable    134 m_tank.c         mmove_t tank_move_start_walk = {FRAME_walk01, FRAME_walk04, tank_frames_start_walk, tank_walk};
+tank_move_stop_run variable    217 m_tank.c         mmove_t tank_move_stop_run = {FRAME_walk21, FRAME_walk25, tank_frames_stop_run, tank_walk};
+tank_move_stop_walk variable    165 m_tank.c         mmove_t tank_move_stop_walk = {FRAME_walk21, FRAME_walk25, tank_frames_stop_walk, tank_stand};
+tank_move_walk   variable    155 m_tank.c         mmove_t tank_move_walk = {FRAME_walk05, FRAME_walk20, tank_frames_walk, NULL};
+timelimit        variable     40 g_main.c         cvar_t *timelimit;
+trail            variable     41 p_trail.c        edict_t *trail[TRAIL_LENGTH];
+trail_active     variable     43 p_trail.c        qboolean trail_active = false;
+trail_head       variable     42 p_trail.c        int trail_head;
+vec3_origin      variable     24 q_shared.c       vec3_t vec3_origin = {0,0,0};
+xyspeed          variable     30 p_view.c         float xyspeed;
