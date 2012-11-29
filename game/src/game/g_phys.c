@@ -388,7 +388,7 @@ typedef struct
 	vec3_t	angles;
 	float	deltayaw;
 } pushed_t;
-pushed_t	pushed[MAX_EDICTS], *pushed_p;
+static pushed_t	pushed[MAX_EDICTS], *pushed_p;
 
 edict_t	*obstacle;
 
