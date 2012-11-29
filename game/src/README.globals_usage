@@ -1,112 +1,3 @@
-MOVEDIR_DOWN usage ===
-g_utils.c:312:vec3_t MOVEDIR_DOWN	= {0, 0, -1};
-g_utils.c:322:		VectorCopy (MOVEDIR_DOWN, movedir);
-MOVEDIR_UP usage ===
-g_utils.c:310:vec3_t MOVEDIR_UP	= {0, 0, 1};
-g_utils.c:318:		VectorCopy (MOVEDIR_UP, movedir);
-VEC_DOWN usage ===
-g_utils.c:311:vec3_t VEC_DOWN		= {0, -2, 0};
-g_utils.c:320:	else if (VectorCompare (angles, VEC_DOWN))
-VEC_UP usage ===
-g_utils.c:309:vec3_t VEC_UP		= {0, -1, 0};
-g_utils.c:316:	if (VectorCompare (angles, VEC_UP))
-_BigFloat usage ===
-q_shared.c:938:float	(*_BigFloat) (float l);
-q_shared.c:945:float	BigFloat (float l) {return _BigFloat(l);}
-q_shared.c:1019:		_BigFloat = FloatSwap;
-q_shared.c:1029:		_BigFloat = FloatNoSwap;
-_BigLong usage ===
-q_shared.c:936:int		(*_BigLong) (int l);
-q_shared.c:943:int		BigLong (int l) {return _BigLong(l);}
-q_shared.c:1017:		_BigLong = LongSwap;
-q_shared.c:1027:		_BigLong = LongNoSwap;
-_BigShort usage ===
-q_shared.c:934:short	(*_BigShort) (short l);
-q_shared.c:941:short	BigShort(short l){return _BigShort(l);}
-q_shared.c:1015:		_BigShort = ShortSwap;
-q_shared.c:1025:		_BigShort = ShortNoSwap;
-_LittleFloat usage ===
-q_shared.c:939:float	(*_LittleFloat) (float l);
-q_shared.c:946:float	LittleFloat (float l) {return _LittleFloat(l);}
-q_shared.c:1020:		_LittleFloat = FloatNoSwap;
-q_shared.c:1030:		_LittleFloat = FloatSwap;
-_LittleLong usage ===
-q_shared.c:937:int		(*_LittleLong) (int l);
-q_shared.c:944:int		LittleLong (int l) {return _LittleLong(l);}
-q_shared.c:1018:		_LittleLong = LongNoSwap;
-q_shared.c:1028:		_LittleLong = LongSwap;
-_LittleShort usage ===
-q_shared.c:935:short	(*_LittleShort) (short l);
-q_shared.c:942:short	LittleShort(short l) {return _LittleShort(l);}
-q_shared.c:1016:		_LittleShort = ShortNoSwap;
-q_shared.c:1026:		_LittleShort = ShortSwap;
-actor_frames_attack usage ===
-m_actor.c:382:mframe_t actor_frames_attack [] =
-m_actor.c:389:mmove_t actor_move_attack = {FRAME_attak01, FRAME_attak04, actor_frames_attack, actor_run};
-actor_frames_death1 usage ===
-m_actor.c:309:mframe_t actor_frames_death1 [] =
-m_actor.c:319:mmove_t actor_move_death1 = {FRAME_death101, FRAME_death107, actor_frames_death1, actor_dead};
-actor_frames_death2 usage ===
-m_actor.c:321:mframe_t actor_frames_death2 [] =
-m_actor.c:337:mmove_t actor_move_death2 = {FRAME_death201, FRAME_death213, actor_frames_death2, actor_dead};
-actor_frames_flipoff usage ===
-m_actor.c:181:mframe_t actor_frames_flipoff [] =
-m_actor.c:198:mmove_t actor_move_flipoff = {FRAME_flip01, FRAME_flip14, actor_frames_flipoff, actor_run};
-actor_frames_pain1 usage ===
-m_actor.c:157:mframe_t actor_frames_pain1 [] =
-m_actor.c:163:mmove_t actor_move_pain1 = {FRAME_pain101, FRAME_pain103, actor_frames_pain1, actor_run};
-actor_frames_pain2 usage ===
-m_actor.c:165:mframe_t actor_frames_pain2 [] =
-m_actor.c:171:mmove_t actor_move_pain2 = {FRAME_pain201, FRAME_pain203, actor_frames_pain2, actor_run};
-actor_frames_pain3 usage ===
-m_actor.c:173:mframe_t actor_frames_pain3 [] =
-m_actor.c:179:mmove_t actor_move_pain3 = {FRAME_pain301, FRAME_pain303, actor_frames_pain3, actor_run};
-actor_frames_run usage ===
-m_actor.c:119:mframe_t actor_frames_run [] =
-m_actor.c:134:mmove_t actor_move_run = {FRAME_run02, FRAME_run07, actor_frames_run, NULL};
-actor_frames_stand usage ===
-m_actor.c:39:mframe_t actor_frames_stand [] =
-m_actor.c:85:mmove_t actor_move_stand = {FRAME_stand101, FRAME_stand140, actor_frames_stand, NULL};
-actor_frames_taunt usage ===
-m_actor.c:200:mframe_t actor_frames_taunt [] =
-m_actor.c:220:mmove_t actor_move_taunt = {FRAME_taunt01, FRAME_taunt17, actor_frames_taunt, actor_run};
-actor_frames_walk usage ===
-m_actor.c:97:mframe_t actor_frames_walk [] =
-m_actor.c:111:mmove_t actor_move_walk = {FRAME_walk01, FRAME_walk08, actor_frames_walk, NULL};
-actor_move_attack usage ===
-m_actor.c:389:mmove_t actor_move_attack = {FRAME_attak01, FRAME_attak04, actor_frames_attack, actor_run};
-m_actor.c:395:	self->monsterinfo.currentmove = &actor_move_attack;
-actor_move_death1 usage ===
-m_actor.c:319:mmove_t actor_move_death1 = {FRAME_death101, FRAME_death107, actor_frames_death1, actor_dead};
-m_actor.c:366:		self->monsterinfo.currentmove = &actor_move_death1;
-actor_move_death2 usage ===
-m_actor.c:337:mmove_t actor_move_death2 = {FRAME_death201, FRAME_death213, actor_frames_death2, actor_dead};
-m_actor.c:368:		self->monsterinfo.currentmove = &actor_move_death2;
-actor_move_flipoff usage ===
-m_actor.c:198:mmove_t actor_move_flipoff = {FRAME_flip01, FRAME_flip14, actor_frames_flipoff, actor_run};
-m_actor.c:251:			self->monsterinfo.currentmove = &actor_move_flipoff;
-actor_move_pain1 usage ===
-m_actor.c:163:mmove_t actor_move_pain1 = {FRAME_pain101, FRAME_pain103, actor_frames_pain1, actor_run};
-m_actor.c:261:		self->monsterinfo.currentmove = &actor_move_pain1;
-actor_move_pain2 usage ===
-m_actor.c:171:mmove_t actor_move_pain2 = {FRAME_pain201, FRAME_pain203, actor_frames_pain2, actor_run};
-m_actor.c:263:		self->monsterinfo.currentmove = &actor_move_pain2;
-actor_move_pain3 usage ===
-m_actor.c:179:mmove_t actor_move_pain3 = {FRAME_pain301, FRAME_pain303, actor_frames_pain3, actor_run};
-m_actor.c:265:		self->monsterinfo.currentmove = &actor_move_pain3;
-actor_move_run usage ===
-m_actor.c:134:mmove_t actor_move_run = {FRAME_run02, FRAME_run07, actor_frames_run, NULL};
-m_actor.c:153:	self->monsterinfo.currentmove = &actor_move_run;
-actor_move_stand usage ===
-m_actor.c:85:mmove_t actor_move_stand = {FRAME_stand101, FRAME_stand140, actor_frames_stand, NULL};
-m_actor.c:89:	self->monsterinfo.currentmove = &actor_move_stand;
-m_actor.c:471:	self->monsterinfo.currentmove = &actor_move_stand;
-actor_move_taunt usage ===
-m_actor.c:220:mmove_t actor_move_taunt = {FRAME_taunt01, FRAME_taunt17, actor_frames_taunt, actor_run};
-m_actor.c:253:			self->monsterinfo.currentmove = &actor_move_taunt;
-actor_move_walk usage ===
-m_actor.c:111:mmove_t actor_move_walk = {FRAME_walk01, FRAME_walk08, actor_frames_walk, NULL};
-m_actor.c:115:	self->monsterinfo.currentmove = &actor_move_walk;
 actor_names usage ===
 m_actor.c:26:char *actor_names[MAX_ACTOR_NAMES] =
 m_actor.c:254:		name = actor_names[(self - g_edicts)%MAX_ACTOR_NAMES];
@@ -4338,38 +4229,6 @@ p_client.c:1549:	if (pm_passent->health > 0)
 p_client.c:1550:		return gi.trace (start, mins, maxs, end, pm_passent, MASK_PLAYERSOLID);
 p_client.c:1552:		return gi.trace (start, mins, maxs, end, pm_passent, MASK_DEADSOLID);
 p_client.c:1602:	pm_passent = ent;
-pushed usage ===
-g_phys.c:367:		// if the pushed entity went away and the pusher is still there
-g_phys.c:391:pushed_t	pushed[MAX_EDICTS], *pushed_p;
-g_phys.c:503:			// may have pushed them off an edge
-g_phys.c:509:			{	// pushed ok
-g_phys.c:516:			// this is only relevent for riding entities, not pushed
-g_phys.c:531:		// go backwards, so if the same entity was pushed
-g_phys.c:533:		for (p=pushed_p-1 ; p>=pushed ; p--)
-g_phys.c:548:	for (p=pushed_p-1 ; p>=pushed ; p--)
-g_phys.c:575:	pushed_p = pushed;
-g_phys.c:589:	if (pushed_p > &pushed[MAX_EDICTS])
-g_phys.c:590:		gi.error (ERR_FATAL, "pushed_p > &pushed[MAX_EDICTS], memory corrupted");
-g_phys.c:606:		// if the pushed entity went away and the pusher is still there
-p_view.c:969:	// is pushed by a bmodel or kicked by an explosion.
-p_view.c:972:	// behind the body position when pushed -- "sinking into plats"
-pushed_p usage ===
-g_phys.c:391:pushed_t	pushed[MAX_EDICTS], *pushed_p;
-g_phys.c:436:	pushed_p->ent = pusher;
-g_phys.c:437:	VectorCopy (pusher->s.origin, pushed_p->origin);
-g_phys.c:438:	VectorCopy (pusher->s.angles, pushed_p->angles);
-g_phys.c:440:		pushed_p->deltayaw = pusher->client->ps.pmove.delta_angles[YAW];
-g_phys.c:441:	pushed_p++;
-g_phys.c:483:			pushed_p->ent = check;
-g_phys.c:484:			VectorCopy (check->s.origin, pushed_p->origin);
-g_phys.c:485:			VectorCopy (check->s.angles, pushed_p->angles);
-g_phys.c:486:			pushed_p++;
-g_phys.c:522:				pushed_p--;
-g_phys.c:533:		for (p=pushed_p-1 ; p>=pushed ; p--)
-g_phys.c:548:	for (p=pushed_p-1 ; p>=pushed ; p--)
-g_phys.c:575:	pushed_p = pushed;
-g_phys.c:589:	if (pushed_p > &pushed[MAX_EDICTS])
-g_phys.c:590:		gi.error (ERR_FATAL, "pushed_p > &pushed[MAX_EDICTS], memory corrupted");
 run_pitch usage ===
 g_main.c:62:cvar_t	*run_pitch;
 g_save.c:192:	run_pitch = gi.cvar ("run_pitch", "0.002", 0);
@@ -4912,169 +4771,30 @@ g_main.c:55:cvar_t	*sv_rollspeed;
 g_save.c:161:	sv_rollspeed = gi.cvar ("sv_rollspeed", "200", 0);
 p_view.c:54:	if (side < sv_rollspeed->value)
 p_view.c:55:		side = side * value / sv_rollspeed->value;
-tank_frames_attack_blast usage ===
-m_tank.c:424:mframe_t tank_frames_attack_blast [] =
-m_tank.c:443:mmove_t tank_move_attack_blast = {FRAME_attak101, FRAME_attak116, tank_frames_attack_blast, tank_reattack_blaster};
-tank_frames_attack_chain usage ===
-m_tank.c:602:mframe_t tank_frames_attack_chain [] =
-m_tank.c:634:mmove_t tank_move_attack_chain = {FRAME_attak401, FRAME_attak429, tank_frames_attack_chain, tank_run};
-tank_frames_attack_fire_rocket usage ===
-m_tank.c:558:mframe_t tank_frames_attack_fire_rocket [] =
-m_tank.c:570:mmove_t tank_move_attack_fire_rocket = {FRAME_attak322, FRAME_attak330, tank_frames_attack_fire_rocket, tank_refire_rocket};
-tank_frames_attack_post_blast usage ===
-m_tank.c:456:mframe_t tank_frames_attack_post_blast [] =	
-m_tank.c:465:mmove_t tank_move_attack_post_blast = {FRAME_attak117, FRAME_attak122, tank_frames_attack_post_blast, tank_run};
-tank_frames_attack_post_rocket usage ===
-m_tank.c:572:mframe_t tank_frames_attack_post_rocket [] =
-m_tank.c:600:mmove_t tank_move_attack_post_rocket = {FRAME_attak331, FRAME_attak353, tank_frames_attack_post_rocket, tank_run};
-tank_frames_attack_pre_rocket usage ===
-m_tank.c:530:mframe_t tank_frames_attack_pre_rocket [] =
-m_tank.c:556:mmove_t tank_move_attack_pre_rocket = {FRAME_attak301, FRAME_attak321, tank_frames_attack_pre_rocket, tank_doattack_rocket};
-tank_frames_attack_strike usage ===
-m_tank.c:487:mframe_t tank_frames_attack_strike [] =
-m_tank.c:528:mmove_t tank_move_attack_strike = {FRAME_attak201, FRAME_attak238, tank_frames_attack_strike, tank_poststrike};
-tank_frames_death1 usage ===
-m_tank.c:716:mframe_t tank_frames_death1 [] =
-m_tank.c:751:mmove_t	tank_move_death = {FRAME_death101, FRAME_death132, tank_frames_death1, tank_dead};
-tank_frames_pain1 usage ===
-m_tank.c:247:mframe_t tank_frames_pain1 [] =
-m_tank.c:254:mmove_t tank_move_pain1 = {FRAME_pain101, FRAME_pain104, tank_frames_pain1, tank_run};
-tank_frames_pain2 usage ===
-m_tank.c:256:mframe_t tank_frames_pain2 [] =
-m_tank.c:264:mmove_t tank_move_pain2 = {FRAME_pain201, FRAME_pain205, tank_frames_pain2, tank_run};
-tank_frames_pain3 usage ===
-m_tank.c:266:mframe_t tank_frames_pain3 [] =
-m_tank.c:285:mmove_t	tank_move_pain3 = {FRAME_pain301, FRAME_pain316, tank_frames_pain3, tank_run};
-tank_frames_reattack_blast usage ===
-m_tank.c:445:mframe_t tank_frames_reattack_blast [] =
-m_tank.c:454:mmove_t tank_move_reattack_blast = {FRAME_attak111, FRAME_attak116, tank_frames_reattack_blast, tank_reattack_blaster};
 tank_frames_run usage ===
 m_tank.c:188:mframe_t tank_frames_run [] =
 m_tank.c:207:mmove_t	tank_move_run = {FRAME_walk05, FRAME_walk20, tank_frames_run, NULL};
-tank_frames_stand usage ===
-m_tank.c:80:mframe_t tank_frames_stand []=
-m_tank.c:113:mmove_t	tank_move_stand = {FRAME_stand01, FRAME_stand30, tank_frames_stand, NULL};
 tank_frames_start_run usage ===
 m_tank.c:179:mframe_t tank_frames_start_run [] =
 m_tank.c:186:mmove_t	tank_move_start_run = {FRAME_walk01, FRAME_walk04, tank_frames_start_run, tank_run};
-tank_frames_start_walk usage ===
-m_tank.c:127:mframe_t tank_frames_start_walk [] =
-m_tank.c:134:mmove_t	tank_move_start_walk = {FRAME_walk01, FRAME_walk04, tank_frames_start_walk, tank_walk};
 tank_frames_stop_run usage ===
 m_tank.c:209:mframe_t tank_frames_stop_run [] =
 m_tank.c:217:mmove_t	tank_move_stop_run = {FRAME_walk21, FRAME_walk25, tank_frames_stop_run, tank_walk};
-tank_frames_stop_walk usage ===
-m_tank.c:157:mframe_t tank_frames_stop_walk [] =
-m_tank.c:165:mmove_t	tank_move_stop_walk = {FRAME_walk21, FRAME_walk25, tank_frames_stop_walk, tank_stand};
-tank_frames_walk usage ===
-m_tank.c:136:mframe_t tank_frames_walk [] =
-m_tank.c:155:mmove_t	tank_move_walk = {FRAME_walk05, FRAME_walk20, tank_frames_walk, NULL};
-tank_move_attack_blast usage ===
-m_tank.c:443:mmove_t tank_move_attack_blast = {FRAME_attak101, FRAME_attak116, tank_frames_attack_blast, tank_reattack_blaster};
-m_tank.c:678:			self->monsterinfo.currentmove = &tank_move_attack_blast;
-m_tank.c:685:			self->monsterinfo.currentmove = &tank_move_attack_blast;
-m_tank.c:697:			self->monsterinfo.currentmove = &tank_move_attack_blast;
-tank_move_attack_chain usage ===
-m_tank.c:634:mmove_t tank_move_attack_chain = {FRAME_attak401, FRAME_attak429, tank_frames_attack_chain, tank_run};
-m_tank.c:676:			self->monsterinfo.currentmove = &tank_move_attack_chain;
-m_tank.c:683:			self->monsterinfo.currentmove = &tank_move_attack_chain;
-m_tank.c:690:			self->monsterinfo.currentmove = &tank_move_attack_chain;
-tank_move_attack_fire_rocket usage ===
-m_tank.c:570:mmove_t tank_move_attack_fire_rocket = {FRAME_attak322, FRAME_attak330, tank_frames_attack_fire_rocket, tank_refire_rocket};
-m_tank.c:644:					self->monsterinfo.currentmove = &tank_move_attack_fire_rocket;
-m_tank.c:652:	self->monsterinfo.currentmove = &tank_move_attack_fire_rocket;
-tank_move_attack_post_blast usage ===
-m_tank.c:465:mmove_t tank_move_attack_post_blast = {FRAME_attak117, FRAME_attak122, tank_frames_attack_post_blast, tank_run};
-m_tank.c:477:	self->monsterinfo.currentmove = &tank_move_attack_post_blast;
-tank_move_attack_post_rocket usage ===
-m_tank.c:600:mmove_t tank_move_attack_post_rocket = {FRAME_attak331, FRAME_attak353, tank_frames_attack_post_rocket, tank_run};
-m_tank.c:647:	self->monsterinfo.currentmove = &tank_move_attack_post_rocket;
-tank_move_attack_pre_rocket usage ===
-m_tank.c:556:mmove_t tank_move_attack_pre_rocket = {FRAME_attak301, FRAME_attak321, tank_frames_attack_pre_rocket, tank_doattack_rocket};
-m_tank.c:693:			self->monsterinfo.currentmove = &tank_move_attack_pre_rocket;
-tank_move_attack_strike usage ===
-m_tank.c:528:mmove_t tank_move_attack_strike = {FRAME_attak201, FRAME_attak238, tank_frames_attack_strike, tank_poststrike};
-m_tank.c:663:		self->monsterinfo.currentmove = &tank_move_attack_strike;
-tank_move_death usage ===
-m_tank.c:751:mmove_t	tank_move_death = {FRAME_death101, FRAME_death132, tank_frames_death1, tank_dead};
-m_tank.c:779:	self->monsterinfo.currentmove = &tank_move_death;
-tank_move_pain1 usage ===
-m_tank.c:254:mmove_t tank_move_pain1 = {FRAME_pain101, FRAME_pain104, tank_frames_pain1, tank_run};
-m_tank.c:319:		self->monsterinfo.currentmove = &tank_move_pain1;
-tank_move_pain2 usage ===
-m_tank.c:264:mmove_t tank_move_pain2 = {FRAME_pain201, FRAME_pain205, tank_frames_pain2, tank_run};
-m_tank.c:321:		self->monsterinfo.currentmove = &tank_move_pain2;
-tank_move_pain3 usage ===
-m_tank.c:285:mmove_t	tank_move_pain3 = {FRAME_pain301, FRAME_pain316, tank_frames_pain3, tank_run};
-m_tank.c:323:		self->monsterinfo.currentmove = &tank_move_pain3;
-tank_move_reattack_blast usage ===
-m_tank.c:454:mmove_t tank_move_reattack_blast = {FRAME_attak111, FRAME_attak116, tank_frames_reattack_blast, tank_reattack_blaster};
-m_tank.c:474:					self->monsterinfo.currentmove = &tank_move_reattack_blast;
 tank_move_run usage ===
 m_tank.c:207:mmove_t	tank_move_run = {FRAME_walk05, FRAME_walk20, tank_frames_run, NULL};
 m_tank.c:235:		self->monsterinfo.currentmove = &tank_move_run;
-tank_move_stand usage ===
-m_tank.c:113:mmove_t	tank_move_stand = {FRAME_stand01, FRAME_stand30, tank_frames_stand, NULL};
-m_tank.c:117:	self->monsterinfo.currentmove = &tank_move_stand;
-m_tank.c:228:		self->monsterinfo.currentmove = &tank_move_stand;
-m_tank.c:849:	self->monsterinfo.currentmove = &tank_move_stand;
 tank_move_start_run usage ===
 m_tank.c:186:mmove_t	tank_move_start_run = {FRAME_walk01, FRAME_walk04, tank_frames_start_run, tank_run};
 m_tank.c:233:		self->monsterinfo.currentmove == &tank_move_start_run)
 m_tank.c:239:		self->monsterinfo.currentmove = &tank_move_start_run;
-tank_move_start_walk usage ===
-m_tank.c:134:mmove_t	tank_move_start_walk = {FRAME_walk01, FRAME_walk04, tank_frames_start_walk, tank_walk};
 tank_move_stop_run usage ===
 m_tank.c:217:mmove_t	tank_move_stop_run = {FRAME_walk21, FRAME_walk25, tank_frames_stop_run, tank_walk};
-tank_move_stop_walk usage ===
-m_tank.c:165:mmove_t	tank_move_stop_walk = {FRAME_walk21, FRAME_walk25, tank_frames_stop_walk, tank_stand};
-tank_move_walk usage ===
-m_tank.c:155:mmove_t	tank_move_walk = {FRAME_walk05, FRAME_walk20, tank_frames_walk, NULL};
-m_tank.c:169:		self->monsterinfo.currentmove = &tank_move_walk;
-m_tank.c:232:	if (self->monsterinfo.currentmove == &tank_move_walk ||
 timelimit usage ===
 g_main.c:40:cvar_t	*timelimit;
 g_main.c:219:The timelimit or fraglimit has been exceeded
 g_main.c:318:	if (timelimit->value)
 g_main.c:320:		if (level.time >= timelimit->value*60)
 g_save.c:184:	timelimit = gi.cvar ("timelimit", "0", CVAR_SERVERINFO);
-trail usage ===
-g_weapon.c:244:	// if went through water, determine where the end and make a bubble trail
-p_client.c:1811:	// add player trail so monsters can follow
-p_trail.c:41:edict_t		*trail[TRAIL_LENGTH];
-p_trail.c:58:		trail[n] = G_Spawn();
-p_trail.c:59:		trail[n]->classname = "player_trail";
-p_trail.c:74:	VectorCopy (spot, trail[trail_head]->s.origin);
-p_trail.c:76:	trail[trail_head]->timestamp = level.time;
-p_trail.c:78:	VectorSubtract (spot, trail[PREV(trail_head)]->s.origin, temp);
-p_trail.c:79:	trail[trail_head]->s.angles[1] = vectoyaw (temp);
-p_trail.c:105:		if(trail[marker]->timestamp <= self->monsterinfo.trail_time)
-p_trail.c:111:	if (visible(self, trail[marker]))
-p_trail.c:113:		return trail[marker];
-p_trail.c:116:	if (visible(self, trail[PREV(marker)]))
-p_trail.c:118:		return trail[PREV(marker)];
-p_trail.c:121:	return trail[marker];
-p_trail.c:134:		if(trail[marker]->timestamp <= self->monsterinfo.trail_time)
-p_trail.c:140:	return trail[marker];
-p_trail.c:145:	return trail[PREV(trail_head)];
-trail_active usage ===
-p_trail.c:43:qboolean	trail_active = false;
-p_trail.c:63:	trail_active = true;
-p_trail.c:71:	if (!trail_active)
-p_trail.c:87:	if (!trail_active)
-p_trail.c:100:	if (!trail_active)
-p_trail.c:129:	if (!trail_active)
-trail_head usage ===
-p_trail.c:42:int			trail_head;
-p_trail.c:62:	trail_head = 0;
-p_trail.c:74:	VectorCopy (spot, trail[trail_head]->s.origin);
-p_trail.c:76:	trail[trail_head]->timestamp = level.time;
-p_trail.c:78:	VectorSubtract (spot, trail[PREV(trail_head)]->s.origin, temp);
-p_trail.c:79:	trail[trail_head]->s.angles[1] = vectoyaw (temp);
-p_trail.c:81:	trail_head = NEXT(trail_head);
-p_trail.c:103:	for (marker = trail_head, n = TRAIL_LENGTH; n; n--)
-p_trail.c:132:	for (marker = trail_head, n = TRAIL_LENGTH; n; n--)
-p_trail.c:145:	return trail[PREV(trail_head)];
 vec3_origin usage ===
 g_ai.c:297:	trace = gi.trace (spot1, vec3_origin, vec3_origin, spot2, self, MASK_OPAQUE);
 g_chase.c:65:	trace = gi.trace(ownerv, vec3_origin, vec3_origin, o, targ, MASK_SOLID);
@@ -5140,17 +4860,3 @@ p_view.c:726:				T_Damage (current_player, world, world, vec3_origin, current_pl
 p_view.c:733:				T_Damage (current_player, world, world, vec3_origin, current_player->s.origin, vec3_origin, 1*waterlevel, 0, 0, MOD_SLIME);
 p_weapon.c:855:	Blaster_Fire (ent, vec3_origin, damage, false, EF_BLASTER);
 q_shared.c:24:vec3_t vec3_origin = {0,0,0};
-xyspeed usage ===
-p_view.c:30:float	xyspeed;
-p_view.c:280:		delta = bobfracsin * bob_pitch->value * xyspeed;
-p_view.c:284:		delta = bobfracsin * bob_roll->value * xyspeed;
-p_view.c:311:	bob = bobfracsin * xyspeed * bob_up->value;
-p_view.c:351:	ent->client->ps.gunangles[ROLL] = xyspeed * bobfracsin * 0.005;
-p_view.c:352:	ent->client->ps.gunangles[YAW] = xyspeed * bobfracsin * 0.01;
-p_view.c:359:	ent->client->ps.gunangles[PITCH] = xyspeed * bobfracsin * 0.005;
-p_view.c:803:	if ( ent->groundentity && xyspeed > 225)
-p_view.c:869:	if (xyspeed)
-p_view.c:1014:	xyspeed = sqrt(ent->velocity[0]*ent->velocity[0] + ent->velocity[1]*ent->velocity[1]);
-p_view.c:1016:	if (xyspeed < 5)
-p_view.c:1023:		if (xyspeed > 210)
-p_view.c:1025:		else if (xyspeed > 100)
