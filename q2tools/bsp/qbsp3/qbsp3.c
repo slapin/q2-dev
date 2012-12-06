@@ -484,9 +484,8 @@ int main (int argc, char **argv)
 
 	ThreadSetDefault ();
 numthreads = 1;		// multiple threads aren't helping...
-	SetQdirFromPath (argv[i]);
 
-	strcpy (source, ExpandArg (argv[i]));
+	strcpy (source, argv[i]);
 	StripExtension (source);
 
 	// delete portal and line files
