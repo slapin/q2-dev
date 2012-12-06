@@ -3,4 +3,8 @@ game/release*
 gtkradiant/install/*
 quake2/debug*
 quake2/release*
-
+q2tools/qbsp3
+q2tools/qrad3
+q2tools/qvis3
+q2tools/bspinfo3
+q2tools/libcommon.a
