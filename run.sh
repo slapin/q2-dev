@@ -4,11 +4,14 @@ install -m 755 -d ./deploy
 install -m 755 -d ./deploy/testgame
 install -c -m 644 ./game/debug${ARCH}/game${ARCH}.so ./deploy/testgame
 install -c -m 755 ./quake2/debug${ARCH}/quake2 ./deploy
+install -c -m 755 ./quake2/debug${ARCH}/ref_softsdl.so ./deploy
 install -c -m 644 ./testmaps/default.cfg ./deploy/testgame
 install -m 755 -d ./deploy/testgame/maps
 install -m 755 -d ./deploy/testgame/textures
+install -m 755 -d ./deploy/testgame/pics
 cp -a ./testmaps/maps/*.bsp ./deploy/testgame/maps/
 cp -a ./testmaps/textures/* ./deploy/testgame/textures/
+cp -a ./testmaps/pics/* ./deploy/testgame/pics/
 rm -Rf ./deploy/radiant
 cp -a ./netradiant3/install ./deploy/radiant
 install -d -m 755 ./deploy/radiant/games
