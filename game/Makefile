@@ -263,153 +263,11 @@ GAME_OBJS = \
 	$(BUILDDIR)/game/q_shared.o \
 	$(BUILDDIR)/game/m_flash.o
 
+$(BUILDDIR)/game/%.o:	$(GAME_DIR)/%.c
+	$(DO_SHLIB_CC)
+
 $(BUILDDIR)/game$(ARCH).$(SHLIBEXT) : $(GAME_OBJS)
 	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(GAME_OBJS)
-
-$(BUILDDIR)/game/g_ai.o :        $(GAME_DIR)/g_ai.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_chase.o :     $(GAME_DIR)/g_chase.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/p_client.o :    $(GAME_DIR)/p_client.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_cmds.o :      $(GAME_DIR)/g_cmds.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_svcmds.o :    $(GAME_DIR)/g_svcmds.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_combat.o :    $(GAME_DIR)/g_combat.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_func.o :      $(GAME_DIR)/g_func.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_items.o :     $(GAME_DIR)/g_items.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_main.o :      $(GAME_DIR)/g_main.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_misc.o :      $(GAME_DIR)/g_misc.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_monster.o :   $(GAME_DIR)/g_monster.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_phys.o :      $(GAME_DIR)/g_phys.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_save.o :      $(GAME_DIR)/g_save.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_spawn.o :     $(GAME_DIR)/g_spawn.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_target.o :    $(GAME_DIR)/g_target.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_trigger.o :   $(GAME_DIR)/g_trigger.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_turret.o :    $(GAME_DIR)/g_turret.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_utils.o :     $(GAME_DIR)/g_utils.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/g_weapon.o :    $(GAME_DIR)/g_weapon.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_actor.o :     $(GAME_DIR)/m_actor.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_berserk.o :   $(GAME_DIR)/m_berserk.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_boss2.o :     $(GAME_DIR)/m_boss2.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_boss3.o :     $(GAME_DIR)/m_boss3.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_boss31.o :     $(GAME_DIR)/m_boss31.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_boss32.o :     $(GAME_DIR)/m_boss32.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_brain.o :     $(GAME_DIR)/m_brain.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_chick.o :     $(GAME_DIR)/m_chick.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_flipper.o :   $(GAME_DIR)/m_flipper.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_float.o :     $(GAME_DIR)/m_float.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_flyer.o :     $(GAME_DIR)/m_flyer.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_gladiator.o : $(GAME_DIR)/m_gladiator.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_gunner.o :    $(GAME_DIR)/m_gunner.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_hover.o :     $(GAME_DIR)/m_hover.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_infantry.o :  $(GAME_DIR)/m_infantry.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_insane.o :    $(GAME_DIR)/m_insane.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_medic.o :     $(GAME_DIR)/m_medic.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_move.o :      $(GAME_DIR)/m_move.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_mutant.o :    $(GAME_DIR)/m_mutant.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_parasite.o :  $(GAME_DIR)/m_parasite.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_soldier.o :   $(GAME_DIR)/m_soldier.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_supertank.o : $(GAME_DIR)/m_supertank.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_tank.o :      $(GAME_DIR)/m_tank.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/p_hud.o :       $(GAME_DIR)/p_hud.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/p_trail.o :     $(GAME_DIR)/p_trail.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/p_view.o :      $(GAME_DIR)/p_view.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/p_weapon.o :    $(GAME_DIR)/p_weapon.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/q_shared.o :    $(GAME_DIR)/q_shared.c
-	$(DO_SHLIB_CC)
-
-$(BUILDDIR)/game/m_flash.o :     $(GAME_DIR)/m_flash.c
-	$(DO_SHLIB_CC)
-
 
 clean: clean-debug clean-release clean-gamepack
 
@@ -430,3 +288,4 @@ distclean:
 	@-rm -rf $(BUILD_DEBUG_DIR) $(BUILD_RELEASE_DIR)
 	@-rm -f `find . \( -not -type d \) -and \
 		\( -name '*~' \) -type f -print`
+
