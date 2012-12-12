@@ -683,8 +683,7 @@ int main (int argc, char **argv)
 
 	start = I_FloatTime ();
 
-	SetQdirFromPath (argv[i]);	
-	strcpy (source, ExpandArg(argv[i]));
+	strcpy (source, argv[i]);
 	StripExtension (source);
 	DefaultExtension (source, ".bsp");
 
