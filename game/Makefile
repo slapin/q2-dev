@@ -188,11 +188,11 @@ DO_SHLIB_AS=$(CC) $(CFLAGS) $(SHLIBCFLAGS) -DELF -x assembler-with-cpp -o $@ -c 
 # SETUP AND BUILD
 #############################################################################
 
-.PHONY : targets build_debug build_release clean clean-debug clean-release clean2
+.PHONY : targets build_debug build_release clean clean-debug clean-release clean2 gamepack
 
 TARGETS=$(BUILDDIR)/game$(ARCH).$(SHLIBEXT)
 
-all: build_debug build_release
+all: build_debug build_release gamepack
 
 build_debug:
 	@-mkdir -p $(BUILD_DEBUG_DIR) \
@@ -203,6 +203,9 @@ build_release:
 	@-mkdir -p $(BUILD_RELEASE_DIR) \
 		$(BUILD_RELEASE_DIR)/game
 	$(MAKE) targets BUILDDIR=$(BUILD_RELEASE_DIR) CFLAGS="$(RELEASE_CFLAGS) -DLINUX_VERSION='\"$(VERSION)\"'"
+
+gamepack:
+	$(MAKE) -C scripts
 
 targets: $(TARGETS)
 
@@ -408,13 +411,16 @@ $(BUILDDIR)/game/m_flash.o :     $(GAME_DIR)/m_flash.c
 	$(DO_SHLIB_CC)
 
 
-clean: clean-debug clean-release
+clean: clean-debug clean-release clean-gamepack
 
 clean-debug:
 	$(MAKE) clean2 BUILDDIR=$(BUILD_DEBUG_DIR) CFLAGS="$(DEBUG_CFLAGS)"
 
 clean-release:
 	$(MAKE) clean2 BUILDDIR=$(BUILD_RELEASE_DIR) CFLAGS="$(DEBUG_CFLAGS)"
+
+clean-gamepack:
+	$(MAKE) -C scripts clean
 
 clean2:
 	rm -f \
