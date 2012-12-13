@@ -24,11 +24,11 @@ GENERATED_PICS = $(patsubst %,pics/%,$(PICS_pics))
 all: maps/testmap.bsp $(GENERATED_PICS)
 
 $(WALS): $(PICS)
-	$(QDATA) -gamedir $(PWD) omg.qgr
+	$(QDATA) -gamedir $(CURDIR) omg.qgr
 
 %.pcx: %.tga
 	convert $*.tga -colors 250 $*.tmp.pcx
-	convert $*.tmp.pcx -define remap:preserve-colormap -remap $(PWD)/pics/colormap.pcx $*.pcx
+	convert $*.tmp.pcx -define remap:preserve-colormap -remap $(CURDIR)/pics/colormap.pcx $*.pcx
 	rm $*.tmp.pcx
 clean:
 	-rm -f textures/misc/*.pcx
@@ -41,7 +41,7 @@ clean:
 maps/testmap.bsp: maps/testmap.map $(WALS)
 	$(QBSP) maps/testmap.map
 	$(QVIS) maps/testmap
-	$(QRAD) -gamedir $(PWD) -ambient 0.2 -scale 1.0 -direct 0.01 -entity 1.3 -maxlight 1.2 maps/testmap
+	$(QRAD) -gamedir $(CURDIR) -ambient 0.2 -scale 1.0 -direct 0.01 -entity 1.3 -maxlight 1.2 maps/testmap
 
 $(GENERATED_PICS): placeholder.pcx
 	for g in $(GENERATED_PICS); do cp placeholder.pcx $$g;done
