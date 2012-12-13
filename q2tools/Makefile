@@ -12,9 +12,13 @@ qrad3_SRCS = bsp/qrad3/lightmap.c bsp/qrad3/patches.c bsp/qrad3/qrad3.c \
 
 qvis3_SRCS = bsp/qvis3/flow.c bsp/qvis3/qvis3.c
 
+qdata3_SRCS = qdata/images.c qdata/models.c \
+	qdata/qdata.c qdata/sprites.c \
+	qdata/tables.c qdata/video.c
 qbsp3_OBJS = $(qbsp3_SRCS:.c=.o)
 qrad3_OBJS = $(qrad3_SRCS:.c=.o)
 qvis3_OBJS = $(qvis3_SRCS:.c=.o)
+qdata3_OBJS = $(qdata3_SRCS:.c=.o)
 
 common_SRCS = common/bspfile.c common/cmdlib.c \
 	common/l3dslib.c common/lbmlib.c \
@@ -26,7 +30,7 @@ common_OBJS = $(common_SRCS:.c=.o)
 CC=gcc
 CFLAGS = -I./common -g -O2
 LDFLAGS = -g
-all: bspinfo3 qbsp3 qrad3 qvis3
+all: bspinfo3 qbsp3 qrad3 qvis3 qdata3
 
 bspinfo3: $(bspinfo3_OBJS) libcommon.a
 	$(CC) $(LDFLAGS) -o $@ $(bspinfo3_OBJS) libcommon.a
@@ -39,6 +43,9 @@ qrad3: $(qrad3_OBJS) libcommon.a
 
 qvis3: $(qvis3_OBJS) libcommon.a
 	$(CC) $(LDFLAGS) -o $@ $(qvis3_OBJS) libcommon.a -lm
+
+qdata3: $(qdata3_OBJS) libcommon.a
+	$(CC) $(LDFLAGS) -o $@ $(qdata3_OBJS) libcommon.a -lm
 
 libcommon.a: $(common_OBJS)
 	$(AR) rcs $@ $(common_OBJS)

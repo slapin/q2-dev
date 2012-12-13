@@ -247,7 +247,7 @@ void PackDirectory_r (char *dir)
 #ifdef NeXT
 #include <sys/dir.h>
 #else
-#include <sys/dirent.h>
+#include <dirent.h>
 #endif
 
 void PackDirectory_r (char *dir)
@@ -505,7 +505,14 @@ int main (int argc, char **argv)
 			printf ("Only grabbing %s\n", g_only);
 			i++;
 		}
-		else if (!strcmp(argv[i], "-3ds"))
+		else if (!strcmp (argv[i],"-gamedir")) {
+			extern char gamedir[1024], qdir[1024];
+			strncpy(gamedir, argv[i + 1], sizeof(gamedir) - 2);
+			strcat(gamedir, "/");
+			strncpy(qdir, argv[i + 1], sizeof(gamedir) - 2);
+			strcat(qdir, "/");
+			i++;
+		} else if (!strcmp(argv[i], "-3ds"))
 		{
 			do3ds = true;
 			printf ("loading .3ds files\n");
@@ -530,7 +537,6 @@ int main (int argc, char **argv)
 		// load the script
 		strcpy (path, argv[i]);
 		DefaultExtension (path, ".qdt");
-		SetQdirFromPath (path);
 		LoadScriptFile (ExpandArg(path));
 
 		//
