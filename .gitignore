@@ -13,3 +13,4 @@ deploy
 *.wal
 *.autosave.map
 *.bak
+game/scripts/entities.def
