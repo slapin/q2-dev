@@ -34,6 +34,7 @@ clean:
 	-rm -f textures/misc/*.pcx
 	-rm -f textures/common/*.pcx
 	-rm -f maps/testmap.prt maps/testmap.bsp
+	-rm -f $(GENERATED_PICS)
 
 .PHONY: all
 
