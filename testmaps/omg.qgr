@@ -1,0 +1,7 @@
+$load textures/misc/005.pcx
+$mip misc/005 0 0 512 512
+$load textures/common/caulk.pcx
+$mip common/caulk 0 0 64 64
+$load textures/misc/009.pcx
+$mip misc/009 0 0 256 256
+
