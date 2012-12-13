@@ -62,3 +62,10 @@
 "classname" "info_player_start"
 "origin" "32.000000 -16.000000 88.000000"
 }
+// entity 2
+{
+"classname" "light"
+"origin" "16.000000 88.000000 360.000000"
+"light" "1000"
+"_color" "1 0 0"
+}
