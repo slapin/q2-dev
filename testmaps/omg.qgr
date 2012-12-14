@@ -1,3 +1,5 @@
+$load pics/colormap.pcx
+$mippal
 $load textures/misc/005.pcx
 $mip misc/005 0 0 512 512
 $load textures/common/caulk.pcx

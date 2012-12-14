@@ -66,6 +66,6 @@
 {
 "classname" "light"
 "origin" "16.000000 88.000000 360.000000"
-"light" "1000"
+"light" "100"
 "_color" "1 0 0"
 }
