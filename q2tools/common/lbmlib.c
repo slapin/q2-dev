@@ -442,7 +442,7 @@ void LoadPCX (char *filename, byte **pic, byte **palette, int *width, int *heigh
 		|| pcx->encoding != 1
 		|| pcx->bits_per_pixel != 8
 		|| pcx->xmax >= 1024
-		|| pcx->ymax >= 768)
+		|| pcx->ymax >= 1024)
 		Error ("Bad pcx file %s", filename);
 
 	if (palette)
