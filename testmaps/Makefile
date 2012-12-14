@@ -27,13 +27,12 @@ $(WALS): $(PICS)
 	$(QDATA) -gamedir $(CURDIR) omg.qgr
 
 %.pcx: %.tga
-	convert $*.tga -colors 250 $*.tmp.pcx
-	convert $*.tmp.pcx -define remap:preserve-colormap -remap $(CURDIR)/pics/colormap.pcx $*.pcx
-	rm $*.tmp.pcx
+	convert $*.tga -colors 250 $*.pcx
 clean:
 	-rm -f textures/misc/*.pcx
 	-rm -f textures/common/*.pcx
 	-rm -f maps/testmap.prt maps/testmap.bsp
+	-rm -f pics/colormap.pcx
 	-rm -f $(GENERATED_PICS)
 
 .PHONY: all
