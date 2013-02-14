@@ -1,5 +1,5 @@
-$load pics/colormap.pcx
-$mippal
+// $load pics/colormap.pcx
+// $mippal
 $load textures/misc/005.pcx
 $mippal
 $load textures/misc/005.pcx
@@ -11,3 +11,18 @@ $mip misc/009 0 0 256 256
 $load textures/misc/IxirGround.pcx
 $mip misc/IxirGround 0 0 256 256
 $colormap colormap
+
+$cd weapons/bat
+$skinsize 512 512
+$origin 0 0 0
+$base base
+$skin pcx skin
+$scale 5.2
+$frame active01 active02 active03 active04 active05 active06 active07 active08 active09
+// $frame pow01 pow02 pow03 pow04 pow05 pow06 pow07 pow08 pow09 pow10
+// $frame pow11 pow12 pow13 pow14 pow15 pow16 pow17 pow18 pow19 pow20
+// $frame pow21 pow22 pow23
+// $frame idle01 idle02 idle03 idle04 idle05 idle06 idle07 idle08 idle09 idle10
+// $frame idle11 idle12 idle13 idle14 idle15 idle16 idle17 idle18 idle19 idle20
+// $frame idle21 idle22 idle23
+// $frame putway01 putway02 putway03 putway04
