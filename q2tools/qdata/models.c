@@ -994,44 +994,13 @@ Skins aren't actually stored in the file, only a reference
 is saved out to the header file.
 ===============
 */
-void Cmd_Skin (void)
+static void process_skin(char *name, char *savename)
 {
 	byte	*palette;
 	byte	*pixels;
 	int		width, height;
 	byte	*cropped;
 	int		y;
-	char	name[1024], savename[1024];
-
-	GetToken (false);
-
-	if (model.num_skins == MAX_MD2SKINS)
-		Error ("model.num_skins == MAX_MD2SKINS");
-
-	if (g_skipmodel)
-		return;
-
-	sprintf (name, "%s/%s.lbm", cdarchive, token);
-	strcpy (name, ExpandPathAndArchive( name ) );
-//	sprintf (name, "%s/%s.lbm", cddir, token);
-
-	if (TokenAvailable())
-	{
-		GetToken (false);
-		sprintf (g_skins[model.num_skins], "%s.pcx", token);
-		sprintf (savename, "%s%s.pcx", gamedir, g_skins[model.num_skins]);
-	}
-	else
-	{
-		sprintf (savename, "%s/%s.pcx", cddir, token);
-		sprintf (g_skins[model.num_skins], "%s/%s.pcx", cdpartial, token);
-	}
-
-	model.num_skins++;
-
-	if (g_skipmodel || g_release || g_archive)
-		return;
-
 	// load the image
 	printf ("loading %s\n", name);
 	Load256Image (name, &pixels, &palette, &width, &height);
@@ -1054,6 +1023,59 @@ void Cmd_Skin (void)
 	free (pixels);
 	free (palette);
 	free (cropped);
+}
+
+void Cmd_Skin (void)
+{
+	byte	*palette;
+	byte	*pixels;
+	int		width, height;
+	byte	*cropped;
+	int		y;
+	char	name[1024], savename[1024];
+	int pcx = 0;
+
+	GetToken (false);
+
+	if (strstr(token, "pcx")) {
+		pcx = 1;
+		GetToken(false);
+	}
+
+	if (model.num_skins == MAX_MD2SKINS)
+		Error ("model.num_skins == MAX_MD2SKINS");
+
+	if (g_skipmodel)
+		return;
+
+	if (!pcx)
+		sprintf (name, "%s/%s.lbm", cdarchive, token);
+	else
+		sprintf (name, "%s/%s_src.pcx", cdarchive, token);
+	strcpy (name, ExpandPathAndArchive( name ) );
+//	sprintf (name, "%s/%s.lbm", cddir, token);
+
+	if (TokenAvailable())
+	{
+		GetToken (false);
+		sprintf (g_skins[model.num_skins], "%s.pcx", token);
+		sprintf (savename, "%s%s.pcx", gamedir, g_skins[model.num_skins]);
+	}
+	else
+	{
+		sprintf (savename, "%s/%s.pcx", cddir, token);
+		sprintf (g_skins[model.num_skins], "%s/%s.pcx", cdpartial, token);
+	}
+	if (!strcmp(name, savename))
+		Error ("attempt to overwrite source for %s", name);
+	else
+		printf("name %s %s\n", name, savename);
+
+	model.num_skins++;
+
+	if (g_skipmodel || g_release || g_archive)
+		return;
+	process_skin(name, savename);
 }
 
 
