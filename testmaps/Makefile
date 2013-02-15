@@ -24,7 +24,7 @@ GENERATED_PICS = $(patsubst %,pics/%,$(PICS_pics))
 all: maps/testmap.bsp $(GENERATED_PICS)
 
 $(WALS): $(PICS)
-	$(QDATA) -3ds -gamedir $(CURDIR) omg.qgr
+	$(QDATA) -obj -gamedir $(CURDIR) omg.qgr
 
 %.pcx: %.tga
 	convert $*.tga -colors 250 $*.pcx
