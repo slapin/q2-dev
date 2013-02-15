@@ -10,6 +10,8 @@ $load textures/misc/009.pcx
 $mip misc/009 0 0 256 256
 $load textures/misc/IxirGround.pcx
 $mip misc/IxirGround 0 0 256 256
+$load conchars.pcx
+$grab conchars 0 0 256 256
 $colormap colormap
 
 $cd weapons/bat
