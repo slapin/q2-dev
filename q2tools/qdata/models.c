@@ -864,6 +864,8 @@ void GrabFrame (char *frame)
 //
 	if (do3ds)
 		Load3DSTriangleList (file1, &ptri, &num_tris);
+	else if(doobj)
+		LoadOBJTriangleList (file1, &ptri, &num_tris);
 	else
 		LoadTriangleList (file1, &ptri, &num_tris);
 
