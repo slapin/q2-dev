@@ -21,7 +21,7 @@ qvis3_OBJS = $(qvis3_SRCS:.c=.o)
 qdata3_OBJS = $(qdata3_SRCS:.c=.o)
 
 common_SRCS = common/bspfile.c common/cmdlib.c \
-	common/l3dslib.c common/lbmlib.c \
+	common/l3dslib.c common/lobjlib.c common/lbmlib.c \
 	common/mathlib.c common/mdfour.c common/polylib.c \
 	common/scriplib.c common/threads.c common/trilib.c
 

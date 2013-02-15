@@ -724,6 +724,8 @@ void Cmd_Base (void)
 //
 	if (do3ds)
 		Load3DSTriangleList (file1, &ptri, &model.num_tris);
+	else if (doobj)
+		LoadOBJTriangleList (file1, &ptri, &model.num_tris);
 	else
 		LoadTriangleList (file1, &ptri, &model.num_tris);
 

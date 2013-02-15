@@ -28,10 +28,12 @@ qboolean	g_pak;				// if true, copy to pak instead of release
 char		g_releasedir[1024];	// c:\quake2\baseq2, etc
 qboolean	g_archive;			// don't grab, copy source data to new tree
 qboolean	do3ds;
+qboolean	doobj;
 char		g_only[256];		// if set, only grab this cd
 qboolean	g_skipmodel;		// set true when a cd is not g_only
 
 char		*ext_3ds = "3ds";
+char		*ext_obj = "obj";
 char		*ext_tri= "tri";
 char		*trifileext;
 
@@ -512,6 +514,9 @@ int main (int argc, char **argv)
 			strncpy(qdir, argv[i + 1], sizeof(gamedir) - 2);
 			strcat(qdir, "/");
 			i++;
+		} else if (!strcmp(argv[i], "-obj")) {
+			doobj = true;
+			printf ("loading .obj files\n");
 		} else if (!strcmp(argv[i], "-3ds"))
 		{
 			do3ds = true;
@@ -528,6 +533,8 @@ int main (int argc, char **argv)
 
 	if (do3ds)
 		trifileext = ext_3ds;
+	else if (doobj)
+		trifileext = ext_obj;
 	else
 		trifileext = ext_tri;
 
