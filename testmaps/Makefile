@@ -20,27 +20,33 @@ PICS += $(patsubst %,textures/common/%,$(PICS_common))
 WALS = $(PICS:.pcx=.wal)
 
 GENERATED_PICS = $(patsubst %,pics/%,$(PICS_pics))
+MAPS = maps/testmap.map maps/wicked.map
+BSPS = $(MAPS:.map=.bsp)
 
-all: maps/testmap.bsp $(GENERATED_PICS)
+all: $(BSPS) $(GENERATED_PICS)
 
 $(WALS): $(PICS)
 	$(QDATA) -obj -gamedir $(CURDIR) omg.qgr
 
 %.pcx: %.tga
 	convert $*.tga -colors 250 $*.pcx
+
+%.bsp: %.map
+	$(QBSP) $<
+	$(QVIS) $*
+	$(QRAD) -gamedir $(CURDIR) -ambient 0.2 -scale 1.0 -direct 0.01 -entity 1.3 -maxlight 1.2 $*
 clean:
 	-rm -f textures/misc/*.pcx
 	-rm -f textures/common/*.pcx
 	-rm -f maps/testmap.prt maps/testmap.bsp
 	-rm -f pics/colormap.pcx
 	-rm -f $(GENERATED_PICS)
+	-rm -f $(BSPS)
 
 .PHONY: all
 
 maps/testmap.bsp: maps/testmap.map $(WALS)
-	$(QBSP) maps/testmap.map
-	$(QVIS) maps/testmap
-	$(QRAD) -gamedir $(CURDIR) -ambient 0.2 -scale 1.0 -direct 0.01 -entity 1.3 -maxlight 1.2 maps/testmap
+maps/wicked.bsp: maps/wicked.map $(WALS)
 
 $(GENERATED_PICS): placeholder.pcx
 	for g in $(GENERATED_PICS); do cp placeholder.pcx $$g;done
