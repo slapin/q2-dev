@@ -170,7 +170,7 @@ ifeq ($(OSTYPE),FreeBSD)
 LDFLAGS=-lm
 endif
 ifeq ($(OSTYPE),Linux)
-LDFLAGS=-lm -ldl
+LDFLAGS=-lm -ldl -lpthread
 endif
 
 ifeq ($(strip $(BUILD_ARTS)),YES)
