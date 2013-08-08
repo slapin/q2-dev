@@ -610,11 +610,14 @@ void InitClientPersistant (gclient_t *client)
 
 	memset (&client->pers, 0, sizeof(client->pers));
 
+#if 0
 	item = FindItem("Blaster");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
-
 	client->pers.weapon = item;
+#endif
+	client->pers.weapon = NULL;
+
 
 	client->pers.health			= 100;
 	client->pers.max_health		= 100;
@@ -1204,7 +1207,10 @@ void PutClientInServer (edict_t *ent)
 			client->ps.fov = 160;
 	}
 
-	client->ps.gunindex = gi.modelindex(client->pers.weapon->view_model);
+	if (client->pers.weapon)
+		client->ps.gunindex = gi.modelindex(client->pers.weapon->view_model);
+	else
+		client->ps.gunindex = 0;
 
 	// clear entity state values
 	ent->s.effects = 0;
