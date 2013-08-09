@@ -20,7 +20,7 @@ PICS += $(patsubst %,textures/common/%,$(PICS_common))
 WALS = $(PICS:.pcx=.wal)
 
 GENERATED_PICS = $(patsubst %,pics/%,$(PICS_pics))
-MAPS = maps/testmap.map maps/wicked.map
+MAPS = maps/testmap.map maps/wicked.map maps/house.map
 BSPS = $(MAPS:.map=.bsp)
 
 all: $(BSPS) $(GENERATED_PICS)
