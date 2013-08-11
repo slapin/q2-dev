@@ -1615,7 +1615,7 @@ void BasePortalVis( int portalnum ){
 		 */
 
 		/* ydnar: this is known-to-be-working farplane code */
-		if ( farPlaneDist > 0.0f ) {
+		if ( !p->sky && !tp->sky && farPlaneDist > 0.0f ) {
 			VectorSubtract( p->origin, tp->origin, dir );
 			if ( VectorLength( dir ) - p->radius - tp->radius > farPlaneDist ) {
 				continue;

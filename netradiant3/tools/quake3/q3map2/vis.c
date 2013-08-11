@@ -890,7 +890,7 @@ void WritePortals( char *filename ){
    ============
  */
 void LoadPortals( char *name ){
-	int i, j, hint;
+	int i, j, flags;
 	vportal_t   *p;
 	leaf_t      *l;
 	char magic[80];
@@ -964,8 +964,8 @@ void LoadPortals( char *name ){
 			 || leafnums[1] > portalclusters ) {
 			Error( "LoadPortals: reading portal %i", i );
 		}
-		if ( fscanf( f, "%i ", &hint ) != 1 ) {
-			Error( "LoadPortals: reading hint state" );
+		if ( fscanf( f, "%i ", &flags ) != 1 ) {
+			Error( "LoadPortals: reading flags" );
 		}
 
 		w = p->winding = NewFixedWinding( numpoints );
@@ -1001,7 +1001,8 @@ void LoadPortals( char *name ){
 		l->numportals++;
 
 		p->num = i + 1;
-		p->hint = hint;
+		p->hint = ((flags & 1) != 0);
+		p->sky = ((flags & 2) != 0);
 		p->winding = w;
 		VectorSubtract( vec3_origin, plane.normal, p->plane.normal );
 		p->plane.dist = -plane.dist;
