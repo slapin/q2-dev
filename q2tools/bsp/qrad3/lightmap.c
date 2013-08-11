@@ -1192,8 +1192,10 @@ for (i=0 ; i<64 ; i++)
 dlightdata[lightdatasize-(i+1)*3 + 1] = 255;
 #endif
 
-	if (lightdatasize > MAX_MAP_LIGHTING)
+	if (lightdatasize > MAX_MAP_LIGHTING) {
+		printf("\nlightdatasize = %d, > %d\n", lightdatasize, MAX_MAP_LIGHTING);
 		Error ("MAX_MAP_LIGHTING");
+	}
 	ThreadUnlock ();
 
 	f->styles[0] = 0;
