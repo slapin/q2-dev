@@ -437,7 +437,7 @@ void CreateEntityFromName( const char* name, const vec3_t origin ){
 	}
 }
 
-void CreateRightClickEntity( XYWnd* pWnd, int x, int y, char* pName ){
+void CreateRightClickEntity( XYWnd* pWnd, int x, int y, const char* pName ){
 	int height = pWnd->GetWidget()->allocation.height;
 	vec3_t point;
 	pWnd->SnapToPoint( x, height - 1 - y, point );
@@ -918,7 +918,7 @@ void XYWnd::SetPointMode( bool b ){
 void XYWnd::SetViewType( int n ){
 	m_nViewType = n;
 	if ( g_pParentWnd->CurrentStyle() == MainFrame::eFloating ) {
-		char* str = "YZ Side";
+		const char* str = "YZ Side";
 		if ( m_nViewType == XY ) {
 			str = "XY Top";
 		}
@@ -1595,11 +1595,37 @@ void XYWnd::NewBrushDrag( int x, int y ){
 			maxs[i] = temp;
 		}
 	}
-
-	n = Brush_Create( mins, maxs, &g_qeglobals.d_texturewin.texdef );
+	
+	// Caulk the new brush
+	if ( g_PrefsDlg.m_bCaulkNewBrushes == TRUE ) {
+		texdef_t tex;
+		IShader *shad = QERApp_Shader_ForName( "textures/common/caulk" );
+		
+		tex.SetName( shad->getName() );
+		tex.scale[0] = g_PrefsDlg.m_fDefTextureScale;
+		tex.scale[1] = g_PrefsDlg.m_fDefTextureScale;
+		tex.flags = shad->getFlags();
+		
+		n = Brush_Create( mins, maxs, &tex );
+	} else {
+		n = Brush_Create( mins, maxs, &g_qeglobals.d_texturewin.texdef );
+	}
+	
 	if ( !n ) {
 		return;
 	}
+
+	// structural or detail?
+	face_t *f;
+		
+	for ( f = n->brush_faces ; f ; f = f->next ) {
+		if ( g_qeglobals.m_bMakeDetail == TRUE ) {
+			f->texdef.contents |= CONTENTS_DETAIL;
+		} else {
+			f->texdef.contents &= ~CONTENTS_DETAIL;
+		}
+	}
+	//
 
 	vec3_t vSize;
 	VectorSubtract( maxs, mins, vSize );
@@ -1810,7 +1836,7 @@ void XYWnd::DropClipPoint( guint32 nFlags, int pointx, int pointy ){
 		// g_pParentWnd->ActiveXY()->GetViewType()
 		// cf VIEWTYPE defintion: enum VIEWTYPE {YZ, XZ, XY};
 		int nViewType = g_pParentWnd->ActiveXY()->GetViewType();
-		int nDim = ( nViewType == YZ ) ? nDim = 0 : ( ( nViewType == XZ ) ? nDim = 1 : nDim = 2 );
+		int nDim = ( nViewType == YZ ) ? 0 : ( ( nViewType == XZ ) ?  1 : 2 );
 		//(*pPt)[nDim] = g_qeglobals.d_work_max[nDim];
 		vec3_t mid;
 		Select_GetMid( mid );
@@ -1834,7 +1860,7 @@ void XYWnd::DropPathPoint( guint32 nFlags, int pointx, int pointy ){
 		// g_pParentWnd->ActiveXY()->GetViewType()
 		// cf VIEWTYPE definition: enum VIEWTYPE {YZ, XZ, XY};
 		int nViewType = g_pParentWnd->ActiveXY()->GetViewType();
-		int nDim = ( nViewType == YZ ) ? nDim = 0 : ( ( nViewType == XZ ) ? nDim = 1 : nDim = 2 );
+		int nDim = ( nViewType == YZ ) ? 0 : ( ( nViewType == XZ ) ? 1 : 2 );
 		g_PathPoints[g_nPathCount].m_ptClip[nDim] = g_qeglobals.d_work_max[nDim];
 
 		g_nPathCount++;

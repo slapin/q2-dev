@@ -564,7 +564,7 @@ void DoProjectSettings(){
 		gtk_tree_view_set_headers_visible( GTK_TREE_VIEW( view ), FALSE );
 
 		GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-		GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, NULL );
+		GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, (char *) NULL );
 		gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 
 		GtkTreeSelection* selection = gtk_tree_view_get_selection( GTK_TREE_VIEW( view ) );
@@ -1328,14 +1328,14 @@ void DoMapInfo(){
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Entity" ), renderer, "text", 0, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Entity" ), renderer, "text", 0, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 			gtk_tree_view_column_set_sort_column_id( column, 0 );
 		}
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Count" ), renderer, "text", 1, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Count" ), renderer, "text", 1, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 			gtk_tree_view_column_set_sort_column_id( column, 1 );
 		}
@@ -1521,7 +1521,7 @@ void DoEntityList(){
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 
@@ -1608,13 +1608,13 @@ void DoEntityList(){
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Key" ), renderer, "text", 0, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Key" ), renderer, "text", 0, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Value" ), renderer, "text", 1, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Value" ), renderer, "text", 1, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 
@@ -1732,7 +1732,7 @@ void DoRotateDlg(){
 					  (GtkAttachOptions) ( 0 ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	adj = gtk_adjustment_new( 0, -359, 359, 1, 10, 10 );
+	adj = gtk_adjustment_new( 0, -359, 359, 1, 10, 0 );
 	x = gtk_spin_button_new( GTK_ADJUSTMENT( adj ), 1, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "x", x );
 	gtk_widget_show( x );
@@ -1742,7 +1742,7 @@ void DoRotateDlg(){
 	gtk_widget_set_usize( x, 60, -2 );
 	gtk_spin_button_set_wrap( GTK_SPIN_BUTTON( x ), TRUE );
 
-	adj = gtk_adjustment_new( 0, -359, 359, 1, 10, 10 );
+	adj = gtk_adjustment_new( 0, -359, 359, 1, 10, 0 );
 	y = gtk_spin_button_new( GTK_ADJUSTMENT( adj ), 1, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "y", y );
 	gtk_widget_show( y );
@@ -1751,7 +1751,7 @@ void DoRotateDlg(){
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 	gtk_spin_button_set_wrap( GTK_SPIN_BUTTON( y ), TRUE );
 
-	adj = gtk_adjustment_new( 0, -359, 359, 1, 10, 10 );
+	adj = gtk_adjustment_new( 0, -359, 359, 1, 10, 0 );
 	z = gtk_spin_button_new( GTK_ADJUSTMENT( adj ), 1, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "z", z );
 	gtk_widget_show( z );
@@ -2689,7 +2689,9 @@ void DoCommandListDlg(){
 	int loop = 1, ret = IDCANCEL;
 
 	dlg = gtk_window_new( GTK_WINDOW_TOPLEVEL );
-	gtk_window_set_title( GTK_WINDOW( dlg ), _( "Mapped Commands" ) );
+    gtk_window_set_transient_for( GTK_WINDOW( dlg ), GTK_WINDOW( g_pParentWnd->m_pWidget ) );
+	gtk_window_set_position( GTK_WINDOW( dlg ), GTK_WIN_POS_CENTER_ON_PARENT );
+	gtk_window_set_title( GTK_WINDOW( dlg ), _( "Shortcut List" ) );
 	gtk_signal_connect( GTK_OBJECT( dlg ), "delete_event",
 						GTK_SIGNAL_FUNC( dialog_delete_callback ), NULL );
 	gtk_signal_connect( GTK_OBJECT( dlg ), "destroy",
@@ -2716,13 +2718,13 @@ void DoCommandListDlg(){
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Command" ), renderer, "text", 0, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Command" ), renderer, "text", 0, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Key" ), renderer, "text", 1, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( _( "Key" ), renderer, "text", 1, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 
@@ -2739,7 +2741,7 @@ void DoCommandListDlg(){
 			int n;
 
 			for ( n = 0; n < g_nCommandCount; n++ )
-				cmds = g_slist_append( cmds, g_Commands[n].m_strCommand );
+				cmds = g_slist_append( cmds, (gpointer)g_Commands[n].m_strCommand );
 			cmds = g_slist_sort( cmds, ( gint ( * )( const void *, const void * ) )strcmp );
 
 			Sys_Printf( "Writing the command list to %s", path.GetBuffer() );
@@ -2858,7 +2860,7 @@ void DoTextureListDlg(){
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 
@@ -2962,25 +2964,25 @@ int DoCapDlg( int *type, bool *b_GroupResult ){
 	gtk_table_set_row_spacings( GTK_TABLE( table ), 5 );
 	gtk_table_set_col_spacings( GTK_TABLE( table ), 5 );
 
-	pixmap = new_pixmap( g_pParentWnd->m_pWidget, "cap_bevel.bmp" );
+	pixmap = new_image_icon("cap_bevel.png");
 	gtk_widget_show( pixmap );
 	gtk_table_attach( GTK_TABLE( table ), pixmap, 0, 1, 0, 1,
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	pixmap = new_pixmap( g_pParentWnd->m_pWidget, "cap_endcap.bmp" );
+	pixmap = new_image_icon("cap_endcap.png");
 	gtk_widget_show( pixmap );
 	gtk_table_attach( GTK_TABLE( table ), pixmap, 0, 1, 1, 2,
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	pixmap = new_pixmap( g_pParentWnd->m_pWidget, "cap_ibevel.bmp" );
+	pixmap = new_image_icon("cap_ibevel.png");
 	gtk_widget_show( pixmap );
 	gtk_table_attach( GTK_TABLE( table ), pixmap, 0, 1, 2, 3,
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	pixmap = new_pixmap( g_pParentWnd->m_pWidget, "cap_iendcap.bmp" );
+	pixmap = new_image_icon("cap_iendcap.png");
 	gtk_widget_show( pixmap );
 	gtk_table_attach( GTK_TABLE( table ), pixmap, 0, 1, 3, 4,
 					  (GtkAttachOptions) ( GTK_FILL ),
@@ -3123,7 +3125,7 @@ void DoScriptsDlg(){
 
 		{
 			GtkCellRenderer* renderer = gtk_cell_renderer_text_new();
-			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, NULL );
+			GtkTreeViewColumn* column = gtk_tree_view_column_new_with_attributes( "", renderer, "text", 0, (char *) NULL );
 			gtk_tree_view_append_column( GTK_TREE_VIEW( view ), column );
 		}
 

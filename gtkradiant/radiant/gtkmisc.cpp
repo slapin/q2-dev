@@ -199,14 +199,19 @@ unsigned char *load_bitmap_file( const char* filename, guint16 *width, guint16 *
 
 	size_t rc;
 	rc = fread( &m1, 1, 1, fp );
-	m_bytesRead++;
-	if ( rc == -1 ) {
+	if ( rc != 1 ) {
 		fclose( fp );
 		return NULL;
 	}
+	m_bytesRead++;
 
 	rc = fread( &m2, 1, 1, fp );
+	if ( rc != 1) {
+		fclose( fp );
+		return NULL;
+	}
 	m_bytesRead++;
+
 	if ( ( m1 != 'B' ) || ( m2 != 'M' ) ) {
 		fclose( fp );
 		return NULL;
@@ -666,10 +671,9 @@ void load_pixmap( const char* filename, GtkWidget* widget, GdkPixmap **gdkpixmap
 
 	bmp_to_pixmap( str.GetBuffer(), gdkpixmap, mask );
 	if ( *gdkpixmap == NULL ) {
-		printf( "gdkpixmap was null\n" );
-		gchar *dummy[] = { "1 1 1 1", "  c None", " " };
-		printf( "calling gdk_pixmap_create_from_xpm_d\n" );
-		*gdkpixmap = gdk_pixmap_create_from_xpm_d( gdk_get_default_root_window(), mask, NULL, dummy );
+		Sys_Printf( "Failed to load_pixmap %s, creating default pixmap\n", str.GetBuffer() );
+		const gchar *dummy[] = { "1 1 1 1", "  c None", " " };
+		*gdkpixmap = gdk_pixmap_create_from_xpm_d( gdk_get_default_root_window(), mask, NULL, (gchar **)dummy );
 	}
 }
 
@@ -702,8 +706,8 @@ bool WINAPI load_plugin_bitmap( const char* filename, void **gdkpixmap, void **m
 			bmp_to_pixmap( str.GetBuffer(), (GdkPixmap **)gdkpixmap, (GdkBitmap **)mask );
 
 			if ( *gdkpixmap == NULL ) {
-				gchar *dummy[] = { "1 1 1 1", "  c None", " " };
-				*gdkpixmap = gdk_pixmap_create_from_xpm_d( gdk_get_default_root_window(), (GdkBitmap **)mask, NULL, dummy );
+				const gchar *dummy[] = { "1 1 1 1", "  c None", " " };
+				*gdkpixmap = gdk_pixmap_create_from_xpm_d( gdk_get_default_root_window(), (GdkBitmap **)mask, NULL, (gchar **)dummy );
 				return false;
 			}
 		}
@@ -724,6 +728,12 @@ GtkWidget* new_pixmap( GtkWidget* widget, const char* filename ){
 	gdk_drawable_unref( mask );
 
 	return pixmap;
+}
+
+GtkWidget* new_image_icon(const char* filename) {
+    CString str = g_strBitmapsPath;
+    str += filename;
+    return gtk_image_new_from_file(str);
 }
 
 // =============================================================================
@@ -1512,14 +1522,14 @@ const char* file_dialog( void *parent, gboolean open, const char* title, const c
 											GTK_RESPONSE_CANCEL,
 											open ? GTK_STOCK_OPEN : GTK_STOCK_SAVE,
 											GTK_RESPONSE_ACCEPT,
-											NULL );
+											(char *) NULL );
 	gtk_file_chooser_set_current_folder( GTK_FILE_CHOOSER( file_sel ), new_path );
 	delete[] new_path;
 
 	// Setting the file chooser dialog to modal and centering it on the parent is done automatically.
 
 	if ( pattern != NULL ) {
-		GtkFileFilter *allTypesFilter = gtk_file_filter_new();
+		//GtkFileFilter *allTypesFilter = gtk_file_filter_new();
 		// http://www.gtkforums.com/viewtopic.php?p=6044
 		//gtk_file_filter_set_name( allTypesFilter, "All supported types" );
 		for ( int i = 0; i < typelist.GetNumTypes(); i++ ) {
@@ -1628,7 +1638,7 @@ char* WINAPI dir_dialog( void *parent, const char* title, const char* path ){
 						GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
 						GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
-						NULL );
+						(char *) NULL );
 
 	if ( path != NULL ) {
 		gtk_file_chooser_set_current_folder( GTK_FILE_CHOOSER( file_sel ), path );
@@ -1701,26 +1711,22 @@ bool WINAPI color_dialog( void *parent, float *color, const char* title ){
 }
 
 void OpenURL( const char *url ){
-	// let's put a little comment
-	Sys_Printf( "OpenURL: %s\n", url );
-#ifdef __linux__
-	// \todo FIXME: the way we open URLs on *nix should be improved. A script is good (see how I do on RTCW)
-	char command[2 * PATH_MAX];
-	snprintf( command, sizeof( command ), "%s/openurl.sh \"%s\" &", g_strAppPath.GetBuffer(), url );
-	if ( system( command ) != 0 ) {
-		gtk_MessageBox( g_pParentWnd->m_pWidget, "Failed to launch Netscape!" );
-	}
+#ifndef _WIN32
+    char command[2 * PATH_MAX];
 #endif
-#ifdef __APPLE__
-	char command[2 * PATH_MAX];
-	snprintf( command, sizeof( command ),
-			  "open \"%s\" &", url, url );
-	if ( system( command ) != 0 ) {
-		gtk_MessageBox( g_pParentWnd->m_pWidget, "Unable to launch browser!" );
-	}
-#endif
+
+    Sys_Printf( "OpenURL: %s\n", url );
 #ifdef _WIN32
-	ShellExecute( (HWND)GDK_WINDOW_HWND( g_pParentWnd->m_pWidget->window ), "open", url, NULL, NULL, SW_SHOW );
+    ShellExecute( (HWND)GDK_WINDOW_HWND( g_pParentWnd->m_pWidget->window ), "open", url, NULL, NULL, SW_SHOW );
+#else
+#   ifdef __APPLE__
+        snprintf(command, sizeof(command), "open '%s' &", url);
+#   else
+        snprintf(command, sizeof(command), "xdg-open '%s' &", url);
+#   endif
+    if (system(command) != 0) {
+         gtk_MessageBox( g_pParentWnd->m_pWidget, "Failed to launch web browser!" );
+    }
 #endif
 }
 

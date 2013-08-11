@@ -29,6 +29,9 @@
 #pragma warning(disable : 4136)     // X86
 #pragma warning(disable : 4051)     // ALPHA
 #pragma warning(disable : 4800)
+
+#define _CRT_SECURE_NO_WARNINGS
+
 #endif
 
 // for interfaces, we require main plugin header included
@@ -685,8 +688,7 @@ extern qboolean g_bShowAllShaders;
 //
 // texwindow.cpp
 //
-//++timo TODO: we can probably raise the MAX_TEXTUREDIRS limit?
-#define     MAX_TEXTUREDIRS 256
+#define     MAX_TEXTUREDIRS 1024
 
 extern CPtrArray g_lstSkinCache;
 qtexture_t *QERApp_LoadTextureRGBA( unsigned char* pPixels, int nWidth, int nHeight );
@@ -767,6 +769,7 @@ extern CString g_strModulesDir;
 
 extern CGameDescription *g_pGameDescription;
 extern CString g_strGameToolsPath;
+extern CString g_strExecutablesPath;
 
 extern CString g_strTempPath;
 extern PrefsDlg& g_PrefsDlg;

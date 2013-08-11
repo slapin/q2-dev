@@ -1054,46 +1054,6 @@ void WINAPI gluPerspective2( GLdouble fovy, GLdouble aspect, GLdouble zNear, GLd
 	qglFrustum( -y * aspect, y * aspect, -y, y, zNear, zFar );
 }
 
-static void* WINAPI ResizeImage( GLubyte* old_image, int srcw, int srch, int destw, int desth ){
-	int i, j;
-	float sx, sy;
-	GLubyte* new_image = (GLubyte *)malloc( destw * desth * 4 * sizeof( GLubyte ) );
-	if ( new_image == NULL ) {
-		return NULL;
-	}
-
-	if ( destw > 1 ) {
-		sx = (GLfloat) ( srcw - 1 ) / (GLfloat) ( destw - 1 );
-	}
-	else{
-		sx = (GLfloat) ( srcw - 1 );
-	}
-	if ( desth > 1 ) {
-		sy = (GLfloat) ( srch - 1 ) / (GLfloat) ( desth - 1 );
-	}
-	else{
-		sy = (GLfloat) ( srch - 1 );
-	}
-
-	for ( i = 0; i < desth; i++ )
-	{
-		GLint ii = (GLint)( i * sy );
-		for ( j = 0; j < destw; j++ )
-		{
-			GLint jj = (GLint)( j * sx );
-			GLubyte *src = old_image + ( ii * srcw + jj ) * 4;
-			GLubyte *dst = new_image + ( i * destw + j ) * 4;
-
-			*dst++ = *src++;
-			*dst++ = *src++;
-			*dst++ = *src++;
-			*dst++ = *src++;
-		}
-	}
-
-	return new_image;
-}
-
 #define CEILING( A, B )  ( ( A ) % ( B ) == 0 ? ( A ) / ( B ) : ( A ) / (B)+1 )
 
 typedef struct glu_error_struct
@@ -1118,10 +1078,10 @@ const GLubyte* WINAPI gluErrorString( GLenum errCode ){
 	for ( search = 0; glu_errlist[search].errstr; search++ )
 	{
 		if ( errCode == glu_errlist[search].errnum ) {
-			return (const char *)glu_errlist[search].errstr;
+			return (GLubyte *) glu_errlist[search].errstr;
 		}
 	} //end for
-	return "Unknown error";
+	return (GLubyte *) "Unknown error";
 }
 
 #ifdef ATIHACK_812
@@ -1681,7 +1641,6 @@ int QGL_Init( const char *dllname, const char* gluname ){
 	qglXWaitGL                   = safe_dlsym( g_hGLDLL, "glXWaitGL" );
 	qglXWaitX                    = safe_dlsym( g_hGLDLL, "glXWaitX" );
 	qglXUseXFont                 = safe_dlsym( g_hGLDLL, "glXUseXFont" );
-//  qglXGetProcAddressARB        = dlsym (g_hGLDLL, "glXGetProcAddressARB"); // Utah-GLX fix
 #endif
 
 	qglPointParameterfEXT = 0;
@@ -1690,7 +1649,6 @@ int QGL_Init( const char *dllname, const char* gluname ){
 	qglSelectTextureSGIS = 0;
 	qglMTexCoord2fSGIS = 0;
 
-	// texture compression
 	Sys_Printf( "Done.\n" );
 
 #ifdef ATIHACK_812
@@ -1719,11 +1677,9 @@ int GL_ExtensionSupported( const char *extension ){
 	}
 
 	extensions = qglGetString( GL_EXTENSIONS );
-#ifndef __APPLE__
 	if ( !extensions ) {
 		return 0;
 	}
-#endif
 
 	// It takes a bit of care to be fool-proof about parsing the
 	// OpenGL extensions string. Don't be fooled by sub-strings, etc.

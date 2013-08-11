@@ -212,10 +212,7 @@ typedef unsigned char byte;
 
 #define EQUAL_EPSILON   0.001
 
-typedef int qhandle_t;
-typedef int sfxHandle_t;
-typedef int fileHandle_t;
-typedef int clipHandle_t;
+typedef void * fileHandle_t;
 
 typedef enum {
 	INVALID_JOINT = -1
@@ -642,7 +639,7 @@ float   BigFloat( float l );
 float   LittleFloat( float l );
 
 void    Swap_Init( void );
-char    * QDECL va( char *format, ... );
+char    * QDECL va( const char *format, ... );
 
 #ifdef __cplusplus
 }

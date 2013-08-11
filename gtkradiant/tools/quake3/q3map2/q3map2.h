@@ -36,7 +36,7 @@
 
 /* version */
 #define Q3MAP_VERSION   "2.5.17"
-#define Q3MAP_MOTD      "Last one turns the lights off"
+#define Q3MAP_MOTD      "We're still here"
 
 
 /* -------------------------------------------------------------------------------
@@ -1760,6 +1760,11 @@ int                         ImportLightmapsMain( int argc, char **argv );
 void                        SetupSurfaceLightmaps( void );
 void                        StitchSurfaceLightmaps( void );
 void                        StoreSurfaceLightmaps( void );
+
+
+/* exportents.c */
+void                        ExportEntities( void );
+int                         ExportEntitiesMain( int argc, char **argv );
 
 
 /* image.c */

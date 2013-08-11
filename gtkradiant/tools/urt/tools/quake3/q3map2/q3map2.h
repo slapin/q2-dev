@@ -59,6 +59,7 @@
 
 #ifdef WIN32
 	#include <windows.h>
+	#define _CRT_SECURE_NO_WARNINGS
 #endif
 
 
@@ -1746,6 +1747,11 @@ int                         ImportLightmapsMain( int argc, char **argv );
 void                        SetupSurfaceLightmaps( void );
 void                        StitchSurfaceLightmaps( void );
 void                        StoreSurfaceLightmaps( void );
+
+
+/* exportents.c */
+void                        ExportEntities( void );
+int                         ExportEntitiesMain( int argc, char **argv );
 
 
 /* image.c */

@@ -44,11 +44,11 @@ const int RAD_PRESS   = 0x08;
 
 struct SCommandInfo
 {
-	char* m_strCommand;
+	const char* m_strCommand;
 	unsigned int m_nKey;
 	unsigned int m_nModifiers;
 	unsigned int m_nCommand;
-	char* m_strMenu;
+	const char* m_strMenu;
 };
 
 struct SKeyInfo
@@ -427,6 +427,8 @@ struct SKeyInfo
 #define ID_TEXTUREWINDOW_SCALEUP        40321
 #define ID_TEXTUREWINDOW_SCALEDOWN      40322
 
+#define ID_TOGGLE_DETAIL				40323
+
 class CSynapseClientRadiant : public CSynapseClient
 {
 public:
@@ -695,6 +697,7 @@ void OnHelp();
 void OnHelpLinks();
 void OnHelpBugreport();
 void OnViewClipper();
+void OnToggleDetail();
 void OnCameraAngledown();
 void OnCameraAngleup();
 void OnCameraBack( bool keydown );

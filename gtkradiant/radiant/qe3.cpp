@@ -441,8 +441,10 @@ void ReplaceTemplates( char* w, const char* r ){
 	const char *__ENGINEPATH = "TEMPLATEenginepath";
 	const char *__USERHOMEPATH = "TEMPLATEuserhomepath";
 	const char *__TOOLSPATH = "TEMPLATEtoolspath";
+	const char *__EXECPATH = "TEMPLATEexecpath";
 	const char *__BASEDIR = "TEMPLATEbasedir";
 	const char *__APPPATH = "TEMPLATEapppath";
+	const char *__Q3MAP2 = "TEMPLATEq3map2";
 
 	// iterate through string r
 	while ( *r != '\0' )
@@ -465,9 +467,25 @@ void ReplaceTemplates( char* w, const char* r ){
 				r += strlen( __TOOLSPATH ) + 1;
 				p = g_strGameToolsPath.GetBuffer();
 			}
+			else if ( strncmp( r + 1, __EXECPATH, strlen( __EXECPATH ) ) == 0 ) {
+				r += strlen( __EXECPATH ) + 1;
+				p = g_strExecutablesPath.GetBuffer();
+			}
 			else if ( strncmp( r + 1, __APPPATH, strlen( __APPPATH ) ) == 0 ) {
 				r += strlen( __APPPATH ) + 1;
 				p = g_strAppPath.GetBuffer();
+			}
+			else if ( strncmp( r + 1, __Q3MAP2, strlen( __Q3MAP2 ) ) == 0 ) {
+				r += strlen( __Q3MAP2 ) + 1;
+				// see https://github.com/TTimo/GtkRadiant/issues/116
+#ifdef _WIN32
+				if ( g_PrefsDlg.m_bx64q3map2 ) {
+				  p = "x64/q3map2";
+				} else
+#endif
+				{
+				  p = "q3map2";
+				}
 			}
 			else
 			{
@@ -1083,7 +1101,7 @@ char    *argv[MAX_NUM_ARGVS];
  */
 void ParseCommandLine( char *lpCmdLine ){
 	argc = 1;
-	argv[0] = "programname";
+	argv[0] = const_cast<char*>("programname");
 
 	while ( *lpCmdLine && ( argc < MAX_NUM_ARGVS ) )
 	{
@@ -1453,8 +1471,7 @@ qboolean ConfirmModified() {
 
 	int saveChoice = gtk_MessageBoxNew( g_pParentWnd->m_pWidget, 
 						"The current map has changed since it was last saved.\n"
-						"Would you like to save before continuing?", 
-						"Exit Radiant", 
+						"Would you like to save before continuing?", "Radiant", 
 						MB_YESNOCANCEL | MB_ICONQUESTION );
 
 	switch( saveChoice ) {
@@ -1742,7 +1759,7 @@ extern "C" void Sys_FPrintf_VA( int level, const char *text, va_list args ) {
 				tag = standard_tag;
 				break;
 			}
-			gtk_text_buffer_insert_with_tags( buffer, &iter, buf, length, tag, NULL );
+			gtk_text_buffer_insert_with_tags( buffer, &iter, buf, length, tag, (char *) NULL );
 
 			gtk_text_view_scroll_mark_onscreen( GTK_TEXT_VIEW( g_qeglobals_gui.d_edit ), end );
 

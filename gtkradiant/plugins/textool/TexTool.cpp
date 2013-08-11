@@ -37,7 +37,7 @@ static void dialog_button_callback( GtkWidget *widget, gpointer data ){
 	ret = (int*)g_object_get_data( G_OBJECT( parent ), "ret" );
 
 	*loop = 0;
-	*ret = (int)data;
+	*ret = (intptr_t) data;
 }
 
 static gint dialog_delete_callback( GtkWidget *widget, GdkEvent* event, gpointer data ){
@@ -243,7 +243,7 @@ const char* QERPlug_Init( void* hApp, void *pWidget ){
 	GtkWidget* pMainWidget = static_cast<GtkWidget*>( pWidget );
 
 	g_pMainWnd = pMainWidget;
-	size = (int)( (winding_t *)0 )->points[MAX_POINTS_ON_WINDING];
+	size = (intptr_t)( (winding_t *)0 )->points[MAX_POINTS_ON_WINDING];
 	g_pSelectedFaceWinding = (winding_t *)malloc( size );
 	memset( g_pSelectedFaceWinding, 0, size );
 	return "Texture tools for Radiant";
@@ -828,7 +828,7 @@ extern "C" void QERPlug_Dispatch( const char* p, vec3_t vMin, vec3_t vMax, bool 
 		if ( !g_pToolWnd ) {
 			g_pToolWnd = g_UITable.m_pfnCreateGLWindow();
 			g_pToolWnd->setSizeParm( 300,300 );
-			g_pToolWnd->setName( "TexTool" );
+			g_pToolWnd->setName( const_cast<char*>("TexTool") );
 			// g_Listener is a static class, we need to bump the refCount to avoid premature release problems
 			g_Listen.IncRef();
 			// setListener will incRef on the listener too

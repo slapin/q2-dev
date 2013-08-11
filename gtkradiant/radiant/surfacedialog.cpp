@@ -67,7 +67,7 @@ static void OnTest( GtkWidget *widget, gpointer data ){
 		Sys_FPrintf( SYS_WRN, "Expected single face selection\n" );
 		return;
 	}
-	brush_t *b = reinterpret_cast<brush_t*>( g_ptrSelectedFaceBrushes.GetAt( 0 ) );
+	//brush_t *b = reinterpret_cast<brush_t*>( g_ptrSelectedFaceBrushes.GetAt( 0 ) );
 	face_t *selFace = reinterpret_cast<face_t*>( g_ptrSelectedFaces.GetAt( 0 ) );
 	// get the ST axis base for the face
 	vec3_t texS,texT;
@@ -273,25 +273,23 @@ static void OnCancel( GtkWidget *widget, gpointer data ){
 	g_dlgSurface.HideDlg();
 }
 
-static gint OnDialogKey( GtkWidget* widget, GdkEventKey* event, gpointer data ){
-	if ( g_surfwin ) {
-		if ( event->keyval == GDK_Return ) {
-			if ( g_dlgSurface.m_bEditingTextureWidget ) {
-				OnApply( NULL, NULL );
-				g_dlgSurface.m_bEditingTextureWidget = false;
-			}
-			else
-			{
-				OnDone( NULL, NULL );
-			}
-			return TRUE;
-		}
-		if ( event->keyval == GDK_Escape ) {
-			OnCancel( NULL, NULL );
-			return TRUE;
-		}
-	}
-	return FALSE;
+static gint OnDialogKey( GtkWidget* widget, GdkEventKey* event, gpointer data ) {
+  if ( g_surfwin ) {
+    if ( event->keyval == GDK_Return ) {
+      if ( g_dlgSurface.m_bEditingTextureWidget ) {
+        OnApply( NULL, NULL );
+        g_dlgSurface.m_bEditingTextureWidget = false;
+      } else {
+        OnDone( NULL, NULL );
+      }
+      return TRUE;
+    }
+    if ( event->keyval == GDK_Escape ) {
+      OnCancel( NULL, NULL );
+      return TRUE;
+    }
+  }
+  return FALSE;
 }
 
 // the widget can be one of hshift, vshift, hscale, vscale, rotate
@@ -499,7 +497,7 @@ void SurfaceDlg::InitDefaultIncrement( texdef_t *tex ){
 	tex->rotate = 10;
 }
 
-void SurfaceDlg::BuildDialog(){
+void SurfaceDlg::BuildDialog() {
 	GtkWidget *dlg, *vbox, *hbox2, *frame, *table, *label;
 	GtkWidget *button, *entry, *spin;
 
@@ -547,7 +545,7 @@ void SurfaceDlg::BuildDialog(){
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -8192, 8192, 2, 8, 8 ) ), 0, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -8192, 8192, 2, 8, 0 ) ), 0, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "hshift", spin );
 	gtk_signal_connect( GTK_OBJECT( gtk_spin_button_get_adjustment( GTK_SPIN_BUTTON( spin ) ) ), "value_changed",
 						GTK_SIGNAL_FUNC( OnUpdate ), NULL );
@@ -581,7 +579,7 @@ void SurfaceDlg::BuildDialog(){
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -8192, 8192, 2, 8, 8 ) ), 0, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -8192, 8192, 2, 8, 0 ) ), 0, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "vshift", spin );
 	gtk_signal_connect( GTK_OBJECT( gtk_spin_button_get_adjustment( GTK_SPIN_BUTTON( spin ) ) ), "value_changed",
 						GTK_SIGNAL_FUNC( OnUpdate ), NULL );
@@ -615,7 +613,7 @@ void SurfaceDlg::BuildDialog(){
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -1000, 1000, 1, 10, 10 ) ), 0, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -1000, 1000, 1, 10, 0 ) ), 0, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "hscale", spin );
 	gtk_signal_connect( GTK_OBJECT( gtk_spin_button_get_adjustment( GTK_SPIN_BUTTON( spin ) ) ), "value_changed",
 						GTK_SIGNAL_FUNC( OnUpdate ), NULL );
@@ -649,7 +647,7 @@ void SurfaceDlg::BuildDialog(){
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -1000, 1000, 1, 10, 10 ) ), 0, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -1000, 1000, 1, 10, 0 ) ), 0, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "vscale", spin );
 	gtk_signal_connect( GTK_OBJECT( gtk_spin_button_get_adjustment( GTK_SPIN_BUTTON( spin ) ) ), "value_changed",
 						GTK_SIGNAL_FUNC( OnUpdate ), NULL );
@@ -683,7 +681,7 @@ void SurfaceDlg::BuildDialog(){
 					  (GtkAttachOptions) ( GTK_FILL ),
 					  (GtkAttachOptions) ( 0 ), 0, 0 );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -360, 360, 1, 10, 10 ) ), 1, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 0, -360, 360, 1, 10, 0 ) ), 1, 0 );
 	g_object_set_data( G_OBJECT( dlg ), "rotate", spin );
 	gtk_signal_connect( GTK_OBJECT( gtk_spin_button_get_adjustment( GTK_SPIN_BUTTON( spin ) ) ), "value_changed",
 						GTK_SIGNAL_FUNC( OnUpdate ), NULL );
@@ -809,7 +807,7 @@ void SurfaceDlg::BuildDialog(){
 						GTK_SIGNAL_FUNC( OnBtnPatchFit ), NULL );
 	gtk_widget_set_usize( button, 60, -2 );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 1, 1, 32, 1, 10, 10 ) ), 1, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 1, 1, 32, 1, 10, 0 ) ), 1, 0 );
 	gtk_widget_show( spin );
 	gtk_table_attach( GTK_TABLE( table ), spin, 2, 3, 1, 2,
 					  (GtkAttachOptions) ( GTK_EXPAND | GTK_FILL ),
@@ -817,7 +815,7 @@ void SurfaceDlg::BuildDialog(){
 	gtk_widget_set_usize( spin, 60, -2 );
 	AddDialogData( spin, &m_nWidth, DLG_SPIN_INT );
 
-	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 1, 1, 32, 1, 10, 10 ) ), 1, 0 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT( gtk_adjustment_new( 1, 1, 32, 1, 10, 0 ) ), 1, 0 );
 	gtk_widget_show( spin );
 	gtk_table_attach( GTK_TABLE( table ), spin, 3, 4, 1, 2,
 					  (GtkAttachOptions) ( GTK_EXPAND | GTK_FILL ),

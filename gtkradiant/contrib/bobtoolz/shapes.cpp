@@ -319,7 +319,7 @@ void Build_StairStep_Wedge( int dir, vec3_t min, vec3_t max, const char* mainTex
 //-----------------------------------------------------------------------------------
 
 // internal use only, to get a box without finishing construction
-brush_t* Build_Get_BoundingCube_Selective( vec3_t min, vec3_t max, char* texture, bool* useFaces ){
+brush_t* Build_Get_BoundingCube_Selective( vec3_t min, vec3_t max, const char* texture, bool* useFaces ){
 	brush_t* newBrush = (brush_t*)g_FuncTable.m_pfnCreateBrushHandle();
 
 	//----- Build Outer Bounds ---------
@@ -621,7 +621,7 @@ void MakeBevel( vec3_t vMin, vec3_t vMax ){
 	}
 
 
-	g_FuncTable.m_pfnCommitPatchHandleToMap( nIndex, pm, "textures/common/caulk" );
+	g_FuncTable.m_pfnCommitPatchHandleToMap( nIndex, pm, (char *)"textures/common/caulk" );
 }
 
 void BuildCornerStairs( vec3_t vMin, vec3_t vMax, int nSteps, const char* mainTexture, const char* riserTex ){

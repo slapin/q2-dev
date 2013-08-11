@@ -71,8 +71,9 @@ int CALLBACK WinMain(
 
 #endif
 
-// =============================================================================
-// Splash screen
+//============================================================================
+// Splash Screen
+//============================================================================
 
 // get rid of it when debugging
 #if defined ( _DEBUG )
@@ -81,7 +82,8 @@ int CALLBACK WinMain(
 
 static GtkWidget *splash_screen;
 
-// called based on a timer, or in particular cases when we don't want to keep it around
+// called based on a timer, or in particular cases when we don't want to 
+// keep it around
 gint try_destroy_splash( gpointer data ){
 	if ( splash_screen ) {
 		gtk_widget_destroy( splash_screen );
@@ -90,58 +92,27 @@ gint try_destroy_splash( gpointer data ){
 	return FALSE;
 }
 
-static void create_splash(){
-	GtkWidget *alert_frame, *alert_frame1, *pixmap;
+#ifndef SKIP_SPLASH
+static void create_splash() {
+    splash_screen = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(splash_screen), "Splash Screen");
+    gtk_container_set_border_width(GTK_CONTAINER(splash_screen), 0);
+    gtk_widget_set_size_request(splash_screen, 640, 384);
+    gtk_window_set_keep_above(GTK_WINDOW(splash_screen), TRUE);
+    gtk_window_set_decorated(GTK_WINDOW(splash_screen), FALSE);
+    gtk_window_set_position(GTK_WINDOW(splash_screen), GTK_WIN_POS_CENTER);
+    gtk_window_set_resizable(GTK_WINDOW(splash_screen), FALSE);
 
-	splash_screen = gtk_window_new( GTK_WINDOW_POPUP );
-	gtk_window_position( GTK_WINDOW( splash_screen ), GTK_WIN_POS_CENTER );
-	gtk_widget_realize( splash_screen );
+    CString str = g_strBitmapsPath;
+    str += "splash.png";
+    GtkWidget *image = gtk_image_new_from_file(str.GetBuffer());
+    gtk_container_add(GTK_CONTAINER(splash_screen), image);
+    gtk_widget_show_all(splash_screen);
 
-	alert_frame1 = gtk_frame_new( NULL );
-	gtk_widget_show( alert_frame1 );
-	gtk_container_add( GTK_CONTAINER( splash_screen ), alert_frame1 );
-	gtk_frame_set_shadow_type( GTK_FRAME( alert_frame1 ), GTK_SHADOW_OUT );
-
-	alert_frame = gtk_frame_new( NULL );
-	gtk_widget_show( alert_frame );
-
-	gtk_container_add( GTK_CONTAINER( alert_frame1 ), alert_frame );
-	gtk_frame_set_shadow_type( GTK_FRAME( alert_frame ), GTK_SHADOW_IN );
-	gtk_container_border_width( GTK_CONTAINER( alert_frame ), 3 );
-
-	pixmap = gtk_preview_new( GTK_PREVIEW_COLOR );
-	gtk_widget_show( pixmap );
-	gtk_container_add( GTK_CONTAINER( alert_frame ), pixmap );
-
-	CString str;
-	guint16 width, height;
-	unsigned char *buf;
-
-	str = g_strGameToolsPath;
-	str += "bitmaps/splash.bmp";
-
-	unsigned char* load_bitmap_file( const char* filename, guint16* width, guint16* height );
-	buf = load_bitmap_file( str.GetBuffer(), &width, &height );
-
-	if ( !buf ) {
-		str = g_strBitmapsPath;
-		str += "splash.bmp";
-
-		buf = load_bitmap_file( str.GetBuffer(), &width, &height );
-	}
-
-	if ( buf ) {
-		GtkPreview *preview = GTK_PREVIEW( pixmap );
-		gtk_preview_size( preview, width, height );
-		for ( int y = 0; y < height; y++ )
-			gtk_preview_draw_row( preview, buf + y * width * 3, 0, y, width );
-	}
-
-	gtk_widget_show_all( splash_screen );
-
-	while ( gtk_events_pending() )
+	while(gtk_events_pending())
 		gtk_main_iteration();
 }
+#endif
 
 // =============================================================================
 // Loki stuff
@@ -253,7 +224,7 @@ void loki_initpaths( char *argv0 ){
 
 	home = loki_gethomedir();
 	if ( home == NULL ) {
-		home = ".";
+		home = const_cast<char*>(".");
 	}
 
 	if ( *game_name == 0 ) { /* Game name defaults to argv[0] */
@@ -443,9 +414,8 @@ void error_redirect( const gchar *domain, GLogLevelFlags log_level, const gchar 
 #define LOCALEDIR "lang"
 
 int main( int argc, char* argv[] ) {
-	char *libgl, *ptr;
+	const char *libgl;
 	int i, j, k;
-
 
 	/*
 	   Rambetter on Sat Nov 13, 2010:
@@ -491,19 +461,19 @@ int main( int argc, char* argv[] ) {
 	   _after_ gtk_init(), I chose to fix this problem via environment variable.  I think it's cleaner
 	   that way.
 	 */
-	putenv( "LC_NUMERIC=C" );
+	putenv( (char *)"LC_NUMERIC=C" );
 
-#ifdef _WIN32
-	libgl = "opengl32.dll";
-#endif
-
-#if defined ( __linux__ )
-	libgl = "libGL.so.1";
-#endif
-
-#ifdef __APPLE__
-	libgl = "/usr/X11R6/lib/libGL.1.dylib";
-#endif
+	// Use the same environment variable for resolving libGL as libgtkglext does.
+	libgl = getenv("GDK_GL_LIBGL_PATH");
+	if ( libgl == NULL ) {
+		#if defined ( _WIN32 )
+			libgl = "opengl32.dll";
+		#elif defined ( __linux__ )
+			libgl = "libGL.so.1";
+		#elif defined ( __APPLE__ )
+			libgl = "/opt/local/lib/libGL.dylib";
+		#endif
+	}
 
 #if defined ( __linux__ ) || defined ( __APPLE__ )
 	// Give away unnecessary root privileges.
@@ -529,10 +499,6 @@ int main( int argc, char* argv[] ) {
 	// TODO: Find a better place to call this.
 	gtk_glwidget_create_font();
 
-	if ( ( ptr = getenv( "Q3R_LIBGL" ) ) != NULL ) {
-		libgl = ptr;
-	}
-
 	for ( i = 1; i < argc; i++ )
 	{
 		char* param = argv[i];
@@ -540,12 +506,7 @@ int main( int argc, char* argv[] ) {
 		if ( param[0] == '-' && param[1] == '-' ) {
 			param += 2;
 
-			if ( ( strcmp( param, "libgl" ) == 0 ) && ( i != argc ) ) {
-				libgl = argv[i + 1];
-				argv[i] = argv[i + 1] = NULL;
-				i++;
-			}
-			else if ( strcmp( param, "builddefs" ) == 0 ) {
+			if ( strcmp( param, "builddefs" ) == 0 ) {
 				g_bBuildList = true;
 				argv[i] = NULL;
 			}
@@ -1199,7 +1160,7 @@ void RunBsp( char *command ){
 			Error( "CreateProcess failed" );
 			break;
 		case 0:
-			execlp( batpath, batpath, NULL );
+			execlp( batpath, batpath, (char *) NULL );
 			printf( "execlp error !" );
 			_exit( 0 );
 			break;

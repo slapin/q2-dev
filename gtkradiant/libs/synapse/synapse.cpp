@@ -97,6 +97,7 @@ CSynapseServer::CSynapseServer(){
 CSynapseServer::~CSynapseServer(){
 	if ( m_api_name ) {
 		xmlFree( m_api_name );
+                m_api_name = NULL;
 	}
 	if ( m_content ) {
 		g_free( m_content );
@@ -593,7 +594,7 @@ bool CSynapseServer::DoResolve( CSynapseClient *pClient ){
 			// the stack didn't change last loop
 			iCurrent++;
 			if ( iCurrent == mStack.end() ) {
-				Syn_Printf( "ERROR: CSynapseServer::Resolve, failed to resolve\n" );
+				Syn_Printf( "ERROR: CSynapseServer::Resolve, failed to resolve config for %s\n", pClient->GetName() );
 				DumpStack();
 				return false;
 			}
@@ -657,7 +658,7 @@ void CSynapseServer::DumpStack(){
 	for ( iCurrent = mStack.begin(); iCurrent != mStack.end(); iCurrent++ )
 	{
 		APIDescriptor_t*pAPI = *iCurrent;
-		Syn_Printf( "interface %s %p '%s' '%s'\n", APITypeName[pAPI->mType], pAPI, pAPI->major_name, pAPI->minor_name );
+		Syn_Printf( " interface %s %p '%s' '%s'\n", APITypeName[pAPI->mType], pAPI, pAPI->major_name, pAPI->minor_name );
 	}
 }
 
@@ -713,6 +714,7 @@ bool CSynapseServer::GetNextConfig( char **api_name, char **minor ){
 		if ( mpFocusedNode->type == XML_ELEMENT_NODE && !strcmp( (const char *)mpFocusedNode->name, "api" ) ) {
 			if ( m_api_name ) {
 				xmlFree( m_api_name );
+                                m_api_name = NULL;
 			}
 			m_api_name = xmlGetProp( mpFocusedNode, (const xmlChar *)"name" );
 			*api_name = (char *)m_api_name;
@@ -736,6 +738,7 @@ bool CSynapseServer::GetConfigForAPI( const char *api, char **minor ) {
 		if ( pNode->type == XML_ELEMENT_NODE && !strcmp( (const char *)pNode->name, "api" ) ) {
 			if ( m_api_name ) {
 				xmlFree( m_api_name );
+                                m_api_name = NULL;
 			}
 			m_api_name = xmlGetProp( pNode, (const xmlChar *)"name" );
 			if ( !strcmp( (const char *)m_api_name, api ) ) {
@@ -786,8 +789,7 @@ void CSynapseClient::Shutdown(){
 		APIDescriptor_t *pAPI = *iAPI;
 		if ( pAPI->mRefCount != 0 ) {
 			Syn_Printf( "WARNING: ~CSynapseClient '%s' has non-zero ref count for interface '%s' '%s'\n", GetInfo(), pAPI->major_name, pAPI->minor_name );
-		}
-		else{
+		} else {
 			delete pAPI;
 		}
 		*iAPI = NULL;

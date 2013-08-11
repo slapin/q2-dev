@@ -75,9 +75,6 @@ static void OnSelchangeComboColRow( GtkWidget *widget, gpointer data ){
 	if ( !g_PatchDialog.m_bListenChanged ) {
 		return;
 	}
-#ifdef DBG_PI
-	Sys_Printf( "OnSelchangeComboColRow\n" );
-#endif
 	// retrieve the current m_nRow and m_nCol, other params are not relevant
 	// (NOTE: UpdateData has a mechanism to avoid inifinite looping)
 	g_PatchDialog.UpdateData( TRUE );
@@ -205,9 +202,6 @@ static void OnSpinChanged( GtkAdjustment *adj, gpointer data ){
 
 	adj->value = 0;
 
-#ifdef DBG_PI
-	Sys_Printf( "Patch_SetTextureInfo: %g %g %g %g %g\n", td.shift[0], td.shift[1],td.scale[0],td.scale[1],td.rotate );
-#endif
 	// will scale shift rotate the patch accordingly
 	Patch_SetTextureInfo( &td );
 	// update the point-by-point view
@@ -216,9 +210,6 @@ static void OnSpinChanged( GtkAdjustment *adj, gpointer data ){
 }
 
 static gint OnDialogKey( GtkWidget* widget, GdkEventKey* event, gpointer data ){
-#ifdef DBG_PI
-	Sys_Printf( "OnDialogKey\n" );
-#endif
 	if ( event->keyval == GDK_Return ) {
 		OnApply( NULL, NULL );
 		return TRUE;
@@ -518,7 +509,7 @@ void PatchDialog::BuildDialog(){
 	sprintf( buf, "%g", l_pPIIncrement->shift[0] );
 	gtk_entry_set_text( GTK_ENTRY( entry ), buf );
 
-	adj = gtk_adjustment_new( 0, -8192, 8192, 1, 1, 1 );
+	adj = gtk_adjustment_new( 0, -8192, 8192, 1, 1, 0 );
 	gtk_signal_connect( adj, "value_changed", GTK_SIGNAL_FUNC( OnSpinChanged ), entry );
 	g_object_set_data( G_OBJECT( m_pWidget ), "hshift_adj", adj );
 
@@ -538,7 +529,7 @@ void PatchDialog::BuildDialog(){
 	sprintf( buf, "%g", l_pPIIncrement->shift[1] );
 	gtk_entry_set_text( GTK_ENTRY( entry ), buf );
 
-	adj = gtk_adjustment_new( 0, -8192, 8192, 1, 1, 1 );
+	adj = gtk_adjustment_new( 0, -8192, 8192, 1, 1, 0 );
 	gtk_signal_connect( adj, "value_changed", GTK_SIGNAL_FUNC( OnSpinChanged ), entry );
 	g_object_set_data( G_OBJECT( m_pWidget ), "vshift_adj", adj );
 
@@ -558,7 +549,7 @@ void PatchDialog::BuildDialog(){
 	sprintf( buf, "%g", l_pPIIncrement->scale[0] );
 	gtk_entry_set_text( GTK_ENTRY( entry ), buf );
 
-	adj = gtk_adjustment_new( 0, -1000, 1000, 1, 1, 1 );
+	adj = gtk_adjustment_new( 0, -1000, 1000, 1, 1, 0 );
 	gtk_signal_connect( adj, "value_changed", GTK_SIGNAL_FUNC( OnSpinChanged ), entry );
 	g_object_set_data( G_OBJECT( m_pWidget ), "hscale_adj", adj );
 
@@ -578,7 +569,7 @@ void PatchDialog::BuildDialog(){
 	sprintf( buf, "%g", l_pPIIncrement->scale[1] );
 	gtk_entry_set_text( GTK_ENTRY( entry ), buf );
 
-	adj = gtk_adjustment_new( 0, -1000, 1000, 1, 1, 1 );
+	adj = gtk_adjustment_new( 0, -1000, 1000, 1, 1, 0 );
 	gtk_signal_connect( adj, "value_changed", GTK_SIGNAL_FUNC( OnSpinChanged ), entry );
 	g_object_set_data( G_OBJECT( m_pWidget ), "vscale_adj", adj );
 
@@ -598,7 +589,7 @@ void PatchDialog::BuildDialog(){
 	sprintf( buf, "%g", l_pPIIncrement->rotate );
 	gtk_entry_set_text( GTK_ENTRY( entry ), buf );
 
-	adj = gtk_adjustment_new( 0, -1000, 1000, 1, 1, 1 ); // NOTE: Arnout - this really should be 360 but can't change it anymore as it could break existing maps
+	adj = gtk_adjustment_new( 0, -1000, 1000, 1, 1, 0 ); // NOTE: Arnout - this really should be 360 but can't change it anymore as it could break existing maps
 	gtk_signal_connect( adj, "value_changed", GTK_SIGNAL_FUNC( OnSpinChanged ), entry );
 	g_object_set_data( G_OBJECT( m_pWidget ), "rotate_adj", adj );
 
