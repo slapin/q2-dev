@@ -1,7 +1,9 @@
 // $load pics/colormap.pcx
 // $mippal
-$load textures/misc/005.pcx
+$load pics/palette.pcx
 $mippal
+$colormap colormap
+$inverse16table
 $load textures/misc/005.pcx
 $mip misc/005 0 0 512 512
 $load textures/common/caulk.pcx
@@ -12,7 +14,36 @@ $load textures/misc/IxirGround.pcx
 $mip misc/IxirGround 0 0 256 256
 $load conchars.pcx
 $grab conchars 0 0 256 256
-$colormap colormap
+$load textures/house/floor1.pcx
+$mipdir house
+$mip floor1 0 0 1024 1024
+$load textures/house/floor2.pcx
+$mip floor2 0 0 1024 1024
+$load textures/house/floor3.pcx
+$mip floor3 0 0 1024 1024
+$load textures/house/floor4.pcx
+$mip floor4 0 0 1024 1024
+$load textures/house/floor5.pcx
+$mip floor5 0 0 1024 1024
+$load textures/house/bricks1.pcx
+$mip bricks1 0 0 1024 1024
+$load textures/house/bricks2.pcx
+$mip bricks2 0 0 1024 1024
+$load textures/house/bricks3.pcx
+$mip bricks3 0 0 1024 1024
+$load textures/house/metal1.pcx
+$mip metal1 0 0 1024 1024
+$load textures/house/metal2.pcx
+$mip metal2 0 0 1024 1024
+$load textures/house/roof1.pcx
+$mip roof1 0 0 1024 1024
+$load textures/house/stone1.pcx
+$mip stone1 0 0 1024 1024
+$load textures/house/stone2.pcx
+$mip stone2 0 0 1024 1024
+$load textures/house/stone3.pcx
+$mip stone3 0 0 1024 1024
+$environment sky1
 
 $cd weapons/bat
 $skinsize 512 512
