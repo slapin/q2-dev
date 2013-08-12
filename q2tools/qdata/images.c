@@ -715,9 +715,9 @@ Cmd_Environment
 void Cmd_Environment (void)
 {
 	char	name[1024];
-	int		i, x, y;
+	int		i, x, y, w, h;
 	byte	image[256*256];
-	byte	*tga;
+	byte	*tga = NULL;
 
 	GetToken (false);
 
@@ -743,7 +743,12 @@ void Cmd_Environment (void)
 	{
 		sprintf (name, "%senv/%s%s.tga", gamedir, token, suf[i]);
 		printf ("loading %s...\n", name);
-		LoadTGA (name, &tga, NULL, NULL);
+		LoadTGA (name, &tga, &w, &h);
+		if (w != 256 || h != 256) {
+			if (tga)
+				free(tga);
+			Error("Not 256x256 TGA!\n");
+		}
 
 		for (y=0 ; y<256 ; y++)
 		{

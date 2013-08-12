@@ -574,8 +574,7 @@ void Load256Image (char *name, byte **pixels, byte **palette,
 	char	ext[128];
 
 	ExtractFileExtension (name, ext);
-	if (!Q_strcasecmp (ext, "lbm"))
-	{
+	if (!Q_strcasecmp (ext, "lbm")) {
 		LoadLBM (name, pixels, palette);
 		if (width)
 			*width = bmhd.w;
@@ -583,9 +582,7 @@ void Load256Image (char *name, byte **pixels, byte **palette,
 			*height = bmhd.h;
 	}
 	else if (!Q_strcasecmp (ext, "pcx"))
-	{
 		LoadPCX (name, pixels, palette, width, height);
-	}
 	else
 		Error ("%s doesn't have a known image extension", name);
 }
