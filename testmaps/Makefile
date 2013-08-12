@@ -25,8 +25,11 @@ BSPS = $(MAPS:.map=.bsp)
 
 all: $(BSPS) $(GENERATED_PICS)
 
-$(WALS): $(PICS)
+$(WALS): $(PICS) pics/palette.pcx
 	$(QDATA) -obj -gamedir $(CURDIR) omg.qgr
+
+pics/palette.pcx:
+	convert textures/*/*.pcx textures/*/*.tga +append -colors 256 -unique-colors $@
 
 %.pcx: %.tga
 	convert $*.tga -colors 250 $*.pcx
@@ -34,7 +37,7 @@ $(WALS): $(PICS)
 %.bsp: %.map
 	$(QBSP) $<
 	$(QVIS) $*
-	$(QRAD) -gamedir $(CURDIR) -ambient 0.2 -scale 1.0 -direct 0.01 -entity 1.3 -maxlight 1.2 $*
+	$(QRAD) -gamedir $(CURDIR) -threads 6 -ambient 0.2 -scale 1.0 -direct 0.01 -entity 1.3 -maxlight 1.2 $*
 clean:
 	-rm -f textures/misc/*.pcx
 	-rm -f textures/common/*.pcx
@@ -47,6 +50,12 @@ clean:
 
 maps/testmap.bsp: maps/testmap.map $(WALS)
 maps/wicked.bsp: maps/wicked.map $(WALS)
+
+maps/house.bsp: maps/house.map $(WALS)
+	$(QBSP) $<
+	$(QVIS) maps/house
+	$(QRAD) -gamedir $(CURDIR) -chop 128 -threads 6 -ambient 0.1 -scale 1.0 -direct 0.01 -entity 1.0 maps/house
+
 
 $(GENERATED_PICS): placeholder.pcx
 	for g in $(GENERATED_PICS); do cp placeholder.pcx $$g;done
