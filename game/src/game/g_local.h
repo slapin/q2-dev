@@ -19,6 +19,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 // g_local.h -- local definitions for game module
 
+#ifndef G_LOCAL_H
+#define G_LOCAL_H
+
 #include "q_shared.h"
 
 // define GAME_INCLUDE so that game.h does not define the
@@ -604,8 +607,6 @@ void Cmd_Score_f (edict_t *ent);
 // g_items.c
 //
 void PrecacheItem (gitem_t *it);
-void InitItems (void);
-void SetItemNames (void);
 gitem_t	*FindItem (char *pickup_name);
 gitem_t	*FindItemByClassname (char *classname);
 #define	ITEM_INDEX(x) ((x)-itemlist)
@@ -1108,4 +1109,4 @@ struct edict_s
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
 };
-
+#endif

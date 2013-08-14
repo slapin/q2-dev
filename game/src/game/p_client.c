@@ -105,7 +105,7 @@ static void SP_CreateCoopSpots (edict_t *self)
 /*QUAKED info_player_start (1 0 0) (-16 -16 -24) (16 16 32)
 The normal starting point for a level.
 */
-void SP_info_player_start(edict_t *self)
+static void SP_info_player_start(edict_t *self)
 {
 	if (!coop->value)
 		return;
@@ -120,7 +120,7 @@ void SP_info_player_start(edict_t *self)
 /*QUAKED info_player_deathmatch (1 0 1) (-16 -16 -24) (16 16 32)
 potential spawning position for deathmatch games
 */
-void SP_info_player_deathmatch(edict_t *self)
+static void SP_info_player_deathmatch(edict_t *self)
 {
 	if (!deathmatch->value)
 	{
@@ -134,7 +134,7 @@ void SP_info_player_deathmatch(edict_t *self)
 potential spawning position for coop games
 */
 
-void SP_info_player_coop(edict_t *self)
+static void SP_info_player_coop(edict_t *self)
 {
 	if (!coop->value)
 	{
@@ -168,7 +168,7 @@ void SP_info_player_coop(edict_t *self)
 The deathmatch intermission point will be at one of these
 Use 'angles' instead of 'angle', so you can set pitch or roll as well as yaw.  'pitch yaw roll'
 */
-void SP_info_player_intermission(void)
+void SP_info_player_intermission(edict_t *ent)
 {
 }
 

@@ -215,13 +215,11 @@ targets: $(TARGETS)
 
 GAME_OBJS = \
 	$(BUILDDIR)/game/g_ai.o \
-	$(BUILDDIR)/game/p_client.o \
 	$(BUILDDIR)/game/g_chase.o \
 	$(BUILDDIR)/game/g_cmds.o \
 	$(BUILDDIR)/game/g_svcmds.o \
 	$(BUILDDIR)/game/g_combat.o \
 	$(BUILDDIR)/game/g_func.o \
-	$(BUILDDIR)/game/g_items.o \
 	$(BUILDDIR)/game/g_main.o \
 	$(BUILDDIR)/game/g_misc.o \
 	$(BUILDDIR)/game/g_monster.o \
